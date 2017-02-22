@@ -1,33 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.chengx.mvp.widget.refresh.swipe.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/layout_refresh"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <android.support.v7.widget.RecyclerView
+    <com.chengx.mvp.widget.pull2refresh.PullToRefreshRecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"/>
     <FrameLayout
         android:id="@+id/emptyView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clickable="true"
-        android:scrollbars="vertical|horizontal"
-        />
+        android:layout_height="match_parent" />
+    <FrameLayout
+        android:id="@+id/progressView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <FrameLayout
         android:id="@+id/errorView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clickable="true"
-        android:scrollbars="vertical|horizontal"
-        />
-    <FrameLayout
-        android:id="@+id/loadingView"
+        android:layout_height="match_parent"/>
+
+    <TextView
+        android:id="@+id/tipView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clickable="true"
-        android:scrollbars="vertical|horizontal"
+        android:layout_height="wrap_content"
+        android:background="@color/tip"
+        android:padding="5dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:text="@string/text_net_error"
         />
 
-
-</com.chengx.mvp.widget.refresh.swipe.SwipeRefreshLayout>
+</FrameLayout>

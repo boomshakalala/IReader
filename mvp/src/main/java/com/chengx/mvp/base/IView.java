@@ -10,9 +10,9 @@ import android.content.Context;
 
 public interface IView<P> {
 
-    void showWatting();
+    void showProgress();
 
-    void closeWait();
+    void hideProgress();
 
     void showTip(String msg);
 
