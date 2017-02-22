@@ -15,7 +15,7 @@ import java.util.List;
  * 描述：
  */
 
-public abstract class XListActivity<T> extends XActivity implements IListView<T>{
+public abstract class XListActivity<T extends IListPresent> extends XActivity implements IListView<T>{
     private XRecyclerView recyclerView;
     private RecyclerView.Adapter<RecyclerView.ViewHolder> adapter;
 

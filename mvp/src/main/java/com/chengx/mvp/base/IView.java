@@ -16,6 +16,8 @@ public interface IView<P> {
 
     void showTip(String msg);
 
+    void initToolBar();
+
     int getLayoutId();
 
     void initData();

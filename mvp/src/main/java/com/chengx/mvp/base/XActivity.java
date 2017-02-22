@@ -6,10 +6,12 @@ import android.support.annotation.Nullable;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.chengx.mvp.R;
 import com.chengx.mvp.utils.ConstUtils;
 import com.chengx.mvp.utils.KLog;
 import com.chengx.mvp.utils.SPUtils;
 import com.chengx.mvp.utils.ToastUtils;
+import com.chengx.mvp.widget.auto.AutoToolbar;
 import com.chengx.mvp.widget.loadding.CustomDialog;
 import com.zhy.autolayout.AutoLayoutActivity;
 
@@ -31,6 +33,7 @@ public abstract class XActivity<P extends IPresent> extends AutoLayoutActivity i
     private boolean needToolbar;
     private boolean needFullScreen;
     private CustomDialog dialog;
+    private AutoToolbar toolbar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,6 +44,11 @@ public abstract class XActivity<P extends IPresent> extends AutoLayoutActivity i
             sp = new SPUtils(this,AppConfig.SP_NAME);
             if (needFullScreen){
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FIRST_SUB_WINDOW);
+            }
+            toolbar = ButterKnife.findById(this, R.id.common_toolbar);
+            if (toolbar != null) {
+                initToolBar();
+                setSupportActionBar(toolbar);
             }
 
         }
