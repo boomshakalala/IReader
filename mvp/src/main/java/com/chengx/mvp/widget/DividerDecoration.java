@@ -88,6 +88,8 @@ public class DividerDecoration extends RecyclerView.ItemDecoration {
         super.onDrawOver(c, parent, state);
         int orientation = 0;
         int headerCount = 0,footerCount,dataCount;
+        if (parent.getAdapter() == null)
+            return;
         if (parent.getAdapter() instanceof HeaderAndFooterCommonAdapter){
             headerCount = ((HeaderAndFooterCommonAdapter) parent.getAdapter()).getHeadersCount();
             footerCount = ((HeaderAndFooterCommonAdapter) parent.getAdapter()).getFootersCount();

@@ -48,9 +48,10 @@ public abstract class XActivity<P extends IPresent> extends AutoLayoutActivity i
             toolbar = ButterKnife.findById(this, R.id.common_toolbar);
             if (toolbar != null) {
                 initToolBar();
-                setSupportActionBar(toolbar);
             }
-
+            initData();
+            initViews();
+            setListener();
         }
 
     }

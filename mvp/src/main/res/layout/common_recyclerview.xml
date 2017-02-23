@@ -4,19 +4,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <com.chengx.mvp.widget.pull2refresh.PullToRefreshRecyclerView
+
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
     <FrameLayout
+        android:visibility="gone"
         android:id="@+id/emptyView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
     <FrameLayout
+        android:visibility="gone"
         android:id="@+id/progressView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
     <FrameLayout
+        android:visibility="gone"
         android:id="@+id/errorView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

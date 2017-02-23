@@ -6,7 +6,7 @@ package com.chengx.mvp.base;
  * 描述：
  */
 
-public interface IListPresent extends IPresent {
+public interface IListPresent<V extends IListView> extends IPresent<V> {
     void refresh();
     void loadMore();
 }

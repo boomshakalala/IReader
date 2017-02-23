@@ -7,6 +7,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+
+import com.chengx.mvp.R;
+import com.chengx.mvp.utils.KLog;
+import com.chengx.mvp.utils.SPUtils;
+import com.chengx.mvp.utils.ToastUtils;
+import com.chengx.mvp.widget.auto.AutoToolbar;
+import com.chengx.mvp.widget.loadding.CustomDialog;
 
 import butterknife.ButterKnife;
 import de.greenrobot.event.EventBus;
@@ -18,25 +26,40 @@ import de.greenrobot.event.EventBus;
  */
 
 public abstract class XFragment<P extends IPresent> extends Fragment implements IView<P> {
+
+    public final String TAG = getClass().getSimpleName();
     private P present;
     protected View rootView;
-
+    private SPUtils sp;
+    private boolean needFullScreen;
+    private CustomDialog dialog;
+    private AutoToolbar toolbar;
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (useEventBus()){
+            EventBus.getDefault().register(this);
+        }
+        sp = new SPUtils(getActivity(),AppConfig.SP_NAME);
+        if (needFullScreen){
+            getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FIRST_SUB_WINDOW);
+        }
+
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        if (rootView == null){
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        if (rootView == null) {
             rootView = inflater.inflate(getLayoutId(),container,false);
             ButterKnife.bind(rootView);
         }
         ViewGroup parent = (ViewGroup) rootView.getParent();
-        if (parent != null){
+        if (parent != null) {
             parent.removeView(rootView);
+        }
+        toolbar = ButterKnife.findById(getActivity(), R.id.common_toolbar);
+        if (toolbar != null) {
+            initToolBar();
         }
         return rootView;
     }
@@ -56,12 +79,44 @@ public abstract class XFragment<P extends IPresent> extends Fragment implements 
         return false;
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        if (useEventBus()){
-            EventBus.getDefault().register(this);
+
+    public CustomDialog getDialog(){
+        if (dialog == null) {
+            dialog = CustomDialog.instance(getActivity());
+            dialog.setCancelable(true);
         }
+        return dialog;
+    }
+
+    public void showDialog(){
+        getDialog().show();
+    }
+
+    public void log(Object... objects){
+        KLog.d(TAG, objects);
+    }
+
+    public void logJson(String json){
+        KLog.json(TAG, json);
+    }
+
+    public void dismissDialog(){
+        if (dialog != null) {
+            dialog.hide();
+            dialog = null;
+        }
+    }
+
+    public void showToast(String str){
+        ToastUtils.showToast(getContext(),str);
+    }
+
+    public boolean isNeedFullScreen() {
+        return needFullScreen;
+    }
+
+    public void setNeedFullScreen(boolean needFullScreen) {
+        this.needFullScreen = needFullScreen;
     }
 
     @Override
@@ -93,6 +148,7 @@ public abstract class XFragment<P extends IPresent> extends Fragment implements 
         if (getPresent() != null){
             present.detachV();
         }
+        dismissDialog();
         present = null;
     }
 }

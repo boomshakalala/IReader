@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">IReader</string>
+    <string name="text_featured">精选</string>
+    <string name="text_stacks">书库</string>
+    <string name="text_search">搜索</string>
+    <string name="text_find">发现</string>
+    <string name="text_mine">我的</string>
 </resources>

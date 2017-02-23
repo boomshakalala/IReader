@@ -6,10 +6,10 @@ package com.chengx.mvp.base;
  * 描述：
  */
 
-public abstract class XListPresent extends XPresent implements IListPresent {
+public abstract class XListPresent<V extends IListView> extends XPresent<V> implements IListPresent<V> {
     private int currentPage = 0;
 
-    abstract void requestData();
+    abstract protected void requestData();
 
     @Override
     public void refresh() {

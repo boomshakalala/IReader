@@ -9,7 +9,22 @@ import com.chengx.mvp.base.XActivity;
  * 描述：
  */
 
-public abstract class  BaseActivity<T extends IPresent> extends XActivity<T> {
+public abstract   class  BaseActivity<T extends IPresent> extends XActivity<T> {
 
+
+    @Override
+    public void showProgress() {
+        showDialog();
+    }
+
+    @Override
+    public void hideProgress() {
+        dismissDialog();
+    }
+
+    @Override
+    public void showTip(String msg) {
+        showToast(msg);
+    }
 
 }
