@@ -11,7 +11,7 @@ import com.tenghen.ireader.ui.present.FindPresent;
  * 描述：
  */
 
-public class FindFragment extends BaseListFragment<FindPresent> {
+public class FindFragment extends BaseListFragment<FindPresent,Object> {
     @Override
     public void initToolBar() {
 
@@ -19,7 +19,7 @@ public class FindFragment extends BaseListFragment<FindPresent> {
 
     @Override
     public int getLayoutId() {
-        return R.layout.layout_common_list;
+        return R.layout.fragment_find;
     }
 
     @Override

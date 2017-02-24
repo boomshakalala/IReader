@@ -11,7 +11,7 @@ import com.tenghen.ireader.ui.present.SearchPresent;
  * 描述：
  */
 
-public class SearchFragment extends BaseListFragment<SearchPresent> {
+public class SearchFragment extends BaseListFragment<SearchPresent,Object> {
     @Override
     public void initToolBar() {
 
@@ -19,7 +19,7 @@ public class SearchFragment extends BaseListFragment<SearchPresent> {
 
     @Override
     public int getLayoutId() {
-        return R.layout.layout_common_list;
+        return R.layout.fragment_search;
     }
 
     @Override

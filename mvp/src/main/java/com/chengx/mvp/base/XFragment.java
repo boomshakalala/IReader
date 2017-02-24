@@ -32,8 +32,9 @@ public abstract class XFragment<P extends IPresent> extends Fragment implements 
     protected View rootView;
     private SPUtils sp;
     private boolean needFullScreen;
+    private boolean needBack = true;
     private CustomDialog dialog;
-    private AutoToolbar toolbar;
+    protected AutoToolbar toolbar;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,10 +58,16 @@ public abstract class XFragment<P extends IPresent> extends Fragment implements 
         if (parent != null) {
             parent.removeView(rootView);
         }
-        toolbar = ButterKnife.findById(getActivity(), R.id.common_toolbar);
+        toolbar = (AutoToolbar) rootView.findViewById(R.id.common_toolbar);
+        log("toolbar = null?" + toolbar != null);
         if (toolbar != null) {
+            if (needBack)
+                toolbar.setNavigationIcon(R.drawable.btn_back);
             initToolBar();
         }
+        initData();
+        initViews();
+        setListener();
         return rootView;
     }
 
@@ -72,6 +79,15 @@ public abstract class XFragment<P extends IPresent> extends Fragment implements 
             }
         }
         return present;
+    }
+
+
+    public boolean isNeedBack() {
+        return needBack;
+    }
+
+    public void setNeedBack(boolean needBack) {
+        this.needBack = needBack;
     }
 
     @Override

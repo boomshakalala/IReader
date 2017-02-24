@@ -32,6 +32,7 @@ public abstract class XActivity<P extends IPresent> extends AutoLayoutActivity i
     private boolean pressedOnce;
     private boolean needToolbar;
     private boolean needFullScreen;
+    private boolean needBack = true;
     private CustomDialog dialog;
     private AutoToolbar toolbar;
 
@@ -45,8 +46,11 @@ public abstract class XActivity<P extends IPresent> extends AutoLayoutActivity i
             if (needFullScreen){
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FIRST_SUB_WINDOW);
             }
-            toolbar = ButterKnife.findById(this, R.id.common_toolbar);
+            toolbar = (AutoToolbar) findViewById(R.id.common_toolbar);
             if (toolbar != null) {
+                if (needBack){
+                    toolbar.setNavigationIcon(R.drawable.btn_back);
+                }
                 initToolBar();
             }
             initData();
@@ -54,6 +58,14 @@ public abstract class XActivity<P extends IPresent> extends AutoLayoutActivity i
             setListener();
         }
 
+    }
+
+    public boolean isNeedBack() {
+        return needBack;
+    }
+
+    public void setNeedBack(boolean needBack) {
+        this.needBack = needBack;
     }
 
     public CustomDialog getDialog(){

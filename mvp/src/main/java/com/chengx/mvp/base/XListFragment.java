@@ -2,12 +2,17 @@ package com.chengx.mvp.base;
 
 import android.support.v7.widget.RecyclerView;
 
+import com.chengx.mvp.R;
 import com.chengx.mvp.adapter.CommonRecyclerAdapter;
 import com.chengx.mvp.adapter.HeaderAndFooterCommonAdapter;
 import com.chengx.mvp.adapter.MultiItemCommonAdapter;
+import com.chengx.mvp.adapter.RecyclerViewHolder;
+import com.chengx.mvp.utils.KLog;
 import com.chengx.mvp.widget.XRecyclerView;
 
 import java.util.List;
+
+import butterknife.BindView;
 
 /**
  * 作者：chengx
@@ -15,12 +20,14 @@ import java.util.List;
  * 描述：
  */
 
-public abstract class XListFragment<T extends IListPresent> extends XFragment implements IListView<T> {
-    private XRecyclerView recyclerView;
-    private RecyclerView.Adapter<RecyclerView.ViewHolder> adapter;
+public abstract class XListFragment<T extends IListPresent,M> extends XFragment implements IListView<T,M> {
+    protected XRecyclerView recyclerView;
+    protected RecyclerView.Adapter<RecyclerViewHolder> adapter;
+
 
     @Override
-    public void refresh(List<T> data) {
+    public void refresh(List<M> data) {
+        log("refreshData");
         if (adapter instanceof CommonRecyclerAdapter){
             ((CommonRecyclerAdapter)adapter).setData(data);
         }else if (adapter instanceof HeaderAndFooterCommonAdapter){
@@ -31,7 +38,7 @@ public abstract class XListFragment<T extends IListPresent> extends XFragment im
     }
 
     @Override
-    public void loadMore(List<T> data) {
+    public void loadMore(List<M> data) {
         if (adapter instanceof CommonRecyclerAdapter){
             ((CommonRecyclerAdapter)adapter).loadMore(data);
         }else if (adapter instanceof HeaderAndFooterCommonAdapter){

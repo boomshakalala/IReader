@@ -9,6 +9,6 @@ import com.chengx.mvp.base.XListActivity;
  * 描述：
  */
 
-public abstract class BaseListActivity<T extends IListPresent> extends XListActivity<T> {
+public abstract class BaseListActivity<T extends IListPresent,M> extends XListActivity<T,M> {
 
 }

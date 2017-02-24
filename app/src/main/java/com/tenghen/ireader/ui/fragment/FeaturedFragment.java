@@ -1,8 +1,17 @@
 package com.tenghen.ireader.ui.fragment;
 
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+
+import com.chengx.mvp.base.XListPresent;
 import com.tenghen.ireader.R;
+import com.tenghen.ireader.adapter.FeaturedAdapter;
+import com.tenghen.ireader.adapter.FeaturedBookDelegate;
 import com.tenghen.ireader.base.BaseListFragment;
 import com.tenghen.ireader.ui.present.FeaturedPresent;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 作者：chengx
@@ -10,25 +19,39 @@ import com.tenghen.ireader.ui.present.FeaturedPresent;
  * 描述：
  */
 
-public class FeaturedFragment extends BaseListFragment<FeaturedPresent> {
+public class FeaturedFragment extends BaseListFragment<FeaturedPresent,Object> {
+    private List<Object> data;
+
     @Override
     public void initToolBar() {
-
+        toolbar.setNavigationIcon(R.drawable.btn_back);
     }
 
     @Override
     public int getLayoutId() {
-        return R.layout.layout_common_list;
+        return R.layout.fragment_featured;
     }
 
     @Override
     public void initData() {
-
+        data = new ArrayList<>();
+        adapter = new FeaturedAdapter(getContext(),data);
     }
 
     @Override
     public void initViews() {
-
+        super.initViews();
+        GridLayoutManager layoutManager = new GridLayoutManager(getContext(),3);
+        layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                int viewType = adapter.getItemViewType(position);
+                return ((FeaturedAdapter)adapter).getItemViewDelegate(viewType) instanceof FeaturedBookDelegate ? 1 : 3;
+            }
+        });
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
+        ((XListPresent)getPresent()).refresh();
     }
 
     @Override

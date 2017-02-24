@@ -136,5 +136,7 @@ public class XRecyclerView extends FrameLayout {
         recyclerView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
     }
 
-
+    public void setRefreshListener(PullToRefreshBase.OnRefreshListener2<RecyclerView> refreshListener) {
+        recyclerView.setOnRefreshListener(refreshListener);
+    }
 }

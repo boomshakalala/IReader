@@ -11,7 +11,7 @@ import com.tenghen.ireader.ui.present.UserPresent;
  * 描述：
  */
 
-public class UserFragment extends BaseListFragment<UserPresent> {
+public class UserFragment extends BaseListFragment<UserPresent,Object> {
     @Override
     public void initToolBar() {
 
@@ -19,7 +19,7 @@ public class UserFragment extends BaseListFragment<UserPresent> {
 
     @Override
     public int getLayoutId() {
-        return R.layout.layout_common_list;
+        return R.layout.fragment_user;
     }
 
     @Override

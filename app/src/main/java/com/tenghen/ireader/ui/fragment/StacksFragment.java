@@ -11,7 +11,7 @@ import com.tenghen.ireader.ui.present.StacksPresent;
  * 描述：
  */
 
-public class StacksFragment extends BaseListFragment<StacksPresent> {
+public class StacksFragment extends BaseListFragment<StacksPresent,Object> {
     @Override
     public void initToolBar() {
 
@@ -19,7 +19,7 @@ public class StacksFragment extends BaseListFragment<StacksPresent> {
 
     @Override
     public int getLayoutId() {
-        return R.layout.layout_common_list;
+        return R.layout.fragment_stacks;
     }
 
     @Override

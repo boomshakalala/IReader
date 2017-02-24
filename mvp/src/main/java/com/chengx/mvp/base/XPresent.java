@@ -1,5 +1,7 @@
 package com.chengx.mvp.base;
 
+import com.chengx.mvp.utils.KLog;
+
 /**
  * 作者：chengx
  * 日期：2017/2/9
@@ -7,6 +9,7 @@ package com.chengx.mvp.base;
  */
 
 public class XPresent<V extends IView> implements IPresent<V> {
+    private final String TAG = getClass().getSimpleName();
     private V v;
 
     @Override
@@ -24,5 +27,13 @@ public class XPresent<V extends IView> implements IPresent<V> {
             throw new IllegalStateException("v不能为null");
         }
         return v;
+    }
+
+    public void log(Object... objects){
+        KLog.d(TAG, objects);
+    }
+
+    public void logJson(String json){
+        KLog.json(TAG, json);
     }
 }

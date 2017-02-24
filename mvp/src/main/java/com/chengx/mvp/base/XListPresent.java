@@ -1,5 +1,7 @@
 package com.chengx.mvp.base;
 
+import com.chengx.mvp.utils.KLog;
+
 /**
  * 作者：chengx
  * 日期：2017/2/9
@@ -13,6 +15,7 @@ public abstract class XListPresent<V extends IListView> extends XPresent<V> impl
 
     @Override
     public void refresh() {
+       log("Refresh");
         currentPage = 0;
         requestData();
     }

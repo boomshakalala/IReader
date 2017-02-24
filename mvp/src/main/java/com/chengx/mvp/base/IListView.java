@@ -8,9 +8,9 @@ import java.util.List;
  * 描述：
  */
 
-public interface IListView<T> extends IView {
-    void refresh(List<T> data);
-    void loadMore(List<T> data);
+public interface IListView<V,M> extends IView {
+    void refresh(List<M> data);
+    void loadMore(List<M> data);
     void showEmpty();
     void showError();
     void closeLoadMore();

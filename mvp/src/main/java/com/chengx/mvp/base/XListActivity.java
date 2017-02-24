@@ -15,12 +15,12 @@ import java.util.List;
  * 描述：
  */
 
-public abstract class XListActivity<T extends IListPresent> extends XActivity implements IListView<T>{
+public abstract class XListActivity<T extends IListPresent,M> extends XActivity implements IListView<T,M>{
     private XRecyclerView recyclerView;
     private RecyclerView.Adapter<RecyclerView.ViewHolder> adapter;
 
     @Override
-    public void refresh(List<T> data) {
+    public void refresh(List<M> data) {
         if (adapter instanceof CommonRecyclerAdapter){
             ((CommonRecyclerAdapter)adapter).setData(data);
         }else if (adapter instanceof HeaderAndFooterCommonAdapter){
@@ -31,7 +31,7 @@ public abstract class XListActivity<T extends IListPresent> extends XActivity im
     }
 
     @Override
-    public void loadMore(List<T> data) {
+    public void loadMore(List<M> data) {
         if (adapter instanceof CommonRecyclerAdapter){
             ((CommonRecyclerAdapter)adapter).loadMore(data);
         }else if (adapter instanceof HeaderAndFooterCommonAdapter){
