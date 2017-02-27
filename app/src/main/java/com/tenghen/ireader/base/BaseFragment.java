@@ -10,5 +10,18 @@ import com.chengx.mvp.base.XFragment;
  */
 
 public abstract class BaseFragment<T extends IPresent> extends XFragment<T> {
+    @Override
+    public void showProgress() {
+        showDialog();
+    }
 
+    @Override
+    public void hideProgress() {
+        dismissDialog();
+    }
+
+    @Override
+    public void showTip(String msg) {
+        showToast(msg);
+    }
 }

@@ -2,8 +2,6 @@ package com.tenghen.ireader.ui.fragment;
 
 import com.tenghen.ireader.R;
 import com.tenghen.ireader.base.BaseListFragment;
-import com.tenghen.ireader.ui.present.FeaturedPresent;
-import com.tenghen.ireader.ui.present.StacksPresent;
 
 /**
  * 作者：chengx
@@ -11,7 +9,9 @@ import com.tenghen.ireader.ui.present.StacksPresent;
  * 描述：
  */
 
-public class StacksFragment extends BaseListFragment<StacksPresent,Object> {
+public class StacksFragment extends BaseListFragment {
+
+
     @Override
     public void initToolBar() {
 
@@ -38,7 +38,7 @@ public class StacksFragment extends BaseListFragment<StacksPresent,Object> {
     }
 
     @Override
-    public StacksPresent newPresent() {
-        return new StacksPresent();
+    public Object newPresent() {
+        return null;
     }
 }

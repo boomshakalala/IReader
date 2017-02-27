@@ -97,4 +97,11 @@
         <attr name="ring_width" format="dimension" />
         <attr name="ring_radius" format="dimension" />
     </declare-styleable>
+
+    <!-- 标签布局 -->
+    <declare-styleable name="TagLayout">
+        <attr name="lineSpacing" format="dimension"/>
+        <attr name="tagSpacing" format="dimension"/>
+        <attr name="columnSize" format="integer"/>
+    </declare-styleable>
 </resources>

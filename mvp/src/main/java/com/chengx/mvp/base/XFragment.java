@@ -52,7 +52,7 @@ public abstract class XFragment<P extends IPresent> extends Fragment implements 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (rootView == null) {
             rootView = inflater.inflate(getLayoutId(),container,false);
-            ButterKnife.bind(rootView);
+            ButterKnife.bind(this,rootView);
         }
         ViewGroup parent = (ViewGroup) rootView.getParent();
         if (parent != null) {
@@ -65,10 +65,15 @@ public abstract class XFragment<P extends IPresent> extends Fragment implements 
                 toolbar.setNavigationIcon(R.drawable.btn_back);
             initToolBar();
         }
+        return rootView;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         initData();
         initViews();
         setListener();
-        return rootView;
     }
 
     protected P getPresent(){

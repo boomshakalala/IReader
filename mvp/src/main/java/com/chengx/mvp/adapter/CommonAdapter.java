@@ -52,5 +52,17 @@ public abstract class CommonAdapter<T> extends BaseAdapter{
     private ViewHolder getViewHolder(int position, View convertView, ViewGroup parent) {
         return ViewHolder.get(context, convertView, parent, itemLayoutId, position);
     }
+
+    public void setData(List<T> data) {
+        this.data.clear();
+        this.data.addAll(data);
+        notifyDataSetChanged();
+    }
+
+    public void loadMore(List<T> data){
+        this.data.addAll(data);
+        notifyDataSetChanged();
+    }
+
     public abstract void convert(ViewHolder holder, T t);
 }

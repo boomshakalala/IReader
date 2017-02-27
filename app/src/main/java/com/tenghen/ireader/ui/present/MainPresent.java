@@ -10,4 +10,5 @@ import com.tenghen.ireader.ui.activity.MainActivity;
  */
 
 public class MainPresent extends BasePresent<MainActivity> {
+
 }
