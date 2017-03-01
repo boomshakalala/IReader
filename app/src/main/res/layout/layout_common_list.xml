@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     >
     <include
-        layout="@layout/layout_common_search"/>
+        layout="@layout/common_toolbar"/>
     <com.chengx.mvp.widget.XRecyclerView
         android:id="@+id/xRecyclerView"
         android:layout_width="match_parent"

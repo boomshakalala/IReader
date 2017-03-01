@@ -3,6 +3,7 @@ package com.chengx.mvp.base;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -34,7 +35,7 @@ public abstract class XActivity<P extends IPresent> extends AutoLayoutActivity i
     private boolean needFullScreen;
     private boolean needBack = true;
     private CustomDialog dialog;
-    private AutoToolbar toolbar;
+    protected AutoToolbar toolbar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,6 +51,12 @@ public abstract class XActivity<P extends IPresent> extends AutoLayoutActivity i
             if (toolbar != null) {
                 if (needBack){
                     toolbar.setNavigationIcon(R.drawable.btn_back);
+                    toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            finish();
+                        }
+                    });
                 }
                 initToolBar();
             }

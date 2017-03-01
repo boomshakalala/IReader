@@ -35,6 +35,7 @@ public abstract class XListFragment<T extends IListPresent,M> extends XFragment 
         }else if (adapter instanceof MultiItemCommonAdapter){
             ((MultiItemCommonAdapter)adapter).setData(data);
         }
+        recyclerView.onRefreshComplete();
     }
 
     @Override
@@ -46,6 +47,7 @@ public abstract class XListFragment<T extends IListPresent,M> extends XFragment 
         }else if (adapter instanceof MultiItemCommonAdapter){
             ((MultiItemCommonAdapter)adapter).loadMore(data);
         }
+        recyclerView.onRefreshComplete();
     }
 
     @Override

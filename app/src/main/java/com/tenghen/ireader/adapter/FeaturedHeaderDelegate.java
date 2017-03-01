@@ -11,6 +11,9 @@ import com.stx.xhb.xbanner.XBanner;
 import com.stx.xhb.xbanner.transformers.Transformer;
 import com.tenghen.ireader.R;
 import com.tenghen.ireader.module.Banner;
+import com.tenghen.ireader.ui.activity.BookTypeActivity;
+import com.tenghen.ireader.ui.activity.FreeBookActivity;
+import com.tenghen.ireader.ui.activity.MonthlyActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +56,37 @@ public class FeaturedHeaderDelegate  implements ItemViewDelegate<Object>,XBanner
         banner.setData(imgs,null);
         banner.setPageTransformer(Transformer.Rotate);
         banner.setmAdapter(this);
+        holder.setOnclickListener(R.id.featuredMonthlyBtn, new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MonthlyActivity.launch(context);
+            }
+        });
+        holder.setOnclickListener(R.id.featuredFreeBtn, new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FreeBookActivity.launch(context);
+            }
+        });
+        holder.setOnclickListener(R.id.featuredModernBtn, new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BookTypeActivity.launch(context);
+            }
+        });
+        holder.setOnclickListener(R.id.featuredAncientBtn, new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BookTypeActivity.launch(context);
+            }
+        });
+        holder.setOnclickListener(R.id.featuredSupernaturalBtn, new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BookTypeActivity.launch(context);
+            }
+        });
+
     }
 
     @Override

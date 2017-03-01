@@ -1,9 +1,7 @@
 package com.tenghen.ireader.ui.fragment;
 
 import com.tenghen.ireader.R;
-import com.tenghen.ireader.base.BaseListFragment;
-import com.tenghen.ireader.ui.present.FeaturedPresent;
-import com.tenghen.ireader.ui.present.FindPresent;
+import com.tenghen.ireader.base.BaseFragment;
 
 /**
  * 作者：chengx
@@ -11,7 +9,7 @@ import com.tenghen.ireader.ui.present.FindPresent;
  * 描述：
  */
 
-public class FindFragment extends BaseListFragment<FindPresent,Object> {
+public class FindFragment extends BaseFragment {
     @Override
     public void initToolBar() {
 
@@ -38,7 +36,7 @@ public class FindFragment extends BaseListFragment<FindPresent,Object> {
     }
 
     @Override
-    public FindPresent newPresent() {
-        return new FindPresent();
+    public Object newPresent() {
+        return null;
     }
 }

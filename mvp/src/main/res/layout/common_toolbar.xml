@@ -20,7 +20,7 @@
                 android:textSize="15sp"
                 android:layout_gravity="center"
                 android:textColor="@color/white"
-                android:text="哈哈"/>
+                android:text=""/>
         </FrameLayout>
 
     </com.chengx.mvp.widget.auto.AutoToolbar>

@@ -7,4 +7,31 @@ package com.tenghen.ireader.module;
  */
 
 public class Label {
+    private String text;
+    private int endTime;
+    private boolean needTimmer;
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public int getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(int endTime) {
+        this.endTime = endTime;
+    }
+
+    public boolean isNeedTimmer() {
+        return needTimmer;
+    }
+
+    public void setNeedTimmer(boolean needTimmer) {
+        this.needTimmer = needTimmer;
+    }
 }

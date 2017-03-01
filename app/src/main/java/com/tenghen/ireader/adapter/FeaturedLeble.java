@@ -1,6 +1,7 @@
 package com.tenghen.ireader.adapter;
 
 import android.content.ClipData;
+import android.view.View;
 
 import com.chengx.mvp.adapter.ItemViewDelegate;
 import com.chengx.mvp.adapter.RecyclerViewHolder;
@@ -26,6 +27,8 @@ public class FeaturedLeble implements ItemViewDelegate<Object> {
 
     @Override
     public void convert(RecyclerViewHolder holder, Object o, int position) {
-
+        Label label = (Label) o;
+        holder.setVisibility(R.id.timerLayout,label.isNeedTimmer()? View.VISIBLE:View.GONE);
+        holder.setText(R.id.labelTv,label.getText());
     }
 }

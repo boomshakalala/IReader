@@ -9,4 +9,5 @@
     <color name="colorSplineSpace">#f4f4f5</color>
     <color name="colorSplineLine">#c9c9c9</color>
     <color name="colorGrayText">#bfbfc0</color>
+    <color name="black">#000000</color>
 </resources>

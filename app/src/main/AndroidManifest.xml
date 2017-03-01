@@ -27,6 +27,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.activity.BookTypeActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.RankActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.MonthlyActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.FreeBookActivity"
+            android:screenOrientation="portrait"/>
 
     </application>
 

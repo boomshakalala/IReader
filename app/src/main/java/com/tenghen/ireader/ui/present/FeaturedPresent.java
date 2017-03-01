@@ -1,5 +1,6 @@
 package com.tenghen.ireader.ui.present;
 
+import com.tenghen.ireader.R;
 import com.tenghen.ireader.adapter.ViewSupportModel;
 import com.tenghen.ireader.base.BaseListPresent;
 import com.tenghen.ireader.module.Banner;
@@ -25,29 +26,39 @@ public class FeaturedPresent extends BaseListPresent<FeaturedFragment> {
         List<Object> data = new ArrayList<>();
         data.add(new Banner());
         data.add(new ViewSupportModel(ViewSupportModel.VIEW_TYPE_SPLIT_SPACE));
-        data.add(new Label());
+        Label label1 = new Label();
+        label1.setText("主编推荐");
+        data.add(label1);
         for (int i = 0; i < 2; i++) {
             data.add(new Featured());
             if (i == 0)
                 data.add(new ViewSupportModel(ViewSupportModel.VIEW_TYPE_SPLIT_LINE));
         }
         data.add(new ViewSupportModel(ViewSupportModel.VIEW_TYPE_SPLIT_SPACE));
-        data.add(new Label());
+        Label label2 = new Label();
+        label2.setText("口碑畅销");
+        data.add(label2);
         for (int i = 0; i < 6; i++) {
             data.add(new Book());
         }
         data.add(new ViewSupportModel(ViewSupportModel.VIEW_TYPE_SPLIT_SPACE));
-        data.add(new Label());
+        Label label3 = new Label();
+        label3.setText("女王PK赛");
+        data.add(label3);
         for (int i = 0; i < 6; i++) {
             data.add(new Book());
         }
         data.add(new ViewSupportModel(ViewSupportModel.VIEW_TYPE_SPLIT_SPACE));
-        data.add(new Label());
+        Label label4 = new Label();
+        label4.setText("江山美人令");
+        data.add(label4);
         for (int i = 0; i < 6; i++) {
             data.add(new Book());
         }
         data.add(new ViewSupportModel(ViewSupportModel.VIEW_TYPE_SPLIT_SPACE));
-        data.add(new Label());
+        Label label5 = new Label();
+        label5.setText("月黑风高夜");
+        data.add(label5);
         for (int i = 0; i < 6; i++) {
             data.add(new Book());
         }

@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import com.chengx.mvp.adapter.CommonRecyclerAdapter;
 import com.chengx.mvp.adapter.HeaderAndFooterCommonAdapter;
 import com.chengx.mvp.adapter.MultiItemCommonAdapter;
+import com.chengx.mvp.adapter.RecyclerViewHolder;
 import com.chengx.mvp.widget.XRecyclerView;
 
 import java.util.List;
@@ -16,8 +17,8 @@ import java.util.List;
  */
 
 public abstract class XListActivity<T extends IListPresent,M> extends XActivity implements IListView<T,M>{
-    private XRecyclerView recyclerView;
-    private RecyclerView.Adapter<RecyclerView.ViewHolder> adapter;
+    protected XRecyclerView recyclerView;
+    protected RecyclerView.Adapter<RecyclerViewHolder> adapter;
 
     @Override
     public void refresh(List<M> data) {
@@ -28,6 +29,7 @@ public abstract class XListActivity<T extends IListPresent,M> extends XActivity 
         }else if (adapter instanceof MultiItemCommonAdapter){
             ((MultiItemCommonAdapter)adapter).setData(data);
         }
+        recyclerView.onRefreshComplete();
     }
 
     @Override
@@ -39,6 +41,7 @@ public abstract class XListActivity<T extends IListPresent,M> extends XActivity 
         }else if (adapter instanceof MultiItemCommonAdapter){
             ((MultiItemCommonAdapter)adapter).loadMore(data);
         }
+        recyclerView.onRefreshComplete();
     }
 
     @Override
