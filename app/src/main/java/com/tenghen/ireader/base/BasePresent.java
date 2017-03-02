@@ -2,6 +2,7 @@ package com.tenghen.ireader.base;
 
 import com.chengx.mvp.base.IView;
 import com.chengx.mvp.base.XPresent;
+import com.tenghen.ireader.net.Api;
 
 import static com.chengx.mvp.utils.KLog.V;
 
@@ -12,5 +13,5 @@ import static com.chengx.mvp.utils.KLog.V;
  */
 
 public class BasePresent<V extends IView> extends XPresent<V> {
-
+    Api api = new Api();
 }

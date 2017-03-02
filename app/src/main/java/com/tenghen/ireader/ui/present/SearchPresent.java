@@ -1,8 +1,10 @@
 package com.tenghen.ireader.ui.present;
 
+import com.chengx.mvp.net.ResponseCallback;
 import com.tenghen.ireader.base.BaseListPresent;
 import com.tenghen.ireader.base.BasePresent;
 import com.tenghen.ireader.module.Book;
+import com.tenghen.ireader.net.Api;
 import com.tenghen.ireader.ui.fragment.SearchFragment;
 import com.tenghen.ireader.ui.fragment.StacksFragment;
 
@@ -17,11 +19,17 @@ import java.util.List;
 
 public class SearchPresent extends BasePresent<SearchFragment> {
     public void requestData(){
-        List<Book> books = new ArrayList<>();
-        for (int i = 0; i < 8; i++) {
-            books.add(new Book());
-        }
-        getV().setBooks(books);
+        Api.getAllViewBooks(new ResponseCallback<List<Book>>() {
+            @Override
+            public void onSuccess(List<Book> data) {
+                getV().setBooks(data);
+            }
+
+            @Override
+            public void onFailure(int errCode, String info) {
+
+            }
+        });
     }
 
     public void requestHotWords(){

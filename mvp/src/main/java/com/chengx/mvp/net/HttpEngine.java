@@ -4,6 +4,8 @@ package com.chengx.mvp.net;
 
 import com.chengx.mvp.utils.KLog;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -45,11 +47,14 @@ public class HttpEngine {
                 .connectTimeout(15,TimeUnit.SECONDS)
                 .writeTimeout(15,TimeUnit.SECONDS)
                 .build();
+        EventBus.getDefault().register(this);
+
     }
 
     public static HttpEngine getInstance(){
         if (instance == null) {
             instance = new HttpEngine();
+
         }
         return instance;
     }
@@ -74,13 +79,32 @@ public class HttpEngine {
      * @param <T> 解析结果
      * @return T
      */
-    private <T> T formatJson(String json,Type typeOfClass){
+    private <T> ApiResponse<T> formatJson(String json,Type typeOfClass){
         Gson gson = new Gson();
-        return gson.fromJson(json,typeOfClass);
+        ApiResponse<T> response = new ApiResponse<>();
+        JsonParser parser = new JsonParser();
+        try {
+            JsonObject jsonObject = parser.parse(json).getAsJsonObject();
+            if (jsonObject.has("code")){
+                response.setCode(jsonObject.get("code").getAsInt());
+            }
+            if (jsonObject.has("message")){
+                String message = jsonObject.get("message").getAsString();
+                response.setMessage(message.isEmpty()?"未知错误":message);
+            }
+            if (jsonObject.has("data")&&!(typeOfClass==Void.class)){
+                String jsonDataStr = jsonObject.get("data").toString();
+                T data = gson.fromJson(jsonDataStr,typeOfClass);
+                response.setData(data);
+            }
+            return response;
+        }catch (Exception e){
+            return null;
+        }
     }
 
-    public <T> void get(String method, RequestParam param, final Type typeOfClass, final ResponseCallback<T> callback){
-        String url = getUrl(RequestUrl.HOST + method, param);
+    public <T> void get(String url, RequestParam param, final Type typeOfClass, final ResponseCallback<T> callback){
+        url = getUrl(url, param);
         Request request = new Request.Builder()
                 .url(url)
                 .header("user-Agent","android")
@@ -107,8 +131,7 @@ public class HttpEngine {
         });
     }
     
-    public <T> void post(String method,RequestParam param,final Type typeOfClass,final ResponseCallback<T> callback){
-        String url = RequestUrl.HOST + method;
+    public <T> void post(String url,RequestParam param,final Type typeOfClass,final ResponseCallback<T> callback){
         FormBody.Builder builder = new FormBody.Builder();
         Iterator<String> iterator = param.entrySet().iterator();
         while (iterator.hasNext()){
@@ -134,9 +157,10 @@ public class HttpEngine {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                com.chengx.mvp.net.Response<T> resp = new com.chengx.mvp.net.Response<>();
+                com.chengx.mvp.net.Response resp = new com.chengx.mvp.net.Response();
                 resp.code = NETWORK_SUCCESS;
                 resp.json = response.body().string();
+                KLog.json(TAG,resp.json);
                 resp.callback = callback;
                 resp.typeOfClass = typeOfClass;
                 EventBus.getDefault().post(resp);
