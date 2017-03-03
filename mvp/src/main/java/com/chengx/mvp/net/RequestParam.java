@@ -8,6 +8,6 @@ import java.util.LinkedHashMap;
  * 描述：
  */
 
-public class RequestParam extends LinkedHashMap {
+public class RequestParam<K,V> extends LinkedHashMap<K,V> {
 
 }

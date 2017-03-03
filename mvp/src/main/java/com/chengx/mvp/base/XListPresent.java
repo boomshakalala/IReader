@@ -9,7 +9,7 @@ import com.chengx.mvp.utils.KLog;
  */
 
 public abstract class XListPresent<V extends IListView> extends XPresent<V> implements IListPresent<V> {
-    private int currentPage = 0;
+    protected int currentPage = 0;
 
     abstract protected void requestData();
 

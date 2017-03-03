@@ -131,11 +131,11 @@ public class HttpEngine {
         });
     }
     
-    public <T> void post(String url,RequestParam param,final Type typeOfClass,final ResponseCallback<T> callback){
+    public <T> void post(String url,RequestParam<String,Object> param,final Type typeOfClass,final ResponseCallback<T> callback){
         FormBody.Builder builder = new FormBody.Builder();
-        Iterator<String> iterator = param.entrySet().iterator();
+        Iterator<Map.Entry<String,Object>> iterator = param.entrySet().iterator();
         while (iterator.hasNext()){
-            String key = iterator.next();
+            String key = iterator.next().getKey();
             String value = (String) param.get(key);
             builder.add(key,value);
         }

@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.chengx.mvp.utils.KLog;
 import com.zhy.autolayout.utils.AutoUtils;
 
 import java.io.ByteArrayOutputStream;
@@ -90,6 +91,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder{
      */
     public RecyclerViewHolder setImageUrl(int viewId,String imageUrl){
         ImageView imageView = getView(viewId);
+        KLog.d("url",imageUrl);
         Glide.with(context).load(imageUrl).into(imageView);
         return this;
     }
