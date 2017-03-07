@@ -52,9 +52,9 @@ public class XRecyclerView extends FrameLayout {
     private void initAttrs(AttributeSet attrs) {
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.XRecyclerView);
         try {
-            emptyViewId = a.getResourceId(R.styleable.XRecyclerView_emptyView,0);
-            errorViewId = a.getResourceId(R.styleable.XRecyclerView_errorView,0);
-            progressViewId = a.getResourceId(R.styleable.XRecyclerView_progressView,0);
+            emptyViewId = a.getResourceId(R.styleable.XRecyclerView_emptyView,R.layout.common_empty_view);
+            errorViewId = a.getResourceId(R.styleable.XRecyclerView_errorView,R.layout.common_net_error_view);
+            progressViewId = a.getResourceId(R.styleable.XRecyclerView_progressView,R.layout.common_progress_view);
         } finally {
             a.recycle();
         }
@@ -74,14 +74,18 @@ public class XRecyclerView extends FrameLayout {
         recyclerView.getLoadingLayoutProxy(false, true).setRefreshingLabel("正在加载...");
         recyclerView.getLoadingLayoutProxy(false, true).setReleaseLabel("放开以加载");
 
+        progressView = (ViewGroup) findViewById(R.id.progressView);
+        emptyView = (ViewGroup) findViewById(R.id.emptyView);
+        errorView = (ViewGroup) findViewById(R.id.errorView);
+
         if (progressViewId != 0)
-            LayoutInflater.from(getContext()).inflate(progressViewId,progressView);
+             progressView.addView(LayoutInflater.from(getContext()).inflate(progressViewId,null));
         progressView = (ViewGroup) v.findViewById(R.id.progressView);
         if (emptyViewId != 0)
-            LayoutInflater.from(getContext()).inflate(emptyViewId,emptyView);
+            emptyView.addView(LayoutInflater.from(getContext()).inflate(emptyViewId,null));
         emptyView = (ViewGroup) v.findViewById(R.id.emptyView);
         if (errorViewId != 0)
-            LayoutInflater.from(getContext()).inflate(errorViewId,errorView);
+            errorView.addView(LayoutInflater.from(getContext()).inflate(errorViewId,null));
         errorView = (ViewGroup) v.findViewById(R.id.errorView);
     }
 
@@ -93,6 +97,7 @@ public class XRecyclerView extends FrameLayout {
     }
 
     public void showEmpty(){
+        recyclerView.onRefreshComplete();
         if (emptyView.getChildCount()>0){
             hideAll();
             emptyView.setVisibility(VISIBLE);
@@ -102,9 +107,11 @@ public class XRecyclerView extends FrameLayout {
     }
 
     public void showError(){
+        recyclerView.onRefreshComplete();
         if (errorView.getChildCount()>0){
             hideAll();
             errorView.setVisibility(VISIBLE);
+            recyclerView.onRefreshComplete();
         }else {
             showContent();
         }
@@ -136,11 +143,27 @@ public class XRecyclerView extends FrameLayout {
         recyclerView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
     }
 
+    public void closeRefresh(){
+        recyclerView.setMode(PullToRefreshBase.Mode.PULL_FROM_END);
+    }
+
     public void setRefreshListener(PullToRefreshBase.OnRefreshListener2<RecyclerView> refreshListener) {
         recyclerView.setOnRefreshListener(refreshListener);
     }
 
     public void onRefreshComplete(){
         recyclerView.onRefreshComplete();
+    }
+
+    public void setOnErrorClickListener(OnClickListener listener){
+        errorView.setOnClickListener(listener);
+    }
+
+    public boolean isRefreshing(){
+        return recyclerView.isRefreshing();
+    }
+
+    public void smoothToTop(){
+        recyclerView.getRefreshableView().smoothScrollToPosition(0);
     }
 }

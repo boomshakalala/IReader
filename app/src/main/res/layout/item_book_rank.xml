@@ -14,6 +14,7 @@
         android:paddingLeft="75px"
         android:paddingRight="75px">
         <ImageView
+            android:id="@+id/bookIv"
             android:layout_width="195px"
             android:layout_height="225px"
             android:scaleType="centerCrop"
@@ -24,14 +25,17 @@
             android:layout_marginLeft="55px"
             android:orientation="vertical">
             <TextView
+                android:id="@+id/bookNameTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
                 android:textSize="42px"
                 android:textColor="@color/colorGray"
                 android:layout_marginTop="24px"
-                android:text="1.地下迷情之强宠娇妻"/>
+                android:text="1.地下迷情之强宠娇妻"
+                android:ellipsize="end"/>
             <TextView
+                android:id="@+id/bookDescTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLines="2"
@@ -41,6 +45,7 @@
                 android:layout_marginTop="30px"
                 android:text="为了十万块，她将自己的清白之身，献给他。"/>
             <TextView
+                android:id="@+id/authorNameTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLines="2"
@@ -58,6 +63,7 @@
                     android:layout_height="1px"
                     android:layout_weight="1"/>
                 <TextView
+                    android:id="@+id/categoryNameTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="30px"
@@ -69,6 +75,7 @@
                     android:background="@drawable/shape_red_round_rect"
                     android:text="现代言情"/>
                 <TextView
+                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="30px"

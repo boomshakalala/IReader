@@ -1,6 +1,7 @@
 package com.tenghen.ireader.base;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.chengx.mvp.base.IListPresent;
 import com.chengx.mvp.base.IPresent;
@@ -22,6 +23,12 @@ public abstract class BaseListActivity<T extends IListPresent,M> extends XListAc
     public void initViews() {
         recyclerView = (XRecyclerView)findViewById(R.id.xRecyclerView);
         recyclerView.setRefreshListener(this);
+        recyclerView.setOnErrorClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getPresent().refresh();
+            }
+        });
     }
 
     @Override
@@ -43,6 +50,12 @@ public abstract class BaseListActivity<T extends IListPresent,M> extends XListAc
         }
     }
 
+    @Override
+    public void showProgress() {
+        if (!recyclerView.isRefreshing()){
+            recyclerView.showProgress();
+        }
+    }
 
     @Override
     protected XListPresent getPresent() {

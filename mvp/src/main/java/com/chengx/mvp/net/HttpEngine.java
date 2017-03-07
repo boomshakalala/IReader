@@ -131,12 +131,13 @@ public class HttpEngine {
         });
     }
     
-    public <T> void post(String url,RequestParam<String,Object> param,final Type typeOfClass,final ResponseCallback<T> callback){
+    public <T> void post(String url,RequestParam param,final Type typeOfClass,final ResponseCallback<T> callback){
+        KLog.d(TAG,param);
         FormBody.Builder builder = new FormBody.Builder();
-        Iterator<Map.Entry<String,Object>> iterator = param.entrySet().iterator();
+        Iterator<Map.Entry<String,String>> iterator = param.entrySet().iterator();
         while (iterator.hasNext()){
             String key = iterator.next().getKey();
-            String value = (String) param.get(key);
+            String value =  param.get(key);
             builder.add(key,value);
         }
         RequestBody body = builder.build();
@@ -186,7 +187,6 @@ public class HttpEngine {
                         KLog.json(TAG,resp.json);
                         return;
                     }else if (response.isSuccess()){
-                        KLog.i(TAG,resp.json);
                         resp.callback.onSuccess(response.getData());
                     }else {
                         KLog.e(TAG,response.getMessage());

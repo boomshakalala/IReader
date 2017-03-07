@@ -18,6 +18,7 @@ import java.util.List;
  */
 
 public class SearchPresent extends BasePresent<SearchFragment> {
+    int currentPage = 1;
     public void requestData(){
         Api.getAllViewBooks(new ResponseCallback<List<Book>>() {
             @Override
@@ -27,27 +28,23 @@ public class SearchPresent extends BasePresent<SearchFragment> {
 
             @Override
             public void onFailure(int errCode, String info) {
-
+                getV().showTip(info);
             }
         });
     }
 
-    public void requestHotWords(){
-        List<String> tags = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
-            tags.add("网游");
-        }
-        for (int i = 0; i < 2; i++) {
-            tags.add("都市");
-        }
-        tags.add("三生三世十里桃花");
-        for (int i = 0; i < 4; i++) {
-            tags.add("网游");
-        }
-        for (int i = 0; i < 2; i++) {
-            tags.add("都市");
-        }
-        tags.add("太子妃");
-        getV().setHotWords(tags);
+    public void requestHotWords() {
+        Api.getBookKeywords(currentPage, new ResponseCallback<List<String>>() {
+            @Override
+            public void onSuccess(List<String> data) {
+                getV().setHotWords(data);
+            }
+
+            @Override
+            public void onFailure(int errCode, String info) {
+                getV().showTip(info);
+            }
+        });
+        currentPage++;
     }
 }

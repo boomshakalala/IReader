@@ -2,16 +2,22 @@ package com.tenghen.ireader.ui.fragment;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.chengx.mvp.base.XListPresent;
 import com.tenghen.ireader.R;
 import com.tenghen.ireader.adapter.FeaturedAdapter;
 import com.tenghen.ireader.adapter.FeaturedBookDelegate;
 import com.tenghen.ireader.base.BaseListFragment;
+import com.tenghen.ireader.ui.activity.SearchActivity;
 import com.tenghen.ireader.ui.present.FeaturedPresent;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
 
 /**
  * 作者：chengx
@@ -19,7 +25,10 @@ import java.util.List;
  * 描述：
  */
 
-public class FeaturedFragment extends BaseListFragment<FeaturedPresent,Object> {
+public class FeaturedFragment extends BaseListFragment<FeaturedPresent,Object> implements View.OnClickListener {
+    @BindView(R.id.searchBtn)
+    public TextView searchBtn;
+
     private List<Object> data;
 
     @Override
@@ -56,11 +65,20 @@ public class FeaturedFragment extends BaseListFragment<FeaturedPresent,Object> {
 
     @Override
     public void setListener() {
-
+        searchBtn.setOnClickListener(this);
     }
 
     @Override
     public FeaturedPresent newPresent() {
         return new FeaturedPresent();
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.searchBtn:
+                SearchActivity.launch(getContext(),"");
+                break;
+        }
     }
 }

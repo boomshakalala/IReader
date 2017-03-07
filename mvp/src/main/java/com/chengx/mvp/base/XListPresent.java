@@ -9,14 +9,14 @@ import com.chengx.mvp.utils.KLog;
  */
 
 public abstract class XListPresent<V extends IListView> extends XPresent<V> implements IListPresent<V> {
-    protected int currentPage = 0;
+    protected int currentPage = 1;
 
     abstract protected void requestData();
 
     @Override
     public void refresh() {
        log("Refresh");
-        currentPage = 0;
+        currentPage = 1;
         requestData();
     }
 

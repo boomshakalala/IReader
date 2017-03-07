@@ -7,12 +7,14 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.chengx.mvp.adapter.CommonRecyclerAdapter;
 import com.chengx.mvp.base.XListPresent;
 import com.chengx.mvp.widget.XRecyclerView;
 import com.tenghen.ireader.R;
 import com.tenghen.ireader.adapter.BookTypeAdapter;
 import com.tenghen.ireader.base.BaseListActivity;
 import com.tenghen.ireader.module.Book;
+import com.tenghen.ireader.module.CategoryBook;
 import com.tenghen.ireader.ui.present.BookTypePresent;
 
 import java.util.ArrayList;
@@ -26,7 +28,7 @@ import butterknife.BindView;
  * 描述：
  */
 
-public class BookTypeActivity extends BaseListActivity<BookTypePresent,Book> implements View.OnClickListener {
+public class BookTypeActivity extends BaseListActivity<BookTypePresent,CategoryBook> implements View.OnClickListener, CommonRecyclerAdapter.OnRecyclerViewItemClickListener<CategoryBook> {
 
 
     public static final int INDEX_TYPE_ALL = 0;
@@ -63,9 +65,9 @@ public class BookTypeActivity extends BaseListActivity<BookTypePresent,Book> imp
     public static final int INDEX_COMPELETE = 1;
     public static final int INDEX_SERIAL = 2;
 
-    public static final int INDEX_ORDER_NEW = 1;
-    public static final int INDEX_ORDER_COLLECT = 2;
-    public static final int INDEX_ORDER_LENGTH = 3;
+    public static final int INDEX_ORDER_NEW = 0;
+    public static final int INDEX_ORDER_COLLECT = 1;
+    public static final int INDEX_ORDER_LENGTH = 2;
 
 
 
@@ -153,7 +155,7 @@ public class BookTypeActivity extends BaseListActivity<BookTypePresent,Book> imp
 
 
 
-    private List<Book> data;
+    private List<CategoryBook> data;
 
     public static void launch(Context context){
         Intent intent = new Intent(context,BookTypeActivity.class);
@@ -174,6 +176,7 @@ public class BookTypeActivity extends BaseListActivity<BookTypePresent,Book> imp
     public void initData() {
         data = new ArrayList<>();
         adapter = new BookTypeAdapter(this,R.layout.item_book_type,data);
+
     }
 
     @Override
@@ -185,7 +188,7 @@ public class BookTypeActivity extends BaseListActivity<BookTypePresent,Book> imp
         setCostSelected(INDEX_COST_ALL);
         setCompeleteSelected(INDEX_COMPELETE_ALL);
         setOrderSelected(INDEX_ORDER_NEW);
-        ((XListPresent)getPresent()).refresh();
+        getPresent().refresh();
     }
 
     @Override
@@ -224,6 +227,7 @@ public class BookTypeActivity extends BaseListActivity<BookTypePresent,Book> imp
         orderNewBtn.setOnClickListener(this);
         orderCollectBtn.setOnClickListener(this);
         orderLengthBtn.setOnClickListener(this);
+        ((CommonRecyclerAdapter)adapter).setOnItemClickListener(this);
 
     }
 
@@ -260,79 +264,104 @@ public class BookTypeActivity extends BaseListActivity<BookTypePresent,Book> imp
         switch (index){
             case INDEX_TYPE_ALL:
                 allTypeBtn.setSelected(true);
+                toolbar.setTitle(allTypeBtn.getText().toString());
                 break;
             case INDEX_TYPE_FANTASY_MAGIC:
                 fantasyMagicTypeBtn.setSelected(true);
+                toolbar.setTitle(fantasyMagicTypeBtn.getText().toString());
                 break;
             case INDEX_TYPE_YOUTH_SCHOOL:
                 youthSchoolTypeBtn.setSelected(true);
+                toolbar.setTitle(youthSchoolTypeBtn.getText().toString());
                 break;
             case INDEX_TYPE_MODERN_ROMANCE:
                 modernRomanceTypeBtn.setSelected(true);
+                toolbar.setTitle(modernRomanceTypeBtn.getText().toString());
                 break;
             case INDEX_TYPE_ANCIENT_ROMANCE:
                 ancientRomanceTypeBtn.setSelected(true);
+                toolbar.setTitle(ancientRomanceTypeBtn.getText().toString());
                 break;
             case INDEX_TYPE_FANTASY_ROMANCE:
                 fantasyRomanceTypeBtn.setSelected(true);
+                toolbar.setTitle(fantasyRomanceTypeBtn.getText().toString());
                 break;
             case INDEX_TYPE_GIRL_SUSPENSE:
                 girlSuspenseTypeBtn.setSelected(true);
+                toolbar.setTitle(girlSuspenseTypeBtn.getText().toString());
                 break;
             case INDEX_TYPE_SCI_FI:
                 sciFiTypeBtn.setSelected(true);
+                toolbar.setTitle(sciFiTypeBtn.getText().toString());
                 break;
             case INDEX_TYPE_GAME:
                 gameTypeBtn.setSelected(true);
+                toolbar.setTitle(gameTypeBtn.getText().toString());
                 break;
             case INDEX_TYPE_HUMAN_DECIMAL:
                 humanDecimalTypeBtn.setSelected(true);
+                toolbar.setTitle(humanDecimalTypeBtn.getText().toString());
                 break;
             case INDEX_TYPE_LIGHT_NOVEL:
                 lightNovelTypeBtn.setSelected(true);
+                toolbar.setTitle(lightNovelTypeBtn.getText().toString());
                 break;
             case INDEX_TYPE_MODERN_CITY:
                 modernCityTypeBtn.setSelected(true);
+                toolbar.setTitle(modernCityTypeBtn.getText().toString());
                 break;
             case INDEX_TYPE_SUSPENSE_THRILLERS:
                 suspenseThrillersTypeBtn.setSelected(true);
+                toolbar.setTitle(suspenseThrillersTypeBtn.getText().toString());
                 break;
             case INDEX_TYPE_HISTORY_MILITARY:
                 historyMilitaryTypeBtn.setSelected(true);
+                toolbar.setTitle(historyMilitaryTypeBtn.getText().toString());
                 break;
             case INDEX_TYPE_KNIGHT_ERRANT:
                 knightErrantTypeBtn.setSelected(true);
+                toolbar.setTitle(knightErrantTypeBtn.getText().toString());
                 break;
             case INDEX_TYPE_FANTASY_EXPLORE:
                 fantasyExploreTypeBtn.setSelected(true);
+                toolbar.setTitle(fantasyExploreTypeBtn.getText().toString());
                 break;
             case INDEX_TYPE_SUPERNATURAL_SUSPENSE:
                 supernaturalSuspenseTypeBtn.setSelected(true);
+                toolbar.setTitle(supernaturalSuspenseTypeBtn.getText().toString());
                 break;
             case INDEX_TYPE_LITERATURE_NOVEL:
                 literatureNovelTypeBtn.setSelected(true);
+                toolbar.setTitle(literatureNovelTypeBtn.getText().toString());
                 break;
             case INDEX_TYPE_EMOTIONAL_NOVEL:
                 emotionalNovelTypeBtn.setSelected(true);
+                toolbar.setTitle(emotionalNovelTypeBtn.getText().toString());
                 break;
             case INDEX_TYPE_FILM_SCRIPT:
                 filmScriptTypeBtn.setSelected(true);
+                toolbar.setTitle(filmScriptTypeBtn.getText().toString());
                 break;
             case INDEX_TYPE_LIFE_LEISURE:
                 lifeLeisureTypeBtn.setSelected(true);
+                toolbar.setTitle(lifeLeisureTypeBtn.getText().toString());
                 break;
             case INDEX_TYPE_HISTORY_BIOGRAPHY:
                 historyBiographyTypeBtn.setSelected(true);
+                toolbar.setTitle(historyBiographyTypeBtn.getText().toString());
                 break;
             case INDEX_TYPE_MANAGE_IMPROVE:
                 manageImproveTypeBtn.setSelected(true);
+                toolbar.setTitle(manageImproveTypeBtn.getText().toString());
                 break;
             case INDEX_TYPE_SOCIAL_SCIENCE:
                 socialScienceTypeBtn.setSelected(true);
+                toolbar.setTitle(socialScienceTypeBtn.getText().toString());
                 break;
 
 
         }
+        ((BookTypePresent)getPresent()).setCategory(index);
     }
 
     private void setCostSelected(int index){
@@ -351,6 +380,7 @@ public class BookTypeActivity extends BaseListActivity<BookTypePresent,Book> imp
                 monthBtn.setSelected(true);
                 break;
         }
+        ((BookTypePresent)getPresent()).setCost(index);
     }
 
     private void setCompeleteSelected(int index){
@@ -366,6 +396,7 @@ public class BookTypeActivity extends BaseListActivity<BookTypePresent,Book> imp
                 serialBtn.setSelected(true);
                 break;
         }
+        ((BookTypePresent)getPresent()).setRate(index);
     }
 
     private void setOrderSelected(int index){
@@ -381,6 +412,7 @@ public class BookTypeActivity extends BaseListActivity<BookTypePresent,Book> imp
                 orderLengthBtn.setSelected(true);
                 break;
         }
+        ((BookTypePresent)getPresent()).setSort(index);
     }
 
     @Override
@@ -491,15 +523,13 @@ public class BookTypeActivity extends BaseListActivity<BookTypePresent,Book> imp
             case R.id.orderLengthBtn:
                 setOrderSelected(INDEX_ORDER_LENGTH);
                 break;
-
-
-
-
-
-
-
-
         }
+        getPresent().refresh();
+    }
 
+
+    @Override
+    public void onItemClick(View view, CategoryBook data) {
+        BookDetailActivity.launch(this);
     }
 }

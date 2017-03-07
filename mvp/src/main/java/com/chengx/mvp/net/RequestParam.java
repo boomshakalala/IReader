@@ -1,5 +1,6 @@
 package com.chengx.mvp.net;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 /**
@@ -8,6 +9,6 @@ import java.util.LinkedHashMap;
  * 描述：
  */
 
-public class RequestParam<K,V> extends LinkedHashMap<K,V> {
+public class RequestParam extends HashMap<String,String> {
 
 }

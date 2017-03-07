@@ -22,6 +22,7 @@ public abstract class XListActivity<T extends IListPresent,M> extends XActivity 
 
     @Override
     public void refresh(List<M> data) {
+        recyclerView.smoothToTop();
         if (adapter instanceof CommonRecyclerAdapter){
             ((CommonRecyclerAdapter)adapter).setData(data);
         }else if (adapter instanceof HeaderAndFooterCommonAdapter){
@@ -29,7 +30,9 @@ public abstract class XListActivity<T extends IListPresent,M> extends XActivity 
         }else if (adapter instanceof MultiItemCommonAdapter){
             ((MultiItemCommonAdapter)adapter).setData(data);
         }
+        recyclerView.showContent();
         recyclerView.onRefreshComplete();
+
     }
 
     @Override

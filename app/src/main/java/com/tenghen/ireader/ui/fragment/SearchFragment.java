@@ -1,6 +1,9 @@
 package com.tenghen.ireader.ui.fragment;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.chengx.mvp.utils.SizeUtils;
 import com.chengx.mvp.widget.FullyGridLayoutManager;
@@ -13,6 +16,7 @@ import com.tenghen.ireader.adapter.SearchTagAdapter;
 import com.tenghen.ireader.base.BaseFragment;
 import com.tenghen.ireader.base.BaseListFragment;
 import com.tenghen.ireader.module.Book;
+import com.tenghen.ireader.ui.activity.SearchActivity;
 import com.tenghen.ireader.ui.present.FeaturedPresent;
 import com.tenghen.ireader.ui.present.SearchPresent;
 
@@ -27,12 +31,16 @@ import butterknife.BindView;
  * 描述：
  */
 
-public class SearchFragment extends BaseFragment<SearchPresent>{
+public class SearchFragment extends BaseFragment<SearchPresent> implements View.OnClickListener {
 
     @BindView(R.id.tagLayout)
     public TagLayout tagLayout;
     @BindView(R.id.recyclerView)
     public RecyclerView recyclerView;
+    @BindView(R.id.searchBtn)
+    public TextView searchBtn;
+    @BindView(R.id.refreshKeywordsBtn)
+    public TextView refreshKeywordsBtn;
 
     private SearchTagAdapter tagAdapter;
     private HotBookAdapter bookAdapter;
@@ -75,10 +83,12 @@ public class SearchFragment extends BaseFragment<SearchPresent>{
         tagLayout.setTagItemListener(new TagItemClickListener() {
             @Override
             public void itemClick(int position) {
-                //TODO:tag点击事件
-
+                String keyword = tags.get(position);
+                SearchActivity.launch(getContext(),keyword);
             }
         });
+        searchBtn.setOnClickListener(this);
+        refreshKeywordsBtn.setOnClickListener(this);
     }
 
     @Override
@@ -94,4 +104,15 @@ public class SearchFragment extends BaseFragment<SearchPresent>{
         bookAdapter.setData(books);
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.searchBtn:
+                SearchActivity.launch(getContext(),"");
+                break;
+            case R.id.refreshKeywordsBtn:
+                getPresent().requestHotWords();
+                break;
+        }
+    }
 }

@@ -12,6 +12,7 @@ import com.tenghen.ireader.R;
 import com.tenghen.ireader.adapter.BookRankAdapter;
 import com.tenghen.ireader.base.BaseListActivity;
 import com.tenghen.ireader.module.Book;
+import com.tenghen.ireader.module.RankBook;
 import com.tenghen.ireader.ui.present.RankPresent;
 
 import java.util.ArrayList;
@@ -25,11 +26,11 @@ import butterknife.BindView;
  * 描述：
  */
 
-public class RankActivity extends BaseListActivity<RankPresent,Book> implements View.OnClickListener {
+public class RankActivity extends BaseListActivity<RankPresent,RankBook> implements View.OnClickListener {
 
-    public static final int INDEX_WEEK = 1;
-    public static final int INDEX_MONTH = 2;
-    public static final int INDEX_ALL = 3;
+    public static final int INDEX_WEEK = 0;
+    public static final int INDEX_MONTH = 1;
+    public static final int INDEX_ALL = 2;
 
     @BindView(R.id.weekRankBtn)
     public TextView weekRankBtn;
@@ -38,16 +39,20 @@ public class RankActivity extends BaseListActivity<RankPresent,Book> implements 
     @BindView(R.id.allRankBtn)
     public TextView allRankBtn;
 
-    List<Book> data;
+    List<RankBook> data;
+    private int rankId;
+    private String category;
 
-    public static void launch(Context context){
+    public static void launch(Context context,int rankId,String category){
         Intent intent = new Intent(context,RankActivity.class);
+        intent.putExtra("rankId",rankId);
+        intent.putExtra("category",category);
         context.startActivity(intent);
     }
 
     @Override
     public void initToolBar() {
-        toolbar.setTitle("排行榜");
+        toolbar.setTitle(category);
     }
 
     @Override
@@ -59,6 +64,8 @@ public class RankActivity extends BaseListActivity<RankPresent,Book> implements 
     public void initData() {
         data = new ArrayList<>();
         adapter = new BookRankAdapter(this,R.layout.item_book_rank,data);
+        rankId = getIntent().getIntExtra("rankId",0);
+        category = getIntent().getStringExtra("category");
     }
 
     @Override
@@ -99,17 +106,19 @@ public class RankActivity extends BaseListActivity<RankPresent,Book> implements 
     private void setSelected(int index){
         resetBtn();
         switch (index){
-            case 1:
+            case INDEX_WEEK:
                 weekRankBtn.setSelected(true);
                 break;
-            case 2:
+            case INDEX_MONTH:
                 monthRankBtn.setSelected(true);
                 break;
-            case 3:
+            case INDEX_ALL:
                 allRankBtn.setSelected(true);
                 break;
         }
-        ((XListPresent)getPresent()).refresh();
+        ((RankPresent)getPresent()).setDate_id(index);
+        ((RankPresent)getPresent()).setRanking_id(rankId);
+        getPresent().refresh();
     }
 
     private void resetBtn(){

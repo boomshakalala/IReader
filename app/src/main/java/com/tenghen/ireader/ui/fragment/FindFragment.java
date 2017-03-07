@@ -1,7 +1,14 @@
 package com.tenghen.ireader.ui.fragment;
 
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+
 import com.tenghen.ireader.R;
 import com.tenghen.ireader.base.BaseFragment;
+import com.tenghen.ireader.ui.activity.SearchActivity;
+
+import butterknife.BindView;
 
 /**
  * 作者：chengx
@@ -9,7 +16,10 @@ import com.tenghen.ireader.base.BaseFragment;
  * 描述：
  */
 
-public class FindFragment extends BaseFragment {
+public class FindFragment extends BaseFragment implements View.OnClickListener {
+    @BindView(R.id.searchBtn)
+    public TextView searchBtn;
+
     @Override
     public void initToolBar() {
 
@@ -32,11 +42,20 @@ public class FindFragment extends BaseFragment {
 
     @Override
     public void setListener() {
-
+        searchBtn.setOnClickListener(this);
     }
 
     @Override
     public Object newPresent() {
         return null;
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.searchBtn:
+                SearchActivity.launch(getContext(),"");
+                break;
+        }
     }
 }

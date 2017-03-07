@@ -47,8 +47,10 @@ public abstract class XActivity<P extends IPresent> extends AutoLayoutActivity i
             if (needFullScreen){
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FIRST_SUB_WINDOW);
             }
+            initData();
             toolbar = (AutoToolbar) findViewById(R.id.common_toolbar);
             if (toolbar != null) {
+
                 if (needBack){
                     toolbar.setNavigationIcon(R.drawable.btn_back);
                     toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -60,7 +62,7 @@ public abstract class XActivity<P extends IPresent> extends AutoLayoutActivity i
                 }
                 initToolBar();
             }
-            initData();
+
             initViews();
             setListener();
         }

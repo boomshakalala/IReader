@@ -1,6 +1,7 @@
 package com.tenghen.ireader.ui.fragment;
 
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TabHost;
 import android.widget.TextView;
 
@@ -8,6 +9,7 @@ import com.tenghen.ireader.R;
 import com.tenghen.ireader.base.BaseListFragment;
 import com.tenghen.ireader.ui.activity.BookTypeActivity;
 import com.tenghen.ireader.ui.activity.RankActivity;
+import com.tenghen.ireader.ui.activity.SearchActivity;
 import com.tenghen.ireader.ui.present.BookTypePresent;
 
 import butterknife.BindView;
@@ -19,6 +21,15 @@ import butterknife.BindView;
  */
 
 public class StacksFragment extends BaseListFragment implements View.OnClickListener {
+
+    public static final int RANK_CLICK = 1;
+    public static final int RANK_SUB = 2;
+    public static final int RANK_COLLECT = 3;
+    public static final int RANK_REC = 4;
+    public static final int RANK_NEW = 5;
+    public static final int RANK_COMPLETE = 6;
+    public static final int RANK_UPDATE = 7;
+    public static final int RANK_REWARD = 8;
 
     @BindView(R.id.stacksModernBtn)
     public TextView stacksModerBtn;
@@ -49,6 +60,9 @@ public class StacksFragment extends BaseListFragment implements View.OnClickList
     public TextView updateRankBtn;
     @BindView(R.id.rewardRankBtn)
     public TextView rewardRankBtn;
+
+    @BindView(R.id.searchBtn)
+    public TextView searchBtn;
 
 
     @Override
@@ -88,6 +102,8 @@ public class StacksFragment extends BaseListFragment implements View.OnClickList
         stacksFantasyBtn.setOnClickListener(this);
         stacksFantasyLoveBtn.setOnClickListener(this);
         stacksSchoolBtn.setOnClickListener(this);
+
+        searchBtn.setOnClickListener(this);
     }
 
     @Override
@@ -118,28 +134,31 @@ public class StacksFragment extends BaseListFragment implements View.OnClickList
                 break;
 
             case R.id.clickRankBtn:
-                RankActivity.launch(getContext());
+                RankActivity.launch(getContext(),RANK_CLICK,((TextView)view).getText().toString());
                 break;
             case R.id.subRankBtn:
-                RankActivity.launch(getContext());
+                RankActivity.launch(getContext(),RANK_SUB,((TextView)view).getText().toString());
                 break;
             case R.id.collectRankBtn:
-                RankActivity.launch(getContext());
+                RankActivity.launch(getContext(),RANK_COLLECT,((TextView)view).getText().toString());
                 break;
             case R.id.recRankBtn:
-                RankActivity.launch(getContext());
+                RankActivity.launch(getContext(),RANK_REC,((TextView)view).getText().toString());
                 break;
             case R.id.newRankBtn:
-                RankActivity.launch(getContext());
+                RankActivity.launch(getContext(),RANK_NEW,((TextView)view).getText().toString());
                 break;
-            case R.id.completeBtn:
-                RankActivity.launch(getContext());
+            case R.id.completeRankBtn:
+                RankActivity.launch(getContext(),RANK_COMPLETE,((TextView)view).getText().toString());
                 break;
             case R.id.updateRankBtn:
-                RankActivity.launch(getContext());
+                RankActivity.launch(getContext(),RANK_UPDATE,((TextView)view).getText().toString());
                 break;
             case R.id.rewardRankBtn:
-                RankActivity.launch(getContext());
+                RankActivity.launch(getContext(),RANK_REWARD,((TextView)view).getText().toString());
+                break;
+            case R.id.searchBtn:
+                SearchActivity.launch(getContext(),"");
                 break;
         }
     }
