@@ -7,11 +7,14 @@ import com.google.gson.reflect.TypeToken;
 import com.tenghen.ireader.module.Book;
 import com.tenghen.ireader.module.CategoryBook;
 import com.tenghen.ireader.module.RankBook;
+import com.chengx.mvp.net.WXApiResponse;
+import com.tenghen.ireader.module.User;
+
+import org.dom4j.io.STAXEventReader;
 
 import java.lang.reflect.Type;
+import java.util.LinkedHashMap;
 import java.util.List;
-
-import okhttp3.Request;
 
 /**
  * 作者：chengx
@@ -21,12 +24,37 @@ import okhttp3.Request;
 
 public class Api {
     public static final String HOST = "http://115.29.51.167:8888";
+    public static final String WX_HOST = "https://api.weixin.qq.com/sns/";
+
+    /*======= 微信接口 =======*/
+    public static final String WX_ACCESS_TOKEN = "oauth2/access_token";//通过code获取access_token
+    public static final String WX_USER_INFO = "userinfo";//获取用户个人信息（UnionID机制）
+    /*=======================*/
 
     public static final String BOOK_ALL_VIEW_BOOKS =  "/book/allviewbooks";
     public static final String BOOK_RANKING_LIST =  "/book/rankinglist";
     public static final String BOOK_CATEGORY_BOOKS =  "/book/categorybooks";
     public static final String BOOK_SEARCH_BOOKS =  "/book/searchbooks";
     public static final String BOOK_BOOK_KEYWORDS =  "/book/bookkeywords";
+    public static final String USER_LOGIN = "/user/login";
+    public static final String USER_REGISTER = "/user/register";
+
+
+    public static void wxGetAccessToken(String appId, String secret, String code,ResponseCallback<WXApiResponse> callback) {
+        RequestParam params = new RequestParam();
+        params.put("appid",appId);
+        params.put("secret",secret);
+        params.put("code",code);
+        params.put("grant_type","authorization_code");
+        HttpEngine.getInstance().wxGet(WX_HOST + WX_ACCESS_TOKEN, params, callback);
+    }
+
+    public static void wxGetUserInfo(String accessToken, String openId, ResponseCallback<WXApiResponse> callback) {
+        RequestParam params = new RequestParam();
+        params.put("access_token",accessToken);
+        params.put("openid",openId);
+        HttpEngine.getInstance().wxGet(WX_HOST + WX_USER_INFO, params, callback);
+    }
 
     public static void getAllViewBooks(ResponseCallback<List<Book>> callback){
         Type typeOfClass = new TypeToken<List<Book>>(){}.getType();
@@ -55,7 +83,7 @@ public class Api {
 
     public static void getSearchBooks(String keyword,int p, ResponseCallback<List<CategoryBook>> callback){
         RequestParam param = new RequestParam();
-        param.put("keyword",keyword);
+        param.put("keywords",keyword);
         param.put("p",String.valueOf(p));
         Type typeOfClass = new TypeToken<List<CategoryBook>>(){}.getType();
         HttpEngine.getInstance().post(HOST + BOOK_SEARCH_BOOKS,param,typeOfClass,callback);
@@ -66,6 +94,31 @@ public class Api {
         param.put("p",String.valueOf(p));
         Type typeOfClass = new TypeToken<List<String>>(){}.getType();
         HttpEngine.getInstance().post(HOST + BOOK_BOOK_KEYWORDS,param,typeOfClass,callback);
+    }
+
+    public static void userLogin(int type,String email,String password,String authId,ResponseCallback<User> callback){
+        RequestParam param = new RequestParam();
+        param.put("type",String.valueOf(type));
+        if (type == 1){
+            param.put("email",email);
+            param.put("password",password);
+        }else {
+            param.put("auth_id",authId);
+        }
+        HttpEngine.getInstance().post(HOST + USER_LOGIN,param, User.class,callback);
+    }
+
+    public static void userRegister(int type,String email,String password,String authId,String name,ResponseCallback<User> callback){
+        RequestParam param = new RequestParam();
+        param.put("type",String.valueOf(type));
+        param.put("name",name);
+        if (type == 1){
+            param.put("email",email);
+            param.put("password",password);
+        }else {
+            param.put("auth_id",authId);
+        }
+        HttpEngine.getInstance().post(HOST + USER_REGISTER,param, User.class,callback);
     }
 
 

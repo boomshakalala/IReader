@@ -23,7 +23,10 @@ public class SearchPresent extends BasePresent<SearchFragment> {
         Api.getAllViewBooks(new ResponseCallback<List<Book>>() {
             @Override
             public void onSuccess(List<Book> data) {
-                getV().setBooks(data);
+                if (data != null && data.size()>0) {
+                    getV().setBooks(data);
+                }
+
             }
 
             @Override
@@ -37,7 +40,9 @@ public class SearchPresent extends BasePresent<SearchFragment> {
         Api.getBookKeywords(currentPage, new ResponseCallback<List<String>>() {
             @Override
             public void onSuccess(List<String> data) {
-                getV().setHotWords(data);
+                if (data != null && data.size()>0) {
+                    getV().setHotWords(data);
+                }
             }
 
             @Override

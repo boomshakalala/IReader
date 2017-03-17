@@ -15,6 +15,7 @@ public class Response<T> implements Serializable {
     int code;
     ResponseCallback<T> callback;
     Type typeOfClass;
+    boolean fromWxApi = false;
 
     public String getJson() {
         return json;

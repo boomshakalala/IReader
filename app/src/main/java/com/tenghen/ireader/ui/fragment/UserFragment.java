@@ -1,9 +1,13 @@
 package com.tenghen.ireader.ui.fragment;
 
 import com.tenghen.ireader.R;
+import com.tenghen.ireader.base.BaseFragment;
 import com.tenghen.ireader.base.BaseListFragment;
-import com.tenghen.ireader.ui.present.FeaturedPresent;
+import com.tenghen.ireader.qqapi.QQAPI;
 import com.tenghen.ireader.ui.present.UserPresent;
+import com.tenghen.ireader.wxapi.WXAPI;
+
+import butterknife.OnClick;
 
 /**
  * 作者：chengx
@@ -11,7 +15,7 @@ import com.tenghen.ireader.ui.present.UserPresent;
  * 描述：
  */
 
-public class UserFragment extends BaseListFragment<UserPresent,Object> {
+public class UserFragment extends BaseFragment<UserPresent> {
     @Override
     public void initToolBar() {
 
@@ -24,7 +28,7 @@ public class UserFragment extends BaseListFragment<UserPresent,Object> {
 
     @Override
     public void initData() {
-
+        getPresent();
     }
 
     @Override
@@ -40,5 +44,10 @@ public class UserFragment extends BaseListFragment<UserPresent,Object> {
     @Override
     public UserPresent newPresent() {
         return new UserPresent();
+    }
+
+    @OnClick(R.id.avatarIv)
+    public void login(){
+        QQAPI.login(getActivity());
     }
 }

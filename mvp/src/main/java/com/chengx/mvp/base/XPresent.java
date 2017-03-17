@@ -2,6 +2,8 @@ package com.chengx.mvp.base;
 
 import com.chengx.mvp.utils.KLog;
 
+import de.greenrobot.event.EventBus;
+
 /**
  * 作者：chengx
  * 日期：2017/2/9
@@ -36,4 +38,5 @@ public class XPresent<V extends IView> implements IPresent<V> {
     public void logJson(String json){
         KLog.json(TAG, json);
     }
+
 }

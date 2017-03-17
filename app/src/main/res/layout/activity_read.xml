@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/readRootView"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="78px"
+        android:paddingRight="78px"
+        android:paddingTop="42px">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="36px"
+                android:textColor="#77d1da"
+                android:layout_alignParentLeft="true"
+                android:text="第一章 蒙面杀手"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="36px"
+                android:textColor="#77d1da"
+                android:layout_alignParentRight="true"
+                android:text="《美丽心情》"/>
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="48px"
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <com.chengx.mvp.widget.auto.AutoScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+                <TextView
+                    android:id="@+id/bookContentTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#242424"
+                    android:textSize="54px"
+                    android:lineSpacingExtra="14dp"
+                    android:text="从最初的乐天制果开始，乐天始终积极努力创造一个互相关爱、尊重个性和创意、共同幸福的社会。秉承为国家和社会发展做贡献的理念，乐天追求以最好的产品满足顾客需求。
+在业务方面，乐天选择最擅长的领域，并力争业界领先，尤其是在食品、零售、旅游、石化、建筑、金融等核心领域中确保了全球竞争力，以在2020年成为“亚洲十强跨国企业”为目标不断努力。[1]
+20世纪70年代，乐天集团通过成立乐天七星饮料、乐天三冈、乐天火腿肠、乐天利等公司，发展成韩国最大的食品企业。而且，乐天集团还通过成立乐天建设、湖南石油化学、乐天机工、乐天电子、乐天商事全面进军国家基础设施建设产业领域。
+20世纪80年代，乐天集团以资本和技术积累为基础，在流通、旅游、食品产业领域确保了最高水平的竞争力，成为名副其实的韩国十大企业。此外，乐天集团以其在20世纪70年代获得的高速发展基础，树立了面向未来的长期战略，不断扩大业务领域，为其进入世界市场奠基筑石。在此期间，乐天集团完成了乐天世界的建设工程，成立了釜山乐天大酒店和乐天物产，确保了其在韩国流通、旅游产业的竞争力，并致力于现代化建设。此外，乐天集团通过成立乐天佳能和韩国富士胶卷，加速进军尖端产业的步伐。而且，乐天集团通过成立乐天巨人队和大弘企划，夯实了集团内部文化基础设施；通过成立乐天中央研究所和乐天流通事业本部，为研发新产品及开发和传播流通专业知识起到了巨大作用。
+上20世纪90年代，乐天继续保持流通、旅游、食品产业领先地位的同时，通过保守经营和大胆的投资，为发展成跨国企业奠定了基础。
+2013年，乐天集团的流通部门计划将以各种营业形态不断扩张海外事业，继续加强新增长动力事业的发展。
+在2012年开设中国天津2号店后，乐天百货店还将分别于2013年4月和8月开设“威海店”和“成都店”，进一步稳固在中国实行的多店铺体制。5月，还将开设印度尼西亚“雅加达店”，进军东南亚市场。
+"/>
+            </com.chengx.mvp.widget.auto.AutoScrollView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="60px"
+            android:paddingBottom="84px">
+            <TextView
+                android:layout_width="198px"
+                android:layout_height="60px"
+                android:layout_marginLeft="84px"
+                android:gravity="center"
+                android:background="@drawable/shap_gray_round_rect"
+                android:textSize="33px"
+                android:textColor="#242424"
+                android:text="上一章"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1px"
+                android:layout_weight="1"/>
+            <TextView
+                android:layout_width="198px"
+                android:layout_height="60px"
+                android:gravity="center"
+                android:background="@drawable/shap_gray_round_rect"
+                android:textSize="33px"
+                android:textColor="#242424"
+                android:text="目录"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1px"
+                android:layout_weight="1"/>
+            <TextView
+                android:layout_width="198px"
+                android:layout_height="60px"
+                android:gravity="center"
+                android:background="@drawable/shape_blue_conner"
+                android:textSize="33px"
+                android:textColor="@color/white"
+                android:layout_marginRight="84px"
+                android:text="下一章"/>
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+    <FrameLayout
+        android:id="@+id/readPopView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="174px"
+            android:background="#aaffffff"
+            android:orientation="horizontal"
+            android:paddingLeft="78px"
+            android:paddingRight="78px">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fa9293"
+                android:textSize="39px"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:drawablePadding="8dp"
+                android:drawableLeft="@drawable/btn_read_back"
+                android:text="返回"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="48px"
+                android:text="自动订阅"
+                android:textColor="#3fbfcc"
+                android:drawablePadding="11dp"
+                android:gravity="center"
+                android:drawableLeft="@drawable/selector_btn_read_sub"
+                android:layout_centerInParent="true"/>
+            <ImageView
+                android:id="@+id/homeBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/btn_read_home"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"/>
+            <ImageView
+                android:id="@+id/collectBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/btn_read_collect"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/homeBtn"
+                android:layout_marginRight="60px"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="32px"
+            android:paddingBottom="23px"
+            android:paddingLeft="225px"
+            android:paddingRight="225px"
+            android:background="#AAFFFFFF"
+            android:layout_gravity="bottom">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#808080"
+                android:textSize="30px"
+                android:text="评论"
+                android:drawableTop="@drawable/btn_read_comment"
+                android:drawablePadding="7dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#808080"
+                android:textSize="30px"
+                android:layout_centerInParent="true"
+                android:text="打赏"
+                android:drawableTop="@drawable/btn_read_reward"
+                android:drawablePadding="7dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#808080"
+                android:textSize="30px"
+                android:layout_alignParentRight="true"
+                android:text="设置"
+                android:drawableTop="@drawable/btn_read_setting"
+                android:drawablePadding="7dp"/>
+
+        </RelativeLayout>
+        <TextView
+            android:layout_width="177px"
+            android:layout_height="87px"
+            android:layout_gravity="center_vertical|left"
+            android:textSize="41px"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:background="@drawable/shape_gray_right_conner_rect"
+            android:text="上一章"
+            />
+        <TextView
+            android:layout_width="177px"
+            android:layout_height="87px"
+            android:layout_gravity="center_vertical|right"
+            android:textSize="41px"
+            android:textColor="#f89494"
+            android:gravity="center"
+            android:background="@drawable/shape_white_left_conner_rect"
+            android:text="下一章"
+            />
+    </FrameLayout>
+
+
+</FrameLayout>

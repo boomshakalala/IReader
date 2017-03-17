@@ -2,6 +2,7 @@ package com.tenghen.ireader.base;
 
 import android.app.Application;
 
+import com.chengx.mvp.utils.AppUtils;
 import com.zhy.autolayout.config.AutoLayoutConifg;
 
 /**
@@ -15,6 +16,7 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        AppUtils.init(this);
         AutoLayoutConifg.getInstance().useDeviceSize();
     }
 }

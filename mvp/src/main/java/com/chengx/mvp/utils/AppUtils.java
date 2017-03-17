@@ -26,8 +26,18 @@ import java.util.List;
  */
 public class AppUtils {
 
+    public static Context context;
+
     private AppUtils() {
         throw new UnsupportedOperationException("u can't fuck me...");
+    }
+
+    public static void init(Context context){
+        AppUtils.context = context;
+    }
+
+    public static Context getAppContext() {
+        return context;
     }
 
     /**

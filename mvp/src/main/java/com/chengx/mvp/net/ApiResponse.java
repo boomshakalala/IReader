@@ -1,6 +1,5 @@
 package com.chengx.mvp.net;
 
-import com.chengx.mvp.widget.pull2refresh.PullToRefreshBase;
 
 import java.io.Serializable;
 

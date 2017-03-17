@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.IllegalFormatCodePointException;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -130,7 +131,35 @@ public class HttpEngine {
             }
         });
     }
-    
+
+    public <T> void wxGet(String url, RequestParam param , final ResponseCallback<T> callback){
+        url = getUrl(url, param);
+        Request request = new Request.Builder()
+                .url(url)
+                .header("user-Agent","android")
+                .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                com.chengx.mvp.net.Response<T> resp = new com.chengx.mvp.net.Response<>();
+                resp.code = ERR_CODE_NETWORK_DISSABLE;
+                resp.json = ERR_INFO_NETWORK_DISSABLE;
+                resp.callback = callback;
+                EventBus.getDefault().post(resp);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                com.chengx.mvp.net.Response<T> resp = new com.chengx.mvp.net.Response<>();
+                resp.code = NETWORK_SUCCESS;
+                resp.json = response.body().string();
+                resp.fromWxApi = true;
+                resp.callback = callback;
+                EventBus.getDefault().post(resp);
+            }
+        });
+    }
+
     public <T> void post(String url,RequestParam param,final Type typeOfClass,final ResponseCallback<T> callback){
         KLog.d(TAG,param);
         FormBody.Builder builder = new FormBody.Builder();
@@ -161,7 +190,6 @@ public class HttpEngine {
                 com.chengx.mvp.net.Response resp = new com.chengx.mvp.net.Response();
                 resp.code = NETWORK_SUCCESS;
                 resp.json = response.body().string();
-                KLog.json(TAG,resp.json);
                 resp.callback = callback;
                 resp.typeOfClass = typeOfClass;
                 EventBus.getDefault().post(resp);
@@ -179,18 +207,33 @@ public class HttpEngine {
                 }
                 break;
             case NETWORK_SUCCESS:
+                KLog.json(resp.json);
                 if (resp.callback != null){
-                    ApiResponse response = formatJson(resp.json,resp.typeOfClass);
-                    if (response == null){
-                        resp.callback.onFailure(ERR_CODE_JSON_SYNTAX,ERR_INFO_JSON_SYNTAX);
-                        KLog.e(TAG,ERR_INFO_JSON_SYNTAX+":\n");
-                        KLog.json(TAG,resp.json);
-                        return;
-                    }else if (response.isSuccess()){
-                        resp.callback.onSuccess(response.getData());
+                    if (resp.fromWxApi){
+                        WXApiResponse wxResponse = new Gson().fromJson(resp.json,WXApiResponse.class);
+                        if (wxResponse != null){
+                            if (wxResponse.getErrcode() == 0) {
+                                resp.callback.onSuccess(wxResponse);
+                            } else {
+                                KLog.d(TAG, "onSuccess errorCode=" + wxResponse.getErrcode());
+                                KLog.d(TAG, "onSuccess errorMsg=" + wxResponse.getErrmsg());
+                                resp.callback.onFailure(wxResponse.getErrcode(), wxResponse.getErrmsg());
+                            }
+                        }
+
                     }else {
-                        KLog.e(TAG,response.getMessage());
-                        resp.callback.onFailure(response.getCode(),response.getMessage());
+                        ApiResponse response = formatJson(resp.json,resp.typeOfClass);
+                        if (response == null){
+                            resp.callback.onFailure(ERR_CODE_JSON_SYNTAX,ERR_INFO_JSON_SYNTAX);
+                            KLog.e(TAG,ERR_INFO_JSON_SYNTAX+":\n");
+                            KLog.json(TAG,resp.json);
+                            return;
+                        }else if (response.isSuccess()){
+                            resp.callback.onSuccess(response.getData());
+                        }else {
+                            KLog.e(TAG,response.getMessage());
+                            resp.callback.onFailure(response.getCode(),response.getMessage());
+                        }
                     }
                 }
                 break;

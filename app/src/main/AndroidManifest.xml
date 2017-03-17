@@ -36,6 +36,33 @@
             android:name="design_height"
             android:value="1920" />
 
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:noHistory="true"
+            android:launchMode="singleTask" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="1106049570" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.tencent.connect.common.AssistActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            />
+
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:launchMode="singleInstance"
+            android:exported="true"/>
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:screenOrientation="portrait"
+            android:exported="true"/>
+
+
 
         <activity
             android:name=".ui.activity.MainActivity"
@@ -63,6 +90,9 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.activity.BookDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.ReadActivity"
             android:screenOrientation="portrait"/>
 
     </application>

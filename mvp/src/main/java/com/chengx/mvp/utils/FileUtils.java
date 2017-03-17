@@ -40,6 +40,21 @@ public class FileUtils {
     }
 
     /**
+     * 获取缓存根目录
+     * @param context
+     * @return
+     */
+    public static String createRootPath(Context context){
+        String cacheRootPath = "";
+        if (SDCardUtils.isSDCardEnable()){
+            cacheRootPath = context.getExternalCacheDir().getPath();
+        }else {
+            cacheRootPath = context.getCacheDir().getPath();
+        }
+        return cacheRootPath;
+    }
+
+    /**
      * 根据文件路径获取文件
      *
      * @param filePath 文件路径
