@@ -168,6 +168,7 @@
                 android:paddingRight="90px">
 
                 <TextView
+                    android:id="@+id/myShelfBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="48px"
@@ -189,6 +190,7 @@
                 android:layout_height="1px"
                 android:background="#cccccc"/>
             <RelativeLayout
+                android:id="@+id/latestReadBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="48px"
@@ -226,6 +228,7 @@
                 android:paddingRight="90px">
 
                 <TextView
+                    android:id="@+id/rechargeLogBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="48px"
@@ -255,6 +258,7 @@
                 android:paddingRight="90px">
 
                 <TextView
+                    android:id="@+id/costLogBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="48px"
@@ -284,6 +288,7 @@
                 android:paddingRight="90px">
 
                 <TextView
+                    android:id="@+id/myCommentBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="48px"
@@ -313,6 +318,7 @@
                 android:paddingRight="90px">
 
                 <TextView
+                    android:id="@+id/myMsgBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="48px"

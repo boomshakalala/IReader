@@ -6,9 +6,13 @@ import android.widget.TextView;
 
 import com.tenghen.ireader.R;
 import com.tenghen.ireader.base.BaseFragment;
+import com.tenghen.ireader.ui.activity.DynamicActivity;
+import com.tenghen.ireader.ui.activity.RankActivity;
 import com.tenghen.ireader.ui.activity.SearchActivity;
+import com.tenghen.ireader.ui.activity.TopicActivity;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * 作者：chengx
@@ -57,5 +61,20 @@ public class FindFragment extends BaseFragment implements View.OnClickListener {
                 SearchActivity.launch(getContext(),"");
                 break;
         }
+    }
+
+    @OnClick(R.id.topicBtn)
+    public void toTopic(){
+        TopicActivity.launch(getContext());
+    }
+
+    @OnClick(R.id.dynamicBtn)
+    public void toDynamic(){
+        DynamicActivity.launch(getContext());
+    }
+
+    @OnClick(R.id.rankBtn)
+    public void toRank(){
+        RankActivity.launch(getContext());
     }
 }

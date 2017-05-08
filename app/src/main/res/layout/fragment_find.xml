@@ -7,6 +7,7 @@
     <include
         layout="@layout/item_space_divider"/>
     <RelativeLayout
+        android:id="@+id/rankBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="50px"
@@ -34,6 +35,7 @@
     <include
         layout="@layout/item_space_divider"/>
     <RelativeLayout
+        android:id="@+id/dynamicBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="50px"
@@ -148,6 +150,7 @@
         android:layout_height="1px"
         android:background="#cccccc"/>
     <RelativeLayout
+        android:id="@+id/topicBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="50px"

@@ -10,10 +10,8 @@ import com.tenghen.ireader.module.RankBook;
 import com.chengx.mvp.net.WXApiResponse;
 import com.tenghen.ireader.module.User;
 
-import org.dom4j.io.STAXEventReader;
 
 import java.lang.reflect.Type;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 /**

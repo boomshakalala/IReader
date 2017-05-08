@@ -92,7 +92,6 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder{
      */
     public RecyclerViewHolder setImageUrl(int viewId,String imageUrl){
         ImageView imageView = getView(viewId);
-        KLog.d("url",imageUrl);
         Glide.with(context)
                 .load(imageUrl)
                 .into(imageView);

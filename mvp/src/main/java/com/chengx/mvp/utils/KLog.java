@@ -5,7 +5,6 @@ package com.chengx.mvp.utils;
 import com.chengx.mvp.utils.klog.BaseLog;
 import com.chengx.mvp.utils.klog.FileLog;
 import com.chengx.mvp.utils.klog.JsonLog;
-import com.chengx.mvp.utils.klog.XmlLog;
 
 import java.io.File;
 
@@ -171,9 +170,6 @@ public class KLog {
                 break;
             case JSON:
                 JsonLog.printJson(tag, msg, headString);
-                break;
-            case XML:
-                XmlLog.printXml(tag, msg, headString);
                 break;
         }
     }

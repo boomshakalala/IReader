@@ -68,7 +68,7 @@
                 android:layout_height="60px"
                 android:layout_marginLeft="84px"
                 android:gravity="center"
-                android:background="@drawable/shap_gray_round_rect"
+                android:background="@drawable/shape_gray_round_rect"
                 android:textSize="33px"
                 android:textColor="#242424"
                 android:text="上一章"/>
@@ -80,7 +80,7 @@
                 android:layout_width="198px"
                 android:layout_height="60px"
                 android:gravity="center"
-                android:background="@drawable/shap_gray_round_rect"
+                android:background="@drawable/shape_gray_round_rect"
                 android:textSize="33px"
                 android:textColor="#242424"
                 android:text="目录"/>

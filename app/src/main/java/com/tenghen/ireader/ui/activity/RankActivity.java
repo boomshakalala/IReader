@@ -50,6 +50,11 @@ public class RankActivity extends BaseListActivity<RankPresent,RankBook> impleme
         context.startActivity(intent);
     }
 
+    public static void launch(Context context){
+        Intent intent = new Intent(context,RankActivity.class);
+        context.startActivity(intent);
+    }
+
     @Override
     public void initToolBar() {
         toolbar.setTitle(category);

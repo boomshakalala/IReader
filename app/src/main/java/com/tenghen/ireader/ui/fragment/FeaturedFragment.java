@@ -6,11 +6,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.chengx.mvp.adapter.MultiItemCommonAdapter;
 import com.chengx.mvp.base.XListPresent;
 import com.tenghen.ireader.R;
 import com.tenghen.ireader.adapter.FeaturedAdapter;
 import com.tenghen.ireader.adapter.FeaturedBookDelegate;
 import com.tenghen.ireader.base.BaseListFragment;
+import com.tenghen.ireader.module.Book;
+import com.tenghen.ireader.ui.activity.BookDetailActivity;
 import com.tenghen.ireader.ui.activity.SearchActivity;
 import com.tenghen.ireader.ui.present.FeaturedPresent;
 
@@ -25,7 +28,7 @@ import butterknife.BindView;
  * 描述：
  */
 
-public class FeaturedFragment extends BaseListFragment<FeaturedPresent,Object> implements View.OnClickListener {
+public class FeaturedFragment extends BaseListFragment<FeaturedPresent,Object> implements View.OnClickListener, MultiItemCommonAdapter.OnItemClickListener {
     @BindView(R.id.searchBtn)
     public TextView searchBtn;
 
@@ -66,6 +69,7 @@ public class FeaturedFragment extends BaseListFragment<FeaturedPresent,Object> i
     @Override
     public void setListener() {
         searchBtn.setOnClickListener(this);
+        ((FeaturedAdapter)adapter).setOnItemClickListener(this);
     }
 
     @Override
@@ -79,6 +83,13 @@ public class FeaturedFragment extends BaseListFragment<FeaturedPresent,Object> i
             case R.id.searchBtn:
                 SearchActivity.launch(getContext(),"");
                 break;
+        }
+    }
+
+    @Override
+    public void onItemClick(View view, Object data) {
+        if (data instanceof Book){
+            BookDetailActivity.launch(getContext());
         }
     }
 }

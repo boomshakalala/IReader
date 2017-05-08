@@ -94,7 +94,36 @@
         <activity
             android:name=".ui.activity.ReadActivity"
             android:screenOrientation="portrait"/>
-
+        <activity
+            android:name=".ui.activity.LoginActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.RegisterActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.LatestReadActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.MyShelfActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.RechargeLogActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.CostLogActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.MyCommentActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.MyMsgActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.TopicActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.DynamicActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
