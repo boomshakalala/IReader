@@ -1,13 +1,17 @@
 package com.tenghen.ireader.ui.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.Fragment;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.tenghen.ireader.R;
 import com.tenghen.ireader.base.BaseActivity;
 import com.tenghen.ireader.ui.present.LoginPresent;
 
+import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
@@ -17,9 +21,19 @@ import butterknife.OnClick;
  */
 public class LoginActivity extends BaseActivity<LoginPresent>{
 
-    public static void launch(Context context){
+    @BindView(R.id.loginUserNameEt)
+    EditText userNameEt;
+    @BindView(R.id.loginPasswordEt)
+    EditText passwordEt;
+
+    public static void launch(Activity context,int requestCode){
         Intent intent = new Intent(context,LoginActivity.class);
-        context.startActivity(intent);
+        context.startActivityForResult(intent,requestCode);
+    }
+
+    public static void launch(Fragment context,int requestCode){
+        Intent intent = new Intent(context.getContext(),LoginActivity.class);
+        context.startActivityForResult(intent, requestCode);
     }
 
     @Override
@@ -55,5 +69,12 @@ public class LoginActivity extends BaseActivity<LoginPresent>{
     @OnClick(R.id.registerBtn)
     public void register(TextView textView){
         RegisterActivity.launch(this);
+    }
+
+    @OnClick(R.id.loginBtn)
+    public void login(){
+        String userName = userNameEt.getText().toString().trim();
+        String password = passwordEt.getText().toString().trim();
+        getPresent().login(userName,password);
     }
 }

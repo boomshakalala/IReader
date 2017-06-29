@@ -24,5 +24,6 @@ public class BookDetailAdapter extends MultiItemCommonAdapter<Object> {
         addItemViewDelegate(new BookDetailHeaderDelegate(context));
         addItemViewDelegate(new BookDetailMoreDelegate());
         addItemViewDelegate(new SpaceDividerItemDelegate());
+        addItemViewDelegate(new AdapterEmptyDelegate());
     }
 }

@@ -10,6 +10,7 @@ import com.chengx.mvp.base.XListPresent;
 import com.chengx.mvp.widget.XRecyclerView;
 import com.chengx.mvp.widget.pull2refresh.PullToRefreshBase;
 import com.tenghen.ireader.R;
+import com.tenghen.ireader.module.User;
 
 /**
  * 作者：chengx
@@ -60,5 +61,13 @@ public abstract class BaseListActivity<T extends IListPresent,M> extends XListAc
     @Override
     protected XListPresent getPresent() {
         return (XListPresent) super.getPresent();
+    }
+
+    public boolean isLogin(){
+        return   getUserInfo() != null;
+    }
+
+    public User getUserInfo(){
+        return sp.getObject("user",null);
     }
 }

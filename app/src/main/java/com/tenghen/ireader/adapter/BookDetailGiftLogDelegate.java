@@ -12,6 +12,8 @@ import com.tenghen.ireader.module.GiftLog;
  */
 
 public class BookDetailGiftLogDelegate implements ItemViewDelegate<Object>{
+    int[] giftImages = {R.drawable.ic_gift_coin,R.drawable.ic_gift_flower,R.drawable.ic_gift_beer,R.drawable.ic_gift_mac,
+            R.drawable.ic_gift_car,R.drawable.ic_gif_house};
     @Override
     public int getItemLayoutId() {
         return R.layout.item_book_detail_gift_log;
@@ -24,6 +26,9 @@ public class BookDetailGiftLogDelegate implements ItemViewDelegate<Object>{
 
     @Override
     public void convert(RecyclerViewHolder holder, Object o, int position) {
-
+        GiftLog giftLog = (GiftLog) o;
+        holder.setText(R.id.nickNameTv,giftLog.getUserName());
+        holder.setText(R.id.giftCountTv,giftLog.getNum()+"个");
+        holder.setImageResource(R.id.giftIv,giftImages[Integer.valueOf(giftLog.getMoneyType())]);
     }
 }

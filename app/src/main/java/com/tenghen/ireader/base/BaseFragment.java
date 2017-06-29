@@ -2,6 +2,7 @@ package com.tenghen.ireader.base;
 
 import com.chengx.mvp.base.IPresent;
 import com.chengx.mvp.base.XFragment;
+import com.tenghen.ireader.module.User;
 
 /**
  * 作者：chengx
@@ -23,5 +24,13 @@ public abstract class BaseFragment<T extends IPresent> extends XFragment<T> {
     @Override
     public void showTip(String msg) {
         showToast(msg);
+    }
+
+    public boolean isLogin(){
+        return   getUserInfo() != null;
+    }
+
+    public User getUserInfo(){
+        return sp.getObject("user",null);
     }
 }

@@ -26,6 +26,7 @@ public class BookDetailGiftLabelDelegate implements ItemViewDelegate<Object> {
 
     @Override
     public void convert(RecyclerViewHolder holder, Object o, int position) {
-
+            Label label = (Label) o;
+        holder.setText(R.id.giftCountTv,label.getText());
     }
 }

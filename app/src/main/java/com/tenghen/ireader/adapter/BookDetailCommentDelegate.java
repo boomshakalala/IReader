@@ -24,6 +24,10 @@ public class BookDetailCommentDelegate implements ItemViewDelegate<Object> {
 
     @Override
     public void convert(RecyclerViewHolder holder, Object o, int position) {
-
+        Comment comment = (Comment) o;
+        holder.setText(R.id.contentTv,comment.getContent());
+        holder.setText(R.id.nickNameTv,comment.getNickName());
+        holder.setText(R.id.replyCountTv,comment.getFid());
+        holder.setText(R.id.commentTimeTv,comment.getCreateDate());
     }
 }

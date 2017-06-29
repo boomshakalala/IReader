@@ -19,7 +19,7 @@
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 android:background="@drawable/user_head_bg">
-                <ImageView
+                <com.chengx.mvp.widget.CircleImageView
                     android:id="@+id/avatarIv"
                     android:layout_width="177px"
                     android:layout_height="177px"
@@ -34,17 +34,20 @@
                     android:gravity="center_horizontal"
                     android:layout_marginLeft="30px">
                     <TextView
+                        android:id="@+id/nickNameTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="36px"
                         android:textColor="@color/black"
-                        android:text="小雪"/>
+                        android:text="注册/登录"/>
                     <TextView
+                        android:visibility="gone"
+                        android:id="@+id/userIdTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
                         android:textSize="25px"
-                        android:text="1D:7771"
+                        android:text="ID:7771"
                         android:layout_marginTop="13px"
                         android:paddingBottom="7px"
                         android:paddingRight="11px"
@@ -53,6 +56,8 @@
                         android:background="@drawable/black_round_backgroud"/>
 
                     <TextView
+                        android:visibility="gone"
+                        android:id="@+id/phoneNumTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
@@ -160,6 +165,7 @@
             <include
                 layout="@layout/item_space_divider"/>
             <RelativeLayout
+                android:id="@+id/myShelfBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="48px"
@@ -168,7 +174,7 @@
                 android:paddingRight="90px">
 
                 <TextView
-                    android:id="@+id/myShelfBtn"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="48px"
@@ -220,6 +226,7 @@
                 android:layout_height="1px"
                 android:background="#cccccc"/>
             <RelativeLayout
+                android:id="@+id/rechargeLogBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="48px"
@@ -228,7 +235,7 @@
                 android:paddingRight="90px">
 
                 <TextView
-                    android:id="@+id/rechargeLogBtn"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="48px"
@@ -250,6 +257,7 @@
                 android:layout_height="1px"
                 android:background="#cccccc"/>
             <RelativeLayout
+                android:id="@+id/costLogBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="48px"
@@ -258,7 +266,7 @@
                 android:paddingRight="90px">
 
                 <TextView
-                    android:id="@+id/costLogBtn"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="48px"
@@ -285,10 +293,11 @@
                 android:paddingTop="48px"
                 android:paddingBottom="48px"
                 android:paddingLeft="84px"
-                android:paddingRight="90px">
+                android:paddingRight="90px"
+                android:id="@+id/myCommentBtn">
 
                 <TextView
-                    android:id="@+id/myCommentBtn"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="48px"
@@ -310,6 +319,7 @@
                 android:layout_height="1px"
                 android:background="#cccccc"/>
             <RelativeLayout
+                android:id="@+id/myMsgBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="48px"
@@ -318,7 +328,7 @@
                 android:paddingRight="90px">
 
                 <TextView
-                    android:id="@+id/myMsgBtn"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="48px"

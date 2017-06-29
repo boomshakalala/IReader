@@ -88,8 +88,6 @@ public class FeaturedFragment extends BaseListFragment<FeaturedPresent,Object> i
 
     @Override
     public void onItemClick(View view, Object data) {
-        if (data instanceof Book){
-            BookDetailActivity.launch(getContext());
-        }
+
     }
 }

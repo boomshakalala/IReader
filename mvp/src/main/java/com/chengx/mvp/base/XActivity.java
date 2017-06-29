@@ -28,7 +28,7 @@ import de.greenrobot.event.EventBus;
 public abstract class XActivity<P extends IPresent> extends AutoLayoutActivity implements IView<P> {
     public final String TAG = getClass().getSimpleName();
     private P present;
-    private SPUtils sp;
+    protected SPUtils sp;
     private boolean couldDoubleBackExit;
     private boolean pressedOnce;
     private boolean needToolbar;

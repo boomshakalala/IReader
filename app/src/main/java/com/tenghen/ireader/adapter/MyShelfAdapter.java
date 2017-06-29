@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.chengx.mvp.adapter.CommonRecyclerAdapter;
 import com.chengx.mvp.adapter.RecyclerViewHolder;
+import com.tenghen.ireader.R;
 import com.tenghen.ireader.module.Book;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class MyShelfAdapter extends CommonRecyclerAdapter<Book> {
 
     @Override
     public void convert(RecyclerViewHolder holder, Book book) {
-
+        holder.setText(R.id.bookNameTv,book.getName());
+        holder.setImageUrl(R.id.bookIv,book.getCover());
     }
 }

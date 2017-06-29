@@ -80,6 +80,7 @@
         android:layout_marginTop="51px"
         android:gravity="center">
         <TextView
+            android:id="@+id/loginBtn"
             android:layout_width="405px"
             android:layout_height="81px"
             android:gravity="center"

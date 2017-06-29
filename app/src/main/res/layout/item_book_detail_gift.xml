@@ -7,9 +7,9 @@
     android:paddingTop="40px"
     android:gravity="center">
     <ImageView
+        android:id="@+id/giftIv"
         android:layout_width="228px"
         android:layout_height="210px"
-        android:src="@drawable/ic_gif"
         android:background="@drawable/shape_white_black_stroke_rect"/>
 
 

@@ -530,6 +530,6 @@ public class BookTypeActivity extends BaseListActivity<BookTypePresent,CategoryB
 
     @Override
     public void onItemClick(View view, CategoryBook data) {
-        BookDetailActivity.launch(this);
+        BookDetailActivity.launch(this,data.getId());
     }
 }

@@ -10,4 +10,5 @@ import com.chengx.mvp.base.XListPresent;
  */
 
 public abstract class BaseListPresent<V extends IListView> extends XListPresent<V> {
+
 }

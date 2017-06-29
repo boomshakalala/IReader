@@ -4,13 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 
-import com.chengx.mvp.base.XListPresent;
 import com.tenghen.ireader.R;
 import com.tenghen.ireader.adapter.BookDetailAdapter;
 import com.tenghen.ireader.adapter.BookDetailGiftDelegate;
-import com.tenghen.ireader.adapter.FeaturedAdapter;
-import com.tenghen.ireader.adapter.FeaturedBookDelegate;
 import com.tenghen.ireader.base.BaseListActivity;
+import com.tenghen.ireader.module.BookDetail;
 import com.tenghen.ireader.ui.present.BookDetailPresent;
 
 import java.util.ArrayList;
@@ -25,8 +23,9 @@ import java.util.List;
 public class BookDetailActivity extends BaseListActivity<BookDetailPresent,Object> {
     List<Object> data;
 
-    public static void launch(Context context){
+    public static void launch(Context context,String bookId){
         Intent intent = new Intent(context,BookDetailActivity.class);
+        intent.putExtra("bookId",bookId);
         context.startActivity(intent);
     }
 
@@ -42,6 +41,9 @@ public class BookDetailActivity extends BaseListActivity<BookDetailPresent,Objec
 
     @Override
     public void initData() {
+        String bookId = getIntent().getStringExtra("bookId");
+        if(bookId!=null)
+            ((BookDetailPresent)getPresent()).setBookId(bookId);
         data = new ArrayList<>();
         adapter = new BookDetailAdapter(this,data);
     }
@@ -59,6 +61,7 @@ public class BookDetailActivity extends BaseListActivity<BookDetailPresent,Objec
         });
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
+        recyclerView.closeLoadMore();
         getPresent().refresh();
     }
 

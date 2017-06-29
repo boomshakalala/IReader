@@ -30,7 +30,7 @@ public abstract class XFragment<P extends IPresent> extends Fragment implements 
     public final String TAG = getClass().getSimpleName();
     private P present;
     protected View rootView;
-    private SPUtils sp;
+    protected SPUtils sp;
     private boolean needFullScreen;
     private boolean needBack = true;
     private CustomDialog dialog;

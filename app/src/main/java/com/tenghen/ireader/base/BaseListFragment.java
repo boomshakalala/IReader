@@ -8,6 +8,7 @@ import com.chengx.mvp.base.XListPresent;
 import com.chengx.mvp.widget.XRecyclerView;
 import com.chengx.mvp.widget.pull2refresh.PullToRefreshBase;
 import com.tenghen.ireader.R;
+import com.tenghen.ireader.module.User;
 
 /**
  * 作者：chengx
@@ -35,5 +36,13 @@ public abstract class BaseListFragment<T extends IListPresent,M> extends XListFr
         if (getPresent() != null && getPresent() instanceof XListPresent) {
             ((XListPresent)getPresent()).loadMore();
         }
+    }
+
+    public boolean isLogin(){
+        return   getUserInfo() != null;
+    }
+
+    public User getUserInfo(){
+        return sp.getObject("user",null);
     }
 }

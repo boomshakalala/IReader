@@ -6,6 +6,7 @@
     android:paddingLeft="48px"
     android:paddingRight="48px">
     <TextView
+        android:id="@+id/contentTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#959595"
@@ -19,6 +20,7 @@
         android:layout_marginTop="33px"
         android:orientation="horizontal">
         <TextView
+            android:id="@+id/nickNameTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="33px"
@@ -42,7 +44,7 @@
             android:drawableLeft="@drawable/ic_comment_date"
             android:gravity="center"
             android:text="05-09 16:00"
-            android:id="@+id/textView" />
+            android:id="@+id/commentTimeTv" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -55,6 +57,7 @@
             android:layout_marginLeft="17px"
             android:text="回复("/>
         <TextView
+            android:id="@+id/replyCountTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18px"
@@ -68,25 +71,25 @@
             android:text="条)"/>
     </LinearLayout>
     <LinearLayout
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/reply_bg"
+        android:gravity="center_vertical"
         android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
+                    android:id="@+id/replyNameTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="大壮壮 : "
                     android:textSize="21px"
                     android:textColor="#6cd8e4"/>
                 <TextView
+                    android:id="@+id/replyContentTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="感谢支持！"
@@ -94,6 +97,7 @@
                     android:textColor="#959595"/>
             </LinearLayout>
             <TextView
+                android:id="@+id/replyTimeTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#959595"
@@ -103,103 +107,6 @@
                 android:drawableLeft="@drawable/ic_comment_date"
                 android:gravity="center"
                 android:text="05-09 16:00" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="大壮壮 : "
-                    android:textSize="21px"
-                    android:textColor="#6cd8e4"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="感谢支持！"
-                    android:textSize="21px"
-                    android:textColor="#959595"/>
-            </LinearLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#959595"
-                android:textSize="21px"
-                android:drawablePadding="6dp"
-                android:layout_gravity="right"
-                android:drawableLeft="@drawable/ic_comment_date"
-                android:gravity="center"
-                android:text="05-09 16:00" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="大壮壮 : "
-                    android:textSize="21px"
-                    android:textColor="#6cd8e4"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="感谢支持！"
-                    android:textSize="21px"
-                    android:textColor="#959595"/>
-            </LinearLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#959595"
-                android:textSize="21px"
-                android:drawablePadding="6dp"
-                android:layout_gravity="right"
-                android:drawableLeft="@drawable/ic_comment_date"
-                android:gravity="center"
-                android:text="05-09 16:00" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="大壮壮 : "
-                    android:textSize="21px"
-                    android:textColor="#6cd8e4"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="感谢支持！"
-                    android:textSize="21px"
-                    android:textColor="#959595"/>
-            </LinearLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#959595"
-                android:textSize="21px"
-                android:drawablePadding="6dp"
-                android:layout_gravity="right"
-                android:drawableLeft="@drawable/ic_comment_date"
-                android:gravity="center"
-                android:text="05-09 16:00" />
-        </LinearLayout>
     </LinearLayout>
     <View
         android:layout_width="match_parent"
