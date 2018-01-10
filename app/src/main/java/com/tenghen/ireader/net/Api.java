@@ -26,7 +26,7 @@ import java.util.List;
  */
 
 public class Api {
-    public static final String HOST = "http://115.29.51.167:7777";
+    public static final String HOST = "http://139.129.217.33:8088";
     public static final String WX_HOST = "https://api.weixin.qq.com/sns/";
 
     /*======= 微信接口 =======*/
