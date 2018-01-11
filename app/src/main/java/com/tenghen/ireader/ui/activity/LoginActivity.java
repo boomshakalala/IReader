@@ -77,4 +77,6 @@ public class LoginActivity extends BaseActivity<LoginPresent>{
         String password = passwordEt.getText().toString().trim();
         getPresent().login(userName,password);
     }
+
+
 }

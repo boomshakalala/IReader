@@ -14,6 +14,7 @@ import com.tenghen.ireader.module.CategoryBook;
 import com.tenghen.ireader.module.RankBook;
 import com.chengx.mvp.net.WXApiResponse;
 import com.tenghen.ireader.module.User;
+import com.tenghen.ireader.module.Wallet;
 
 
 import java.lang.reflect.Type;
@@ -46,6 +47,7 @@ public class Api {
     public static final String USER_MY_CONSUME_RECORD = "/user/myconsumerecord";
     public static final String USER_MY_RECHARGE_RECORD = "/user/myrechargerecord";
     public static final String USER_MY_COMMENT = "/user/mycomment";
+    public static final String USER_MY_WALLET = "/user/myWallet";
 
 
 
@@ -155,6 +157,16 @@ public class Api {
         Type typeOfClass = new TypeToken<List<Book>>(){}.getType();
         HttpEngine.getInstance().post(HOST + USER_MY_BOOK_CASE,param,typeOfClass,callback);
     }
+
+
+
+    public static void userMyWallet(String userId,String token,ResponseCallback<Wallet> callback){
+        RequestParam param = new RequestParam();
+        param.put("user_id",getUserId());
+        param.put("token",getToken());
+        HttpEngine.getInstance().post(HOST + USER_MY_WALLET,param, Wallet.class,callback);
+    }
+
 
     private static String getUserId(){
         SPUtils sp = new SPUtils(AppUtils.getAppContext(), AppConfig.SP_NAME);
