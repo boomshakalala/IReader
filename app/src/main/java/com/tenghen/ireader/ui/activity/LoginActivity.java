@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.tenghen.ireader.R;
 import com.tenghen.ireader.base.BaseActivity;
 import com.tenghen.ireader.ui.present.LoginPresent;
+import com.tenghen.ireader.wxapi.WXAPI;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -76,6 +77,10 @@ public class LoginActivity extends BaseActivity<LoginPresent>{
         String userName = userNameEt.getText().toString().trim();
         String password = passwordEt.getText().toString().trim();
         getPresent().login(userName,password);
+    }
+    @OnClick(R.id.wxLoginBtn)
+    public void wxLogin(){
+        WXAPI.login(this);
     }
 
 

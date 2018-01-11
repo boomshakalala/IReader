@@ -69,6 +69,7 @@ public class UserPresent extends BasePresent<UserFragment> {
         getV().showProgress();
         SendAuth.Resp authResp = (SendAuth.Resp) resp;
         String code = authResp.code;
+        String openId = authResp.openId;
     }
 
 
