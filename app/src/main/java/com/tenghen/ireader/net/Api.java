@@ -8,9 +8,16 @@ import com.chengx.mvp.utils.AppUtils;
 import com.chengx.mvp.utils.PhoneUtils;
 import com.chengx.mvp.utils.SPUtils;
 import com.google.gson.reflect.TypeToken;
+import com.sina.weibo.sdk.api.VideoObject;
 import com.tenghen.ireader.module.Book;
 import com.tenghen.ireader.module.BookDetail;
 import com.tenghen.ireader.module.CategoryBook;
+import com.tenghen.ireader.module.Chapter;
+import com.tenghen.ireader.module.Charts;
+import com.tenghen.ireader.module.ConsumeRecord;
+import com.tenghen.ireader.module.IndexBanner;
+import com.tenghen.ireader.module.MyRehargeRecord;
+import com.tenghen.ireader.module.OrderInfo;
 import com.tenghen.ireader.module.RankBook;
 import com.chengx.mvp.net.WXApiResponse;
 import com.tenghen.ireader.module.User;
@@ -35,19 +42,25 @@ public class Api {
     public static final String WX_USER_INFO = "userinfo";//获取用户个人信息（UnionID机制）
     /*=======================*/
 
+    public static final String BANNNER_INDEX_BANNER = "/banner/indexBanners";
     public static final String BOOK_ALL_VIEW_BOOKS =  "/book/allviewbooks";
     public static final String BOOK_RANKING_LIST =  "/book/rankinglist";
     public static final String BOOK_CATEGORY_BOOKS =  "/book/categorybooks";
     public static final String BOOK_SEARCH_BOOKS =  "/book/searchbooks";
     public static final String BOOK_BOOK_KEYWORDS =  "/book/bookkeywords";
     public static final String BOOK_INFO = "/book/info";
+    public static final String CHATER_BOOK_CHAPTERS = "/chapter/bookchapters";
     public static final String USER_LOGIN = "/user/login";
     public static final String USER_REGISTER = "/user/register";
+    public static final String USER_ACCOUNT_BINDING = "/user/accountBinding";
     public static final String USER_MY_BOOK_CASE = "/user/mybookcase";
     public static final String USER_MY_CONSUME_RECORD = "/user/myconsumerecord";
     public static final String USER_MY_RECHARGE_RECORD = "/user/myrechargerecord";
     public static final String USER_MY_COMMENT = "/user/mycomment";
     public static final String USER_MY_WALLET = "/user/myWallet";
+    public static final String CHART_MONTHLY_CHARTS = "/chart/monthlyCharts";
+    public static final String CHART_INDEX_CHARTS = "/chart/indexCharts";
+    public static final String ORDER_RECHARGE = "/order/recharge";
 
 
 
@@ -149,23 +162,74 @@ public class Api {
         HttpEngine.getInstance().post(HOST + USER_MY_BOOK_CASE,param,typeOfClass,callback);
     }
 
-    public static void userMyConsumeRecord(int p,ResponseCallback<List<Book>> callback){
+    public static void userMyConsumeRecord(int p,ResponseCallback<List<ConsumeRecord>> callback){
         RequestParam param = new RequestParam();
         param.put("p",String.valueOf(p));
         param.put("user_id",getUserId());
         param.put("token",getToken());
-        Type typeOfClass = new TypeToken<List<Book>>(){}.getType();
-        HttpEngine.getInstance().post(HOST + USER_MY_BOOK_CASE,param,typeOfClass,callback);
+        Type typeOfClass = new TypeToken<List<ConsumeRecord>>(){}.getType();
+        HttpEngine.getInstance().post(HOST + USER_MY_CONSUME_RECORD,param,typeOfClass,callback);
+    }
+
+    public static void userMyRechargeRecord(int p, ResponseCallback<MyRehargeRecord> callback){
+        RequestParam param = new RequestParam();
+        param.put("p",String.valueOf(p));
+        param.put("user_id",getUserId());
+        param.put("token",getToken());
+        HttpEngine.getInstance().post(HOST + USER_MY_CONSUME_RECORD,param,MyRehargeRecord.class,callback);
     }
 
 
 
-    public static void userMyWallet(String userId,String token,ResponseCallback<Wallet> callback){
+    public static void userMyWallet(ResponseCallback<Wallet> callback){
         RequestParam param = new RequestParam();
         param.put("user_id",getUserId());
         param.put("token",getToken());
         HttpEngine.getInstance().post(HOST + USER_MY_WALLET,param, Wallet.class,callback);
     }
+
+    public static void bannerIndexBanner(ResponseCallback<List<IndexBanner>> callback){
+        RequestParam param = new RequestParam();
+        Type typeOfClass = new TypeToken<List<IndexBanner>>(){}.getType();
+        HttpEngine.getInstance().post(HOST + BANNNER_INDEX_BANNER,param,typeOfClass,callback);
+    }
+
+    public static void chapterBookChapters(String bookId, ResponseCallback<List<Chapter>> callback){
+        RequestParam param = new RequestParam();
+        param.put("book_id",bookId);
+        Type typeOfClass = new TypeToken<List<Chapter>>(){}.getType();
+        HttpEngine.getInstance().post(HOST + CHATER_BOOK_CHAPTERS,param,typeOfClass,callback);
+    }
+
+    public static void chartMonthlyCharts(ResponseCallback<List<Charts>> callback){
+        RequestParam param = new RequestParam();
+        Type typeOfClass = new TypeToken<List<Charts>>(){}.getType();
+        HttpEngine.getInstance().post(HOST + CHART_MONTHLY_CHARTS,param,typeOfClass,callback);
+    }
+
+    public static void chartIndexCharts(ResponseCallback<List<Charts>> callback){
+        RequestParam param = new RequestParam();
+        Type typeOfClass = new TypeToken<List<Charts>>(){}.getType();
+        HttpEngine.getInstance().post(HOST + CHART_INDEX_CHARTS,param,typeOfClass,callback);
+    }
+
+    public static void userAccountBinding(String userType,String authId,ResponseCallback<Void> callback){
+        RequestParam param = new RequestParam();
+        param.put("user_type",userType);
+        param.put("auth_id",authId);
+        Type typeOfClass = new TypeToken<List<Chapter>>(){}.getType();
+        HttpEngine.getInstance().post(HOST + CHATER_BOOK_CHAPTERS,param,typeOfClass,callback);
+    }
+
+
+    public static void orderRecharge(String price, String priceType, String subject, ResponseCallback<OrderInfo> callback){
+        RequestParam param = new RequestParam();
+        param.put("price",price);
+        param.put("pay_type",priceType);
+        param.put("subject",subject);
+        HttpEngine.getInstance().post(HOST + ORDER_RECHARGE,param,OrderInfo.class,callback);
+    }
+
 
 
     private static String getUserId(){

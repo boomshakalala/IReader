@@ -6,11 +6,16 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.chengx.mvp.net.ResponseCallback;
+import com.chengx.mvp.utils.KLog;
 import com.chengx.mvp.widget.CircleImageView;
 import com.tenghen.ireader.R;
+import com.tenghen.ireader.aliapi.Alipay;
 import com.tenghen.ireader.base.BaseFragment;
 import com.tenghen.ireader.base.BaseListFragment;
 //import com.tenghen.ireader.qqapi.QQAPI;
+import com.tenghen.ireader.module.OrderInfo;
+import com.tenghen.ireader.net.Api;
 import com.tenghen.ireader.ui.activity.CostLogActivity;
 import com.tenghen.ireader.ui.activity.LatestReadActivity;
 import com.tenghen.ireader.ui.activity.LoginActivity;
@@ -194,5 +199,21 @@ public class UserFragment extends BaseFragment<UserPresent> {
                 break;
         }
 
+    }
+
+    @OnClick(R.id.rechargeBtn)
+    public void recharge(View view){
+        Api.orderRecharge("0.01", "1", "1", new ResponseCallback<OrderInfo>() {
+            @Override
+            public void onSuccess(OrderInfo data) {
+                KLog.d(TAG,data.getResponse());
+                Alipay.getInstance().pay(getActivity(),data.getResponse());
+            }
+
+            @Override
+            public void onFailure(int errCode, String info) {
+
+            }
+        });
     }
 }

@@ -114,13 +114,13 @@ public class DownloadService extends Service {
                     if (!downloadQueue.isFinish && !downloadQueue.isCancel){
                         if (BookCacheManager.getBookChapterFile(bookId,i) == null){
                             Chapter chapter = chapters.get(i - 1);
-                            String url = chapter.link;
-                            int ret = download(url,bookId,chapter.title,i,chapters.size());
+                            String url = "";
+                            int ret = download(url,bookId,"",i,chapters.size());
                             if (ret != 1){
                                 failureCount++;
                             }
                         }else {
-                            post(new DownloadProgress(bookId,String.format("已缓存过:%1$s(%2$d/%3$d)...",chapters.get(i-1).title,i,chapters.size()),true));
+                            post(new DownloadProgress(bookId,String.format("已缓存过:%1$s(%2$d/%3$d)...","",i,chapters.size()),true));
 
                         }
                     }

@@ -148,6 +148,7 @@
                     android:text="100藤币"
                     android:layout_marginLeft="55px"/>
                 <TextView
+                    android:id="@+id/rechargeBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
