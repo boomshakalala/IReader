@@ -11,6 +11,7 @@ import com.stx.xhb.xbanner.XBanner;
 import com.stx.xhb.xbanner.transformers.Transformer;
 import com.tenghen.ireader.R;
 import com.tenghen.ireader.module.Banner;
+import com.tenghen.ireader.module.IndexBanner;
 import com.tenghen.ireader.ui.activity.BookTypeActivity;
 import com.tenghen.ireader.ui.activity.FreeBookActivity;
 import com.tenghen.ireader.ui.activity.MonthlyActivity;
@@ -18,6 +19,7 @@ import com.tenghen.ireader.ui.activity.MonthlyActivity;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.R.attr.buttonBarNegativeButtonStyle;
 import static android.R.attr.data;
 
 /**
@@ -33,9 +35,6 @@ public class FeaturedHeaderDelegate  implements ItemViewDelegate<Object>,XBanner
 
     public FeaturedHeaderDelegate(Context context) {
         this.context = context;
-        imgs.add("http://img3.fengniao.com/forum/attachpics/913/114/36502745.jpg");
-        imgs.add("http://imageprocess.yitos.net/images/public/20160910/99381473502384338.jpg");
-        imgs.add("http://imageprocess.yitos.net/images/public/20160910/77991473496077677.jpg");
     }
 
     @Override
@@ -51,10 +50,15 @@ public class FeaturedHeaderDelegate  implements ItemViewDelegate<Object>,XBanner
 
     @Override
     public void convert(RecyclerViewHolder holder, Object o, int position) {
+        Banner bannerData = (Banner) o;
+        List<IndexBanner> banners = bannerData.getImgDatas();
+        for (IndexBanner banner : banners) {
+            imgs.add(banner.getPicture());
+        }
         XBanner banner = holder.getView(R.id.common_Banner);
         banner.removeAllViews();
         banner.setData(imgs,null);
-        banner.setPageTransformer(Transformer.Rotate);
+        banner.setPageTransformer(Transformer.Default);
         banner.setmAdapter(this);
         holder.setOnclickListener(R.id.featuredMonthlyBtn, new View.OnClickListener() {
             @Override

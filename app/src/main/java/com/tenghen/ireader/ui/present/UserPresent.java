@@ -37,39 +37,16 @@ public class UserPresent extends BasePresent<UserFragment> {
     }
 
 
-    public void userLogin(String email,String password){
-        Api.userLogin(1, email, password, null, new ResponseCallback<User>() {
-            @Override
-            public void onSuccess(User data) {
-                log(data);
-            }
+    public void getWalletData(){
 
-            @Override
-            public void onFailure(int errCode, String info) {
-
-            }
-        });
-    }
-    public void userRegister(String email,String password,String name){
-        Api.userRegister(1, email, password, null,name,new ResponseCallback<User>() {
-            @Override
-            public void onSuccess(User data) {
-                log(data);
-            }
-
-            @Override
-            public void onFailure(int errCode, String info) {
-
-            }
-        });
     }
 
+    public void getUserData(){
 
-    public void onEventMainThread(BaseResp resp) {
-        getV().showProgress();
-        SendAuth.Resp authResp = (SendAuth.Resp) resp;
-        String code = authResp.code;
-        String openId = authResp.openId;
+    }
+
+    public void getSignData(){
+
     }
 
 

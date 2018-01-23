@@ -17,6 +17,8 @@ public class Book implements Serializable{
     private String pen_name;
     private String category_name;
 
+    public boolean isRec = false;
+
     public String getView_id() {
         return view_id;
     }

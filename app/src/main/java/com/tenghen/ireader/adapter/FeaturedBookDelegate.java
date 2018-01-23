@@ -19,11 +19,18 @@ public class FeaturedBookDelegate implements ItemViewDelegate<Object> {
 
     @Override
     public boolean isForViewType(Object o, int position) {
-        return o instanceof Book;
+        if (o instanceof  Book){
+            Book book = (Book) o;
+            return !book.isRec;
+        }
+        return false;
     }
 
     @Override
     public void convert(RecyclerViewHolder holder, Object o, int position) {
+        Book book = (Book) o;
+        holder.setText(R.id.bookNameTv,book.getName());
+        holder.setImageUrl(R.id.bookIv,book.getCover());
 
     }
 }

@@ -15,6 +15,7 @@ import com.tenghen.ireader.base.BaseFragment;
 import com.tenghen.ireader.base.BaseListFragment;
 //import com.tenghen.ireader.qqapi.QQAPI;
 import com.tenghen.ireader.module.OrderInfo;
+import com.tenghen.ireader.module.User;
 import com.tenghen.ireader.net.Api;
 import com.tenghen.ireader.ui.activity.CostLogActivity;
 import com.tenghen.ireader.ui.activity.LatestReadActivity;
@@ -22,6 +23,7 @@ import com.tenghen.ireader.ui.activity.LoginActivity;
 import com.tenghen.ireader.ui.activity.MyCommentActivity;
 import com.tenghen.ireader.ui.activity.MyMsgActivity;
 import com.tenghen.ireader.ui.activity.MyShelfActivity;
+import com.tenghen.ireader.ui.activity.RechargeActivity;
 import com.tenghen.ireader.ui.activity.RechargeLogActivity;
 import com.tenghen.ireader.ui.activity.TopicActivity;
 import com.tenghen.ireader.ui.present.UserPresent;
@@ -100,6 +102,7 @@ public class UserFragment extends BaseFragment<UserPresent> {
         }
 
     }
+
 
     @OnClick(R.id.latestReadBtn)
     public void toLatestRead(){
@@ -197,23 +200,23 @@ public class UserFragment extends BaseFragment<UserPresent> {
                 if (isLogin())
                     MyMsgActivity.launch(getContext());
                 break;
+            case OPT_TO_RECHARGE:
+                if (isLogin())
+                    RechargeActivity.launch(getContext());
+                break;
         }
 
     }
 
     @OnClick(R.id.rechargeBtn)
     public void recharge(View view){
-        Api.orderRecharge("0.01", "1", "1", new ResponseCallback<OrderInfo>() {
-            @Override
-            public void onSuccess(OrderInfo data) {
-                KLog.d(TAG,data.getResponse());
-                Alipay.getInstance().pay(getActivity(),data.getResponse());
-            }
+        if (isLogin())
+            RechargeActivity.launch(getContext());
+        else
+            LoginActivity.launch(this,OPT_TO_RECHARGE);
+    }
 
-            @Override
-            public void onFailure(int errCode, String info) {
+    public void showUser(UserI user){
 
-            }
-        });
     }
 }

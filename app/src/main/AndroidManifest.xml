@@ -93,6 +93,9 @@
             android:name=".ui.activity.BookTypeActivity"
             android:screenOrientation="portrait"/>
         <activity
+            android:name=".ui.activity.RechargeActivity"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".ui.activity.RankActivity"
             android:screenOrientation="portrait"/>
         <activity

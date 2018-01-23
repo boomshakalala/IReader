@@ -2,15 +2,25 @@ package com.tenghen.ireader.ui.fragment;
 
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.chengx.mvp.net.ResponseCallback;
+import com.stx.xhb.xbanner.XBanner;
+import com.stx.xhb.xbanner.transformers.Transformer;
 import com.tenghen.ireader.R;
 import com.tenghen.ireader.base.BaseListFragment;
+import com.tenghen.ireader.module.IndexBanner;
+import com.tenghen.ireader.net.Api;
 import com.tenghen.ireader.ui.activity.BookTypeActivity;
 import com.tenghen.ireader.ui.activity.RankActivity;
 import com.tenghen.ireader.ui.activity.SearchActivity;
 import com.tenghen.ireader.ui.present.BookTypePresent;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -20,7 +30,7 @@ import butterknife.BindView;
  * 描述：
  */
 
-public class StacksFragment extends BaseListFragment implements View.OnClickListener {
+public class StacksFragment extends BaseListFragment implements View.OnClickListener, XBanner.XBannerAdapter {
 
     public static final int RANK_CLICK = 1;
     public static final int RANK_SUB = 2;
@@ -64,6 +74,11 @@ public class StacksFragment extends BaseListFragment implements View.OnClickList
     @BindView(R.id.searchBtn)
     public TextView searchBtn;
 
+    @BindView(R.id.common_Banner)
+    XBanner banner;
+
+    List<String> imgs = new ArrayList<>();
+
 
     @Override
     public void initToolBar() {
@@ -77,12 +92,31 @@ public class StacksFragment extends BaseListFragment implements View.OnClickList
 
     @Override
     public void initData() {
+        startRequestForBanner();
+    }
 
+    private void startRequestForBanner() {
+        Api.bannerIndexBanner(new ResponseCallback<List<IndexBanner>>() {
+            @Override
+            public void onSuccess(List<IndexBanner> data) {
+                for (IndexBanner indexBanner : data) {
+                    imgs.add(indexBanner.getPicture());
+                }
+                banner.setData(imgs,null);
+            }
+
+            @Override
+            public void onFailure(int errCode, String info) {
+
+            }
+        });
     }
 
     @Override
     public void initViews() {
-
+        banner.removeAllViews();
+        banner.setPageTransformer(Transformer.Default);
+        banner.setmAdapter(this);
     }
 
     @Override
@@ -161,5 +195,10 @@ public class StacksFragment extends BaseListFragment implements View.OnClickList
                 SearchActivity.launch(getContext(),"");
                 break;
         }
+    }
+
+    @Override
+    public void loadBanner(XBanner banner, View view, int position) {
+        Glide.with(this).load(imgs.get(position)).into((ImageView) view);
     }
 }

@@ -18,6 +18,7 @@ import com.tenghen.ireader.ui.activity.SearchActivity;
 import com.tenghen.ireader.ui.present.FeaturedPresent;
 
 import java.util.ArrayList;
+import java.util.IllegalFormatCodePointException;
 import java.util.List;
 
 import butterknife.BindView;
@@ -48,6 +49,7 @@ public class FeaturedFragment extends BaseListFragment<FeaturedPresent,Object> i
     public void initData() {
         data = new ArrayList<>();
         adapter = new FeaturedAdapter(getContext(),data);
+
     }
 
     @Override
@@ -88,6 +90,10 @@ public class FeaturedFragment extends BaseListFragment<FeaturedPresent,Object> i
 
     @Override
     public void onItemClick(View view, Object data) {
+       if (data instanceof Book){
+           Book book = (Book) data;
+           BookDetailActivity.launch(getActivity(),book.getId());
+       }
 
     }
 }
