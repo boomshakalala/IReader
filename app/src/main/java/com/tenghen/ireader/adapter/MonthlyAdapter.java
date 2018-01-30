@@ -15,12 +15,12 @@ import java.util.List;
 public class MonthlyAdapter extends MultiItemCommonAdapter<Object> {
     public MonthlyAdapter(Context context, List<Object> data) {
         super(context, data);
+        addItemViewDelegate(new MonthlyHeadDelegate());
+        addItemViewDelegate(new SpaceDividerItemDelegate());
         addItemViewDelegate(new FeaturedLeble());
         addItemViewDelegate(new FeatureRecDelegate());
         addItemViewDelegate(new FeaturedBookDelegate());
-        addItemViewDelegate(new SpaceDividerItemDelegate());
         addItemViewDelegate(new LineDividerItemDelegate());
-        addItemViewDelegate(new MonthlyHeadDelegate());
         addItemViewDelegate(new MonthlyHotBookDelegate());
     }
 }

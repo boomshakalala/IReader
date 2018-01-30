@@ -1,7 +1,6 @@
 package com.tenghen.ireader.aliapi;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
@@ -10,7 +9,6 @@ import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
 import com.chengx.mvp.utils.AppUtils;
-import com.tenghen.ireader.base.BaseApplication;
 
 import java.util.Map;
 

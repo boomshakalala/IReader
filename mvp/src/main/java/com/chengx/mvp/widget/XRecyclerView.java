@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,11 +75,14 @@ public class XRecyclerView extends FrameLayout {
         recyclerView.getLoadingLayoutProxy(false, true).setRefreshingLabel("正在加载...");
         recyclerView.getLoadingLayoutProxy(false, true).setReleaseLabel("放开以加载");
 
-        progressView = (ViewGroup) findViewById(R.id.progressView);
+        progressView = (FrameLayout) findViewById(R.id.progressView);
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, Gravity.CENTER);
+        progressView.setLayoutParams(params);
         emptyView = (ViewGroup) findViewById(R.id.emptyView);
         errorView = (ViewGroup) findViewById(R.id.errorView);
 
         if (progressViewId != 0)
+
              progressView.addView(LayoutInflater.from(getContext()).inflate(progressViewId,null));
         progressView = (ViewGroup) v.findViewById(R.id.progressView);
         if (emptyViewId != 0)

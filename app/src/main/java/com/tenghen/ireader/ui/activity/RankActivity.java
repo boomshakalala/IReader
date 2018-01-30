@@ -52,6 +52,8 @@ public class RankActivity extends BaseListActivity<RankPresent,RankBook> impleme
 
     public static void launch(Context context){
         Intent intent = new Intent(context,RankActivity.class);
+        intent.putExtra("rankId",1);
+        intent.putExtra("category","点击榜");
         context.startActivity(intent);
     }
 

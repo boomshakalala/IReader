@@ -21,6 +21,7 @@ import com.tenghen.ireader.module.OrderInfo;
 import com.tenghen.ireader.module.RankBook;
 import com.chengx.mvp.net.WXApiResponse;
 import com.tenghen.ireader.module.User;
+import com.tenghen.ireader.module.UserInfo;
 import com.tenghen.ireader.module.Wallet;
 
 
@@ -34,8 +35,9 @@ import java.util.List;
  */
 
 public class Api {
-    public static final String HOST = "http://139.129.217.33:8088";
+        public static final String HOST = "http://139.129.217.33:8088";
     public static final String WX_HOST = "https://api.weixin.qq.com/sns/";
+    public static final String IMG_HOST = "";
 
     /*======= 微信接口 =======*/
     public static final String WX_ACCESS_TOKEN = "oauth2/access_token";//通过code获取access_token
@@ -58,6 +60,8 @@ public class Api {
     public static final String USER_MY_RECHARGE_RECORD = "/user/myrechargerecord";
     public static final String USER_MY_COMMENT = "/user/mycomment";
     public static final String USER_MY_WALLET = "/user/myWallet";
+    public static final String USER_USER_INFO = "/user/userInfo";
+    public static final String USER_MONTHLY_RANK = "/user/monthlyRank";
     public static final String CHART_MONTHLY_CHARTS = "/chart/monthlyCharts";
     public static final String CHART_INDEX_CHARTS = "/chart/indexCharts";
     public static final String ORDER_RECHARGE = "/order/recharge";
@@ -179,13 +183,18 @@ public class Api {
         HttpEngine.getInstance().post(HOST + USER_MY_CONSUME_RECORD,param,MyRehargeRecord.class,callback);
     }
 
-
-
     public static void userMyWallet(ResponseCallback<Wallet> callback){
         RequestParam param = new RequestParam();
         param.put("user_id",getUserId());
         param.put("token",getToken());
         HttpEngine.getInstance().post(HOST + USER_MY_WALLET,param, Wallet.class,callback);
+    }
+
+    public static void userUserInfo(ResponseCallback<UserInfo> callback){
+        RequestParam param = new RequestParam();
+        param.put("user_id",getUserId());
+        param.put("token",getToken());
+        HttpEngine.getInstance().post(HOST + USER_USER_INFO,param,UserInfo.class,callback);
     }
 
     public static void bannerIndexBanner(ResponseCallback<List<IndexBanner>> callback){
@@ -211,6 +220,12 @@ public class Api {
         RequestParam param = new RequestParam();
         Type typeOfClass = new TypeToken<List<Charts>>(){}.getType();
         HttpEngine.getInstance().post(HOST + CHART_INDEX_CHARTS,param,typeOfClass,callback);
+    }
+
+    public static void userMonthlyRank(ResponseCallback<List<Book>> callback){
+        RequestParam param = new RequestParam();
+        Type typeOfClass = new TypeToken<List<Book>>(){}.getType();
+        HttpEngine.getInstance().post(HOST + USER_MONTHLY_RANK,param,typeOfClass,callback);
     }
 
     public static void userAccountBinding(String userType,String authId,ResponseCallback<Void> callback){

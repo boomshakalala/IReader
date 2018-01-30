@@ -16,8 +16,20 @@ public class Book implements Serializable{
     private String description;
     private String pen_name;
     private String category_name;
+    private String all_click;
 
     public boolean isRec = false;
+    public boolean isRank = false;
+    public boolean shouRank = false;
+
+
+    public String getAll_click() {
+        return all_click;
+    }
+
+    public void setAll_click(String all_click) {
+        this.all_click = all_click;
+    }
 
     public String getView_id() {
         return view_id;

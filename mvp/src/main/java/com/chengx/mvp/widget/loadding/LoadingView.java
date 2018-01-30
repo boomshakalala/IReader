@@ -144,19 +144,9 @@ public class LoadingView extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        int widthSpecMode = MeasureSpec.getMode(widthMeasureSpec);
-        int widthSpecSize = MeasureSpec.getSize(widthMeasureSpec);
-        int heightSpecMode = MeasureSpec.getMode(heightMeasureSpec);
-        int heightSpecSize = MeasureSpec.getSize(heightMeasureSpec);
         int width = (int) dp2px(CIRCLE_DIAMETER);
         int height = (int) dp2px(CIRCLE_DIAMETER);
-        if (widthSpecMode == MeasureSpec.AT_MOST && heightSpecMode == MeasureSpec.AT_MOST) {
-            setMeasuredDimension(width, height);
-        } else if (widthSpecMode == MeasureSpec.AT_MOST) {
-            setMeasuredDimension(width, heightSpecSize);
-        } else if (heightSpecMode == MeasureSpec.AT_MOST) {
-            setMeasuredDimension(widthSpecSize, height);
-        }
+        setMeasuredDimension(width, height);
     }
 
     @Override

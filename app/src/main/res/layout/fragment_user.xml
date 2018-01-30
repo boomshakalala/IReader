@@ -14,6 +14,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <LinearLayout
+                android:id="@+id/headerView"
                 android:layout_width="match_parent"
                 android:layout_height="312px"
                 android:orientation="horizontal"
@@ -41,7 +42,7 @@
                         android:textColor="@color/black"
                         android:text="注册/登录"/>
                     <TextView
-                        android:visibility="gone"
+                        android:visibility="visible"
                         android:id="@+id/userIdTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -56,7 +57,7 @@
                         android:background="@drawable/black_round_backgroud"/>
 
                     <TextView
-                        android:visibility="gone"
+                        android:visibility="visible"
                         android:id="@+id/phoneNumTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -141,6 +142,7 @@
                     android:drawableLeft="@drawable/ic_user_wallet"
                     android:drawablePadding="27dp"/>
                 <TextView
+                    android:id="@+id/walletTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="36px"

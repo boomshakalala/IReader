@@ -1,6 +1,7 @@
 package com.tenghen.ireader.ui.fragment;
 
 import android.content.Intent;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -9,6 +10,7 @@ import com.bumptech.glide.Glide;
 import com.chengx.mvp.net.ResponseCallback;
 import com.chengx.mvp.utils.KLog;
 import com.chengx.mvp.widget.CircleImageView;
+import com.tenghen.ireader.CommonUtils;
 import com.tenghen.ireader.R;
 import com.tenghen.ireader.aliapi.Alipay;
 import com.tenghen.ireader.base.BaseFragment;
@@ -16,6 +18,8 @@ import com.tenghen.ireader.base.BaseListFragment;
 //import com.tenghen.ireader.qqapi.QQAPI;
 import com.tenghen.ireader.module.OrderInfo;
 import com.tenghen.ireader.module.User;
+import com.tenghen.ireader.module.UserInfo;
+import com.tenghen.ireader.module.Wallet;
 import com.tenghen.ireader.net.Api;
 import com.tenghen.ireader.ui.activity.CostLogActivity;
 import com.tenghen.ireader.ui.activity.LatestReadActivity;
@@ -60,6 +64,8 @@ public class UserFragment extends BaseFragment<UserPresent> {
     TextView userIdTv;
     @BindView(R.id.phoneNumTv)
     TextView phoneNumTv;
+    @BindView(R.id.walletTv)
+    TextView walletTv;
     @Override
     public void initToolBar() {
 
@@ -77,10 +83,11 @@ public class UserFragment extends BaseFragment<UserPresent> {
 
     @Override
     public void initViews() {
-        if (isLogin())
-            setUserInfo();
-        else
+        if (CommonUtils.isLogin()){
+            getData();
+        }else {
             clearUserInfo();
+        }
     }
 
     @Override
@@ -152,27 +159,44 @@ public class UserFragment extends BaseFragment<UserPresent> {
             LoginActivity.launch(this,OPT_TO_MY_MSG);
     }
 
-    public void setUserInfo(){
-//        nickNameTv.setText(getUserInfo().getNickName());
-//        Glide.with(this).load(getUserInfo().getAvatar()).into(avatarIv);
-        userIdTv.setVisibility(View.VISIBLE);
-        phoneNumTv.setVisibility(View.VISIBLE);
-        userIdTv.setText("ID:"+getUserInfo().getUserId());
-//        phoneNumTv.setText(getUserInfo().getPhoneNum());
+
+    private void getData(){
+        getPresent().getUserData();
+        getPresent().getSignData();
+        getPresent().getWalletData();
     }
+
+    public void setUserInfo(UserInfo userInfo){
+        UserInfo.BaseInfo baseInfo = userInfo.getBase_info();
+        if (baseInfo != null) {
+            userIdTv.setText("ID:"+baseInfo.getId());
+            Glide.with(this).load(Api.IMG_HOST+baseInfo.getUser_image()).into(avatarIv);
+            String phoneNum = baseInfo.getMobile();
+            phoneNumTv.setText(TextUtils.isEmpty(phoneNum)?"绑定手机":phoneNum);
+            phoneNumTv.setClickable(TextUtils.isEmpty(phoneNum));
+            nickNameTv.setText(baseInfo.getName());
+        }
+    }
+
+    public void setWalletInfo(Wallet walletInfo){
+        walletTv.setVisibility(View.VISIBLE);
+        walletTv.setText(walletInfo.getMoney()+"腾币");
+    }
+
 
     public void clearUserInfo(){
         nickNameTv.setText("注册/登录");
         avatarIv.setImageResource(R.drawable.ic_user_avatar);
         userIdTv.setVisibility(View.GONE);
         phoneNumTv.setVisibility(View.GONE);
+        walletTv.setVisibility(View.INVISIBLE);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (isLogin())
-            setUserInfo();
+            getData();
         else
             clearUserInfo();
         switch (requestCode){
@@ -216,7 +240,4 @@ public class UserFragment extends BaseFragment<UserPresent> {
             LoginActivity.launch(this,OPT_TO_RECHARGE);
     }
 
-    public void showUser(UserI user){
-
-    }
 }
