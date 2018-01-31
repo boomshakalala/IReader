@@ -16,7 +16,9 @@ import com.tenghen.ireader.module.CategoryBook;
 import com.tenghen.ireader.module.Chapter;
 import com.tenghen.ireader.module.Charts;
 import com.tenghen.ireader.module.ConsumeRecord;
+import com.tenghen.ireader.module.Cost;
 import com.tenghen.ireader.module.IndexBanner;
+import com.tenghen.ireader.module.LatestBook;
 import com.tenghen.ireader.module.MyRehargeRecord;
 import com.tenghen.ireader.module.OrderInfo;
 import com.tenghen.ireader.module.RankBook;
@@ -168,12 +170,12 @@ public class Api {
         HttpEngine.getInstance().post(HOST + USER_MY_BOOK_CASE,param,typeOfClass,callback);
     }
 
-    public static void userMyConsumeRecord(int p,ResponseCallback<List<ConsumeRecord>> callback){
+    public static void userMyConsumeRecord(int p,ResponseCallback<List<Cost>> callback){
         RequestParam param = new RequestParam();
         param.put("p",String.valueOf(p));
         param.put("user_id",getUserId());
         param.put("token",getToken());
-        Type typeOfClass = new TypeToken<List<ConsumeRecord>>(){}.getType();
+        Type typeOfClass = new TypeToken<List<Cost>>(){}.getType();
         HttpEngine.getInstance().post(HOST + USER_MY_CONSUME_RECORD,param,typeOfClass,callback);
     }
 
@@ -182,7 +184,7 @@ public class Api {
         param.put("p",String.valueOf(p));
         param.put("user_id",getUserId());
         param.put("token",getToken());
-        HttpEngine.getInstance().post(HOST + USER_MY_CONSUME_RECORD,param,MyRehargeRecord.class,callback);
+        HttpEngine.getInstance().post(HOST + USER_MY_RECHARGE_RECORD,param,MyRehargeRecord.class,callback);
     }
 
     public static void userMyWallet(ResponseCallback<Wallet> callback){
@@ -238,12 +240,12 @@ public class Api {
         HttpEngine.getInstance().post(HOST + CHATER_BOOK_CHAPTERS,param,typeOfClass,callback);
     }
 
-    public static void userMyReadRecord(int p,ResponseCallback<List<Book>> callback){
+    public static void userMyReadRecord(int p,ResponseCallback<List<LatestBook>> callback){
         RequestParam param = new RequestParam();
         param.put("user_id",getUserId());
         param.put("token",getToken());
         param.put("p",String.valueOf(p));
-        Type typeOfClass = new TypeToken<List<Book>>(){}.getType();
+        Type typeOfClass = new TypeToken<List<LatestBook>>(){}.getType();
         HttpEngine.getInstance().post(HOST + USER_MY_READ_RECORD,param,typeOfClass,callback);
     }
 

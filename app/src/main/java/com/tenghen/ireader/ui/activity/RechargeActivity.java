@@ -9,7 +9,6 @@ import android.widget.TextView;
 import com.chengx.mvp.net.ResponseCallback;
 import com.tenghen.ireader.R;
 import com.tenghen.ireader.base.BaseActivity;
-import com.tenghen.ireader.module.ConsumeRecord;
 import com.tenghen.ireader.module.Wallet;
 import com.tenghen.ireader.net.Api;
 

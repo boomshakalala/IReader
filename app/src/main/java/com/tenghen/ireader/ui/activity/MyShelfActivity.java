@@ -48,6 +48,7 @@ public class MyShelfActivity extends BaseListActivity<MyShelfPresent,Book> {
         super.initViews();
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
         recyclerView.setAdapter(adapter);
+        getPresent().refresh();
     }
 
     @Override

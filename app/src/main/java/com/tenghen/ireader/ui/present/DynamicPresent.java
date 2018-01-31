@@ -6,8 +6,6 @@ import com.tenghen.ireader.module.ActiveRank;
 import com.tenghen.ireader.module.Banner;
 import com.tenghen.ireader.module.Book;
 import com.tenghen.ireader.module.Comment;
-import com.tenghen.ireader.module.Cost;
-import com.tenghen.ireader.ui.activity.CostLogActivity;
 import com.tenghen.ireader.ui.activity.DynamicActivity;
 
 import java.util.ArrayList;

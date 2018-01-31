@@ -160,6 +160,7 @@ public class HttpEngine {
 
     public <T> void post(String url,RequestParam param,final Type typeOfClass,final ResponseCallback<T> callback){
         KLog.d(TAG,param);
+        KLog.d(TAG,url);
         FormBody.Builder builder = new FormBody.Builder();
         Iterator<Map.Entry<String,String>> iterator = param.entrySet().iterator();
         while (iterator.hasNext()){

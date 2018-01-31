@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import com.tenghen.ireader.R;
 import com.tenghen.ireader.adapter.LatestBookListAdapter;
 import com.tenghen.ireader.base.BaseListActivity;
+import com.tenghen.ireader.module.Book;
 import com.tenghen.ireader.module.LatestBook;
 import com.tenghen.ireader.ui.present.LatestReadPresent;
 
@@ -33,6 +34,11 @@ public class LatestReadActivity extends BaseListActivity<LatestReadPresent,Lates
     @Override
     public int getLayoutId() {
         return R.layout.activity_latest_read;
+    }
+
+    @Override
+    public void initViews() {
+        getPresent().refresh();
     }
 
     @Override

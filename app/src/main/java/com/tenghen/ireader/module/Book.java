@@ -18,6 +18,7 @@ public class Book implements Serializable{
     private String category_name;
     private String all_click;
 
+
     public boolean isRec = false;
     public boolean isRank = false;
     public boolean shouRank = false;

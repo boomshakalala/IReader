@@ -1,9 +1,7 @@
 package com.tenghen.ireader.ui.present;
 
 import com.tenghen.ireader.base.BaseListPresent;
-import com.tenghen.ireader.module.Cost;
 import com.tenghen.ireader.module.Msg;
-import com.tenghen.ireader.ui.activity.CostLogActivity;
 import com.tenghen.ireader.ui.activity.MyMsgActivity;
 
 import java.util.ArrayList;

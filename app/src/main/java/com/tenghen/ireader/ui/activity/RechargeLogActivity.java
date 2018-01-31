@@ -46,6 +46,7 @@ public class RechargeLogActivity extends BaseListActivity<RechargeLogPresent,Obj
         super.initViews();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
+        getPresent().refresh();
     }
 
     @Override

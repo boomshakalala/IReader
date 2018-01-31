@@ -66,7 +66,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder{
      * @param text TextView value
      * @return this
      */
-    public RecyclerViewHolder setText(int viewId,String text){
+    public RecyclerViewHolder setText(int viewId,CharSequence text){
         TextView textView = getView(viewId);
         textView.setText(text);
         return this;

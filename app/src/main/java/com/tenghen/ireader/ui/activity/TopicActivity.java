@@ -5,12 +5,9 @@ import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 
 import com.tenghen.ireader.R;
-import com.tenghen.ireader.adapter.CostLogAdapter;
 import com.tenghen.ireader.adapter.TopicAdapter;
 import com.tenghen.ireader.base.BaseListActivity;
-import com.tenghen.ireader.module.Cost;
 import com.tenghen.ireader.module.Topic;
-import com.tenghen.ireader.ui.present.CostLogPresent;
 import com.tenghen.ireader.ui.present.TopicPresent;
 
 import java.util.ArrayList;

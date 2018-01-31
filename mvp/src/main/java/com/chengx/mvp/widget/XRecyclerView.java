@@ -12,6 +12,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.chengx.mvp.R;
+import com.chengx.mvp.utils.ToastUtils;
 import com.chengx.mvp.widget.pull2refresh.PullToRefreshBase;
 import com.chengx.mvp.widget.pull2refresh.PullToRefreshRecyclerView;
 
@@ -144,7 +145,8 @@ public class XRecyclerView extends FrameLayout {
     }
 
     public void closeLoadMore(){
-        recyclerView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
+        ToastUtils.showToast(context,"别撸了 到底儿了");
+        recyclerView.onRefreshComplete();
     }
 
     public void closeRefresh(){

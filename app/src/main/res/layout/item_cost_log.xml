@@ -12,6 +12,7 @@
         android:orientation="horizontal"
         android:gravity="center_vertical">
         <ImageView
+            android:id="@+id/bookIv"
             android:layout_width="138px"
             android:layout_height="189px"
             android:src="@drawable/ic_book"/>
@@ -21,6 +22,7 @@
             android:layout_marginLeft="54px"
             android:orientation="vertical">
             <TextView
+                android:id="@+id/bookNameTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
@@ -34,6 +36,7 @@
                 android:gravity="center_vertical"
                 android:layout_marginTop="33px">
                 <TextView
+                    android:id="@+id/cNameTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#373737"
@@ -46,6 +49,7 @@
                     android:layout_marginRight="30px"
                     android:background="#373737"/>
                 <TextView
+                    android:id="@+id/readBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="26px"
@@ -53,6 +57,7 @@
                     android:text="重读"/>
             </LinearLayout>
             <TextView
+                android:id="@+id/costTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="26px"

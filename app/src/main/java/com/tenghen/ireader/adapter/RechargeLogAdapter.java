@@ -19,7 +19,7 @@ public class RechargeLogAdapter extends MultiItemCommonAdapter<Object> {
 
     public RechargeLogAdapter(Context context, List<Object> data) {
         super(context, data);
-        addItemViewDelegate(new RechargeHeaderDelegate());
+        addItemViewDelegate(new RechargeHeaderDelegate(context));
         addItemViewDelegate(new RechargeLogListDelegate());
     }
 }
