@@ -16,6 +16,7 @@ import com.tenghen.ireader.net.Api;
 import com.tenghen.ireader.ui.activity.MonthlyActivity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -57,6 +58,11 @@ public class MonthlyPresent extends BaseListPresent<MonthlyActivity> {
                             Api.userMonthlyRank(new ResponseCallback<List<Book>>() {
                                 @Override
                                 public void onSuccess(List<Book> books) {
+                                    if (books == null||books.size()==0)
+                                        return;
+                                    Label label = new Label();
+                                    label.setText("人气排行");
+                                    data.add(label);
                                     for (int i = 0; i < books.size(); i++) {
                                         Book book = books.get(i);
                                         if (i==0){
@@ -114,6 +120,8 @@ public class MonthlyPresent extends BaseListPresent<MonthlyActivity> {
 
             @Override
             public void onFailure(int errCode, String info) {
+                data.add(new UserInfo());
+                data.add(new ViewSupportModel(ViewSupportModel.VIEW_TYPE_SPLIT_SPACE));
                 Api.chartMonthlyCharts(new ResponseCallback<List<Charts>>() {
                     @Override
                     public void onSuccess(List<Charts> chartses) {
@@ -138,6 +146,11 @@ public class MonthlyPresent extends BaseListPresent<MonthlyActivity> {
                             Api.userMonthlyRank(new ResponseCallback<List<Book>>() {
                                 @Override
                                 public void onSuccess(List<Book> books) {
+                                    if (books == null||books.size()==0)
+                                    return;
+                                    Label label = new Label();
+                                    label.setText("人气排行");
+                                    data.add(label);
                                     for (int i = 0; i < books.size(); i++) {
                                         Book book = books.get(i);
                                         if (i==0){

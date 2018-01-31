@@ -6,13 +6,9 @@ import android.support.v7.widget.GridLayoutManager;
 
 import com.tenghen.ireader.R;
 import com.tenghen.ireader.adapter.BookListDelegate;
-import com.tenghen.ireader.adapter.FeaturedBookDelegate;
 import com.tenghen.ireader.adapter.FreeBookAdapter;
 import com.tenghen.ireader.adapter.FreeBookDelegate;
-import com.tenghen.ireader.adapter.MonthlyAdapter;
 import com.tenghen.ireader.base.BaseListActivity;
-import com.tenghen.ireader.module.BookList;
-import com.tenghen.ireader.module.FreeBook;
 import com.tenghen.ireader.ui.present.FreeBookPresent;
 
 import java.util.ArrayList;

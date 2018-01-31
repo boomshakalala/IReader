@@ -92,9 +92,12 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder{
      */
     public RecyclerViewHolder setImageUrl(int viewId,String imageUrl){
         ImageView imageView = getView(viewId);
-        Glide.with(context)
-                .load(imageUrl)
-                .into(imageView);
+        if (imageView != null) {
+            Glide.with(context)
+                    .load(imageUrl)
+                    .into(imageView);
+        }
+
         return this;
     }
 

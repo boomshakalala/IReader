@@ -7,6 +7,7 @@ import com.chengx.mvp.net.ResponseCallback;
 import com.chengx.mvp.utils.AppUtils;
 import com.chengx.mvp.utils.PhoneUtils;
 import com.chengx.mvp.utils.SPUtils;
+import com.chengx.mvp.utils.ThreadPoolUtils;
 import com.google.gson.reflect.TypeToken;
 import com.sina.weibo.sdk.api.VideoObject;
 import com.tenghen.ireader.module.Book;
@@ -61,7 +62,8 @@ public class Api {
     public static final String USER_MY_COMMENT = "/user/mycomment";
     public static final String USER_MY_WALLET = "/user/myWallet";
     public static final String USER_USER_INFO = "/user/userInfo";
-    public static final String USER_MONTHLY_RANK = "/user/monthlyRank";
+    public static final String USER_MY_READ_RECORD = "/user/myReadRecord";
+    public static final String USER_MONTHLY_RANK = "/book/monthlyRank";
     public static final String CHART_MONTHLY_CHARTS = "/chart/monthlyCharts";
     public static final String CHART_INDEX_CHARTS = "/chart/indexCharts";
     public static final String ORDER_RECHARGE = "/order/recharge";
@@ -234,6 +236,15 @@ public class Api {
         param.put("auth_id",authId);
         Type typeOfClass = new TypeToken<List<Chapter>>(){}.getType();
         HttpEngine.getInstance().post(HOST + CHATER_BOOK_CHAPTERS,param,typeOfClass,callback);
+    }
+
+    public static void userMyReadRecord(int p,ResponseCallback<List<Book>> callback){
+        RequestParam param = new RequestParam();
+        param.put("user_id",getUserId());
+        param.put("token",getToken());
+        param.put("p",String.valueOf(p));
+        Type typeOfClass = new TypeToken<List<Book>>(){}.getType();
+        HttpEngine.getInstance().post(HOST + USER_MY_READ_RECORD,param,typeOfClass,callback);
     }
 
 

@@ -110,7 +110,7 @@ public class MainActivity extends BaseActivity<MainPresent> implements View.OnCl
         }
     }
 
-    private void setSelected(int index){
+    public void setSelected(int index){
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         hideTransaction(ft);
         resetBtn();
