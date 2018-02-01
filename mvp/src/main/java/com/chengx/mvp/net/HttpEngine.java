@@ -98,7 +98,8 @@ public class HttpEngine {
             }
             return response;
         }catch (Exception e){
-            return null;
+            KLog.e(TAG,e.getMessage());
+            return response;
         }
     }
 
@@ -219,16 +220,12 @@ public class HttpEngine {
                                 resp.callback.onFailure(wxResponse.getErrcode(), wxResponse.getErrmsg());
                             }
                         }
-
                     }else {
                         ApiResponse response = formatJson(resp.json,resp.typeOfClass);
-                        if (response == null){
-                            resp.callback.onFailure(ERR_CODE_JSON_SYNTAX,ERR_INFO_JSON_SYNTAX);
-                            KLog.e(TAG,ERR_INFO_JSON_SYNTAX+":\n");
-                            KLog.json(TAG,resp.json);
-                            return;
-                        }else if (response.isSuccess()){
-                            resp.callback.onSuccess(response.getData());
+                        if (response.isSuccess()){
+                            if (response.getData() != null) {
+                                resp.callback.onSuccess(response.getData());
+                            }
                         }else {
                             KLog.e(TAG,response.getMessage());
                             resp.callback.onFailure(response.getCode(),response.getMessage());

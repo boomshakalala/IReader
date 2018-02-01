@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.chengx.mvp.adapter.CommonRecyclerAdapter;
 import com.chengx.mvp.adapter.RecyclerViewHolder;
+import com.tenghen.ireader.R;
 import com.tenghen.ireader.module.Comment;
 
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
 
 public class AllCommentAdapter extends CommonRecyclerAdapter<Comment> {
     public AllCommentAdapter(Context context, int layoutId, List<Comment> data) {
-        super(context, layoutId, data);
+        super(context,layoutId, data);
     }
 
     @Override

@@ -42,7 +42,7 @@ public class MoreCommentActivity extends BaseListActivity<MoreCommentPresent,Com
     @Override
     public void initData() {
         data = new ArrayList<>();
-        adapter = new AllCommentAdapter(this,R.layout.item_my_msg,data);
+        adapter = new AllCommentAdapter(this, R.layout.item_book_detail_comment,data);
         ((MoreCommentPresent)getPresent()).setBookId(getIntent().getStringExtra("bookId"));
     }
 
