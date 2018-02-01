@@ -15,6 +15,7 @@ import com.tenghen.ireader.module.BookDetail;
 import com.tenghen.ireader.module.CategoryBook;
 import com.tenghen.ireader.module.Chapter;
 import com.tenghen.ireader.module.Charts;
+import com.tenghen.ireader.module.Comment;
 import com.tenghen.ireader.module.ConsumeRecord;
 import com.tenghen.ireader.module.Cost;
 import com.tenghen.ireader.module.IndexBanner;
@@ -54,6 +55,7 @@ public class Api {
     public static final String BOOK_SEARCH_BOOKS =  "/book/searchbooks";
     public static final String BOOK_BOOK_KEYWORDS =  "/book/bookkeywords";
     public static final String BOOK_INFO = "/book/info";
+    public static final String BOOK_COMMENTS = "/book/bookComments";
     public static final String CHATER_BOOK_CHAPTERS = "/chapter/bookchapters";
     public static final String USER_LOGIN = "/user/login";
     public static final String USER_REGISTER = "/user/register";
@@ -134,6 +136,13 @@ public class Api {
         param.put("user_id",getUserId());
         param.put("token",getToken());
         HttpEngine.getInstance().post(HOST + BOOK_INFO,param, BookDetail.class,callback);
+    }
+
+    public static void bookComments(String bookId, ResponseCallback<List<Comment>> callback){
+        RequestParam param = new RequestParam();
+        param.put("book_id",bookId);
+        Type typeOfClass = new TypeToken<List<Comment>>(){}.getType();
+        HttpEngine.getInstance().post(HOST + BOOK_COMMENTS,param,typeOfClass,callback);
     }
 
     public static void userLogin(int type,String email,String password,String authId,ResponseCallback<User> callback){

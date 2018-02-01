@@ -60,6 +60,8 @@ public class BookDetailPresent extends BaseListPresent<BookDetailActivity> {
                         dataList.add(giftLog);
                     }
                     Label giftMoreLabel = new Label();
+                    giftMoreLabel.setTag(1);
+                    giftMoreLabel.setId(bookId);
                     giftMoreLabel.setCategory(Label.BOOK_DETAIL_MORE);
                     dataList.add(giftMoreLabel);
                 }
@@ -77,6 +79,8 @@ public class BookDetailPresent extends BaseListPresent<BookDetailActivity> {
                     }
                     Label commentMoreLabel = new Label();
                     commentMoreLabel.setCategory(Label.BOOK_DETAIL_MORE);
+                    commentMoreLabel.setTag(2);
+                    commentMoreLabel.setId(bookId);
                     dataList.add(commentMoreLabel);
                 }
                 getV().refresh(dataList);

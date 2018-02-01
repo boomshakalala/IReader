@@ -16,6 +16,24 @@ public class Label {
     private int endTime;
     private boolean needTimmer;
     private int category;
+    private int tag;
+    private String id;
+
+    public int getTag() {
+        return tag;
+    }
+
+    public void setTag(int tag) {
+        this.tag = tag;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public int getCategory() {
         return category;

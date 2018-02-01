@@ -22,7 +22,7 @@ public class BookDetailAdapter extends MultiItemCommonAdapter<Object> {
         addItemViewDelegate(new BookDetailGiftLogDelegate());
         addItemViewDelegate(new BookDetailGiftLogLabelDelegate());
         addItemViewDelegate(new BookDetailHeaderDelegate(context));
-        addItemViewDelegate(new BookDetailMoreDelegate());
+        addItemViewDelegate(new BookDetailMoreDelegate(context));
         addItemViewDelegate(new SpaceDividerItemDelegate());
         addItemViewDelegate(new AdapterEmptyDelegate());
     }

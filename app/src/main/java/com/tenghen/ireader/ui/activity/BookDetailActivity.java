@@ -61,7 +61,6 @@ public class BookDetailActivity extends BaseListActivity<BookDetailPresent,Objec
         });
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
-        recyclerView.closeLoadMore();
         getPresent().refresh();
     }
 
