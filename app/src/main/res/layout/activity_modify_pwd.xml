@@ -63,6 +63,34 @@
 
     </LinearLayout>
     <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="96px"
+    android:layout_marginRight="96px"
+    android:paddingLeft="48px"
+    android:paddingRight="48px"
+    android:layout_marginTop="54px"
+    android:background="@drawable/shape_white_black_stroke_rect">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="36px"
+        android:text="确认密码"/>
+    <EditText
+        android:id="@+id/confirmPwdEt"
+        android:layout_width="match_parent"
+        android:layout_height="111px"
+        android:layout_marginLeft="51px"
+        android:background="@null"
+        android:textColor="@color/black"
+        android:textSize="36px"
+        android:singleLine="true"
+        android:inputType="textPassword"
+        android:hint="请确认新密码"/>
+</LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="96px"
@@ -76,18 +104,28 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:textSize="36px"
-            android:text="确认密码"/>
+            android:text="验证码"/>
         <EditText
-            android:id="@+id/confirmPwdEt"
-            android:layout_width="match_parent"
+            android:id="@+id/verifyCodeEt"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="111px"
             android:layout_marginLeft="51px"
             android:background="@null"
             android:textColor="@color/black"
             android:textSize="36px"
             android:singleLine="true"
-            android:inputType="textPassword"
-            android:hint="请确认新密码"/>
+            android:inputType="number"
+            android:maxLength="6"
+            android:digits="0123456789"
+            android:hint="请输入验证码"/>
+        <TextView
+            android:id="@+id/getVerifyBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="36px"
+            android:textColor="#1585b1"
+            android:text="获取"/>
     </LinearLayout>
 
     <Button

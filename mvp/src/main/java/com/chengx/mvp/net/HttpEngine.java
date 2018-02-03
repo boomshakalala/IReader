@@ -223,6 +223,8 @@ public class HttpEngine {
                     }else {
                         ApiResponse response = formatJson(resp.json,resp.typeOfClass);
                         if (response.isSuccess()){
+                            if (resp.typeOfClass.equals(Void.class))
+                                resp.callback.onSuccess(null);
                             if (response.getData() != null) {
                                 resp.callback.onSuccess(response.getData());
                             }

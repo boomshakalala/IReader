@@ -44,4 +44,7 @@ dependencies {
     compile files('libs/open_sdk_r5785_lite.jar')
     compile files('libs/alipaySdk-20170922.jar')
     compile 'com.google.android.gms:play-services-appindexing:8.1.0'
+    compile files('libs/umeng_social_api.jar')
+    compile files('libs/SocialSDK_QQ_Simplify.jar')
+    compile files('libs/umeng_shareboard_widget.jar')
 }

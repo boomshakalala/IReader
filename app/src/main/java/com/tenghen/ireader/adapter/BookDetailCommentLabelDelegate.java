@@ -1,9 +1,13 @@
 package com.tenghen.ireader.adapter;
 
+import android.content.Context;
+import android.view.View;
+
 import com.chengx.mvp.adapter.ItemViewDelegate;
 import com.chengx.mvp.adapter.RecyclerViewHolder;
 import com.tenghen.ireader.R;
 import com.tenghen.ireader.module.Label;
+import com.tenghen.ireader.widget.CommentDialog;
 
 /**
  * 作者：chengx
@@ -12,6 +16,12 @@ import com.tenghen.ireader.module.Label;
  */
 
 public class BookDetailCommentLabelDelegate implements ItemViewDelegate<Object> {
+    private Context context;
+
+    public BookDetailCommentLabelDelegate(Context context) {
+        this.context = context;
+    }
+
     @Override
     public int getItemLayoutId() {
         return R.layout.item_book_detail_comment_label;
@@ -24,6 +34,12 @@ public class BookDetailCommentLabelDelegate implements ItemViewDelegate<Object> 
 
     @Override
     public void convert(RecyclerViewHolder holder, Object o, int position) {
-
+        final Label commentLabel = (Label) o;
+        holder.setOnclickListener(R.id.commentBtn, new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new CommentDialog(context,commentLabel.getId(),"").show();
+            }
+        });
     }
 }

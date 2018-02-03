@@ -68,6 +68,7 @@ public class BookDetailPresent extends BaseListPresent<BookDetailActivity> {
 
                 dataList.add(new ViewSupportModel(ViewSupportModel.VIEW_TYPE_SPLIT_SPACE));
                 Label commentLabel = new Label();
+                commentLabel.setId(bookId);
                 commentLabel.setCategory(Label.BOOK_DETAIL_COMMENT);
                 dataList.add(commentLabel);
 

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f9f4f6">
+    <include
+        layout="@layout/common_toolbar"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_marginTop="129px"
+        android:padding="42px"
+        android:gravity="center_horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="39px"
+            android:text="关于我们"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#f3f4f6"
+            android:layout_marginTop="42px"
+            android:textSize="32px"
+            android:textColor="#6a6a6a"
+            android:text="藤痕隶属于北京微风时代文化有限公司，由业内顶尖的内容运营团队倾心打造。(www.tenghen.com)是国内新锐的原创文学阅读创作平台，是集创作-阅读-出版-影视-改编-无限增值业务为一体的开放性内容平台。藤痕微风时代根于新媒体文化创意产业，"/>
+    </LinearLayout>
+
+
+</LinearLayout>

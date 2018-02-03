@@ -5,9 +5,11 @@ import android.view.View;
 
 import com.chengx.mvp.adapter.ItemViewDelegate;
 import com.chengx.mvp.adapter.RecyclerViewHolder;
+import com.google.android.gms.common.api.Api;
 import com.tenghen.ireader.R;
 import com.tenghen.ireader.module.BookDetail;
 import com.tenghen.ireader.module.BookDetailHeader;
+import com.tenghen.ireader.ui.activity.ChapterListActivity;
 import com.tenghen.ireader.ui.activity.ReadActivity;
 
 import java.io.BufferedOutputStream;
@@ -37,7 +39,7 @@ public class BookDetailHeaderDelegate implements ItemViewDelegate<Object> {
 
     @Override
     public void convert(RecyclerViewHolder holder, Object o, int position) {
-        BookDetailHeader book = (BookDetailHeader) o;
+        final BookDetailHeader book = (BookDetailHeader) o;
         holder.setText(R.id.bookNameTv,book.getName());
         holder.setText(R.id.authorNameTv,book.getPenName());
         holder.setText(R.id.wordCountTv,book.getWordCount());
@@ -63,6 +65,12 @@ public class BookDetailHeaderDelegate implements ItemViewDelegate<Object> {
             @Override
             public void onClick(View view) {
                 ReadActivity.launch(context);
+            }
+        });
+        holder.setOnclickListener(R.id.chapterListBtn, new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ChapterListActivity.launch(context,book.getId());
             }
         });
     }

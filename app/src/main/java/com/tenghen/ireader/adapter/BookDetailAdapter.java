@@ -13,10 +13,10 @@ import java.util.List;
  */
 
 public class BookDetailAdapter extends MultiItemCommonAdapter<Object> {
-    public BookDetailAdapter(Context context, List<Object> data) {
+    public BookDetailAdapter(Context context, List<Object> data,String bookId) {
         super(context, data);
-        addItemViewDelegate(new BookDetailCommentDelegate(context));
-        addItemViewDelegate(new BookDetailCommentLabelDelegate());
+        addItemViewDelegate(new BookDetailCommentDelegate(context,bookId));
+        addItemViewDelegate(new BookDetailCommentLabelDelegate(context));
         addItemViewDelegate(new BookDetailGiftDelegate());
         addItemViewDelegate(new BookDetailGiftLabelDelegate());
         addItemViewDelegate(new BookDetailGiftLogDelegate());

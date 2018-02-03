@@ -1,5 +1,7 @@
 package com.tenghen.ireader.net;
 
+import android.os.Build;
+
 import com.chengx.mvp.base.AppConfig;
 import com.chengx.mvp.net.HttpEngine;
 import com.chengx.mvp.net.RequestParam;
@@ -8,6 +10,7 @@ import com.chengx.mvp.utils.AppUtils;
 import com.chengx.mvp.utils.PhoneUtils;
 import com.chengx.mvp.utils.SPUtils;
 import com.chengx.mvp.utils.ThreadPoolUtils;
+import com.chengx.mvp.widget.pull2refresh.PullToRefreshBase;
 import com.google.gson.reflect.TypeToken;
 import com.sina.weibo.sdk.api.VideoObject;
 import com.tenghen.ireader.module.Book;
@@ -20,12 +23,14 @@ import com.tenghen.ireader.module.ConsumeRecord;
 import com.tenghen.ireader.module.Cost;
 import com.tenghen.ireader.module.IndexBanner;
 import com.tenghen.ireader.module.LatestBook;
+import com.tenghen.ireader.module.MyCommentBean;
 import com.tenghen.ireader.module.MyRehargeRecord;
 import com.tenghen.ireader.module.OrderInfo;
 import com.tenghen.ireader.module.RankBook;
 import com.chengx.mvp.net.WXApiResponse;
 import com.tenghen.ireader.module.User;
 import com.tenghen.ireader.module.UserInfo;
+import com.tenghen.ireader.module.VerifyCode;
 import com.tenghen.ireader.module.Wallet;
 
 
@@ -64,6 +69,7 @@ public class Api {
     public static final String USER_MY_CONSUME_RECORD = "/user/myconsumerecord";
     public static final String USER_MY_RECHARGE_RECORD = "/user/myrechargerecord";
     public static final String USER_MY_COMMENT = "/user/mycomment";
+    public static final String USER_ADD_COMMENT = "/user/addComment";
     public static final String USER_MY_WALLET = "/user/myWallet";
     public static final String USER_USER_INFO = "/user/userInfo";
     public static final String USER_MY_READ_RECORD = "/user/myReadRecord";
@@ -71,6 +77,8 @@ public class Api {
     public static final String CHART_MONTHLY_CHARTS = "/chart/monthlyCharts";
     public static final String CHART_INDEX_CHARTS = "/chart/indexCharts";
     public static final String ORDER_RECHARGE = "/order/recharge";
+    public static final String USER_GET_VERIFY_CODE = "/user/getVertifyCode";
+    public static final String USER_CHENGE_PWD = "/user/changePwd";
 
 
 
@@ -265,6 +273,25 @@ public class Api {
         HttpEngine.getInstance().post(HOST + USER_MY_READ_RECORD,param,typeOfClass,callback);
     }
 
+    public static void userMyComment(int p, ResponseCallback<List<MyCommentBean>> callback){
+        RequestParam param = new RequestParam();
+        param.put("user_id",getUserId());
+        param.put("token",getToken());
+        param.put("p",String.valueOf(p));
+        Type typeOfClass = new TypeToken<List<MyCommentBean>>(){}.getType();
+        HttpEngine.getInstance().post(HOST + USER_MY_COMMENT,param,typeOfClass,callback);
+    }
+
+    public static void userAddComment(String bookId,String replyId,String content,ResponseCallback<Void> callback){
+        RequestParam param = new RequestParam();
+        param.put("user_id",getUserId());
+        param.put("token",getToken());
+        param.put("book_id",bookId);
+        param.put("reply_id",replyId);
+        param.put("content",content);
+        HttpEngine.getInstance().post(HOST + USER_ADD_COMMENT,param,Void.class,callback);
+    }
+
 
     public static void orderRecharge(String price, String priceType, String subject,String packageId, ResponseCallback<OrderInfo> callback){
         RequestParam param = new RequestParam();
@@ -275,6 +302,25 @@ public class Api {
         param.put("user_id",getUserId());
         param.put("token",getToken());
         HttpEngine.getInstance().post(HOST + ORDER_RECHARGE,param,OrderInfo.class,callback);
+    }
+
+    public static void userGetVerifyCode(String phoneNum, String type, ResponseCallback<List<VerifyCode>> callback){
+        RequestParam param = new RequestParam();
+        param.put("mobile",phoneNum);
+        param.put("type",type);
+        Type typeOfClass = new TypeToken<List<VerifyCode>>(){}.getType();
+        HttpEngine.getInstance().post(HOST + USER_GET_VERIFY_CODE,param,typeOfClass,callback);
+    }
+
+    public static void userChengePwd(String oldPwd,String newPwd,String verifyCode,ResponseCallback<Void> callback){
+        RequestParam param = new RequestParam();
+        param.put("user_id",getUserId());
+        param.put("token",getToken());
+        param.put("verify_code",verifyCode);
+        param.put("old_password",oldPwd);
+        param.put("password",newPwd);
+        Type typeOfClass = new TypeToken<List<LatestBook>>(){}.getType();
+        HttpEngine.getInstance().post(HOST + USER_CHENGE_PWD,param,typeOfClass,callback);
     }
 
 

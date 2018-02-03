@@ -15,6 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
+                android:id="@+id/chapterNameTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="36px"
@@ -22,6 +23,7 @@
                 android:layout_alignParentLeft="true"
                 android:text="第一章 蒙面杀手"/>
             <TextView
+                android:id="@+id/bookNameTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="36px"
@@ -36,6 +38,7 @@
             android:orientation="vertical"
             android:layout_weight="1">
             <com.chengx.mvp.widget.auto.AutoScrollView
+                android:id="@+id/sv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scrollbars="none">
@@ -44,7 +47,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#242424"
-                    android:textSize="54px"
+                    android:textSize="18sp"
                     android:lineSpacingExtra="14dp"
                     android:text="从最初的乐天制果开始，乐天始终积极努力创造一个互相关爱、尊重个性和创意、共同幸福的社会。秉承为国家和社会发展做贡献的理念，乐天追求以最好的产品满足顾客需求。
 在业务方面，乐天选择最擅长的领域，并力争业界领先，尤其是在食品、零售、旅游、石化、建筑、金融等核心领域中确保了全球竞争力，以在2020年成为“亚洲十强跨国企业”为目标不断努力。[1]
@@ -55,59 +58,61 @@
 在2012年开设中国天津2号店后，乐天百货店还将分别于2013年4月和8月开设“威海店”和“成都店”，进一步稳固在中国实行的多店铺体制。5月，还将开设印度尼西亚“雅加达店”，进军东南亚市场。
 "/>
             </com.chengx.mvp.widget.auto.AutoScrollView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="60px"
+                android:paddingBottom="84px">
+                <TextView
+                    android:layout_width="198px"
+                    android:layout_height="60px"
+                    android:layout_marginLeft="84px"
+                    android:gravity="center"
+                    android:background="@drawable/shape_gray_round_rect"
+                    android:textSize="33px"
+                    android:textColor="#242424"
+                    android:text="上一章"/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1px"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:layout_width="198px"
+                    android:layout_height="60px"
+                    android:gravity="center"
+                    android:background="@drawable/shape_gray_round_rect"
+                    android:textSize="33px"
+                    android:textColor="#242424"
+                    android:text="目录"/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1px"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:layout_width="198px"
+                    android:layout_height="60px"
+                    android:gravity="center"
+                    android:background="@drawable/shape_blue_conner"
+                    android:textSize="33px"
+                    android:textColor="@color/white"
+                    android:layout_marginRight="84px"
+                    android:text="下一章"/>
 
+            </LinearLayout>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="60px"
-            android:paddingBottom="84px">
-            <TextView
-                android:layout_width="198px"
-                android:layout_height="60px"
-                android:layout_marginLeft="84px"
-                android:gravity="center"
-                android:background="@drawable/shape_gray_round_rect"
-                android:textSize="33px"
-                android:textColor="#242424"
-                android:text="上一章"/>
-            <View
-                android:layout_width="0dp"
-                android:layout_height="1px"
-                android:layout_weight="1"/>
-            <TextView
-                android:layout_width="198px"
-                android:layout_height="60px"
-                android:gravity="center"
-                android:background="@drawable/shape_gray_round_rect"
-                android:textSize="33px"
-                android:textColor="#242424"
-                android:text="目录"/>
-            <View
-                android:layout_width="0dp"
-                android:layout_height="1px"
-                android:layout_weight="1"/>
-            <TextView
-                android:layout_width="198px"
-                android:layout_height="60px"
-                android:gravity="center"
-                android:background="@drawable/shape_blue_conner"
-                android:textSize="33px"
-                android:textColor="@color/white"
-                android:layout_marginRight="84px"
-                android:text="下一章"/>
 
-        </LinearLayout>
 
 
 
 
     </LinearLayout>
+
     <FrameLayout
         android:id="@+id/readPopView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="174px"
@@ -115,101 +120,117 @@
             android:orientation="horizontal"
             android:paddingLeft="78px"
             android:paddingRight="78px">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#fa9293"
-                android:textSize="39px"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:gravity="center"
-                android:drawablePadding="8dp"
                 android:drawableLeft="@drawable/btn_read_back"
-                android:text="返回"/>
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:text="返回"
+                android:textColor="#fa9293"
+                android:textSize="39px" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="48px"
-                android:text="自动订阅"
-                android:textColor="#3fbfcc"
+                android:layout_centerInParent="true"
+                android:drawableLeft="@drawable/selector_btn_read_sub"
                 android:drawablePadding="11dp"
                 android:gravity="center"
-                android:drawableLeft="@drawable/selector_btn_read_sub"
-                android:layout_centerInParent="true"/>
+                android:text="自动订阅"
+                android:textColor="#3fbfcc"
+                android:textSize="48px" />
+
             <ImageView
                 android:id="@+id/homeBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/btn_read_home"
+                android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"/>
+                android:src="@drawable/btn_read_home" />
+
             <ImageView
                 android:id="@+id/collectBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/btn_read_collect"
                 android:layout_centerVertical="true"
+                android:layout_marginRight="60px"
                 android:layout_toLeftOf="@id/homeBtn"
-                android:layout_marginRight="60px"/>
+                android:src="@drawable/btn_read_collect" />
 
         </RelativeLayout>
+
         <RelativeLayout
+            android:id="@+id/bottomView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="32px"
+            android:layout_gravity="bottom"
+            android:background="#AAFFFFFF"
             android:paddingBottom="23px"
             android:paddingLeft="225px"
             android:paddingRight="225px"
-            android:background="#AAFFFFFF"
-            android:layout_gravity="bottom">
+            android:paddingTop="32px">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#808080"
-                android:textSize="30px"
-                android:text="评论"
+                android:drawablePadding="7dp"
                 android:drawableTop="@drawable/btn_read_comment"
-                android:drawablePadding="7dp"/>
+                android:text="评论"
+                android:textColor="#808080"
+                android:textSize="30px" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#808080"
-                android:textSize="30px"
                 android:layout_centerInParent="true"
-                android:text="打赏"
+                android:drawablePadding="7dp"
                 android:drawableTop="@drawable/btn_read_reward"
-                android:drawablePadding="7dp"/>
+                android:text="打赏"
+                android:textColor="#808080"
+                android:textSize="30px" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#808080"
-                android:textSize="30px"
                 android:layout_alignParentRight="true"
-                android:text="设置"
+                android:drawablePadding="7dp"
                 android:drawableTop="@drawable/btn_read_setting"
-                android:drawablePadding="7dp"/>
+                android:text="设置"
+                android:textColor="#808080"
+                android:textSize="30px" />
 
         </RelativeLayout>
-        <TextView
-            android:layout_width="177px"
-            android:layout_height="87px"
-            android:layout_gravity="center_vertical|left"
-            android:textSize="41px"
-            android:textColor="@color/white"
-            android:gravity="center"
-            android:background="@drawable/shape_gray_right_conner_rect"
-            android:text="上一章"
-            />
-        <TextView
-            android:layout_width="177px"
-            android:layout_height="87px"
-            android:layout_gravity="center_vertical|right"
-            android:textSize="41px"
-            android:textColor="#f89494"
-            android:gravity="center"
-            android:background="@drawable/shape_white_left_conner_rect"
-            android:text="下一章"
-            />
+
+        <FrameLayout
+            android:id="@+id/upDownView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="177px"
+                android:layout_height="87px"
+                android:layout_gravity="center_vertical|left"
+                android:background="@drawable/shape_gray_right_conner_rect"
+                android:gravity="center"
+                android:text="上一章"
+                android:textColor="@color/white"
+                android:textSize="41px" />
+
+            <TextView
+                android:layout_width="177px"
+                android:layout_height="87px"
+                android:layout_gravity="center_vertical|right"
+                android:background="@drawable/shape_white_left_conner_rect"
+                android:gravity="center"
+                android:text="下一章"
+                android:textColor="#f89494"
+                android:textSize="41px" />
+        </FrameLayout>
+
     </FrameLayout>
 
 

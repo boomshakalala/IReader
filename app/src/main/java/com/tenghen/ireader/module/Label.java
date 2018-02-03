@@ -18,6 +18,7 @@ public class Label {
     private int category;
     private int tag;
     private String id;
+    private String replyId;
 
     public int getTag() {
         return tag;

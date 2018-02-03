@@ -36,6 +36,30 @@
             android:name="design_height"
             android:value="1920" />
 
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5a75df0bf29d987e7800043c" >
+        </meta-data>
+
+        <activity
+            android:name="com.umeng.qq.tencent.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="tencent100424468" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.umeng.qq.tencent.AssistActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+
         <activity
             android:name="com.tencent.tauth.AuthActivity"
             android:noHistory="true"
@@ -148,6 +172,18 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.activity.RechargeMoneyActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+        android:name=".ui.activity.ModifyPwdActivity"
+        android:screenOrientation="portrait"/>
+        <activity
+        android:name=".ui.activity.ProblemsActivity"
+        android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.AboutActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.ChapterListActivity"
             android:screenOrientation="portrait"/>
     </application>
 

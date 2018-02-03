@@ -21,17 +21,23 @@ import com.tenghen.ireader.module.User;
 import com.tenghen.ireader.module.UserInfo;
 import com.tenghen.ireader.module.Wallet;
 import com.tenghen.ireader.net.Api;
+import com.tenghen.ireader.ui.activity.AboutActivity;
 import com.tenghen.ireader.ui.activity.CostLogActivity;
 import com.tenghen.ireader.ui.activity.LatestReadActivity;
 import com.tenghen.ireader.ui.activity.LoginActivity;
+import com.tenghen.ireader.ui.activity.ModifyPwdActivity;
 import com.tenghen.ireader.ui.activity.MyCommentActivity;
 import com.tenghen.ireader.ui.activity.MyMsgActivity;
 import com.tenghen.ireader.ui.activity.MyShelfActivity;
+import com.tenghen.ireader.ui.activity.ProblemsActivity;
 import com.tenghen.ireader.ui.activity.RechargeActivity;
 import com.tenghen.ireader.ui.activity.RechargeLogActivity;
 import com.tenghen.ireader.ui.activity.TopicActivity;
 import com.tenghen.ireader.ui.present.UserPresent;
 import com.tenghen.ireader.wxapi.WXAPI;
+import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.UMShareListener;
+import com.umeng.socialize.bean.SHARE_MEDIA;
 
 import java.util.EventListener;
 
@@ -228,6 +234,10 @@ public class UserFragment extends BaseFragment<UserPresent> {
                 if (isLogin())
                     RechargeActivity.launch(getContext());
                 break;
+            case OPT_TO_RESET_PSD:
+                if (isLogin())
+                    ModifyPwdActivity.launch(getContext());
+                break;
         }
 
     }
@@ -238,6 +248,51 @@ public class UserFragment extends BaseFragment<UserPresent> {
             RechargeActivity.launch(getContext());
         else
             LoginActivity.launch(this,OPT_TO_RECHARGE);
+    }
+
+    @OnClick(R.id.modifyPwdBtn)
+    public void modifyPwd(View view){
+        if (isLogin())
+            ModifyPwdActivity.launch(getContext());
+        else
+            LoginActivity.launch(this,OPT_TO_RESET_PSD);
+    }
+
+    @OnClick(R.id.shareBtn)
+    public void share(View view){
+        new ShareAction(getActivity())
+                .withText("分享给你一个超赞的小说阅读App")
+                .setDisplayList(SHARE_MEDIA.QZONE,SHARE_MEDIA.QQ,SHARE_MEDIA.WEIXIN,SHARE_MEDIA.WEIXIN_CIRCLE)
+                .setCallback(new UMShareListener() {
+                    @Override
+                    public void onStart(SHARE_MEDIA share_media) {
+
+                    }
+
+                    @Override
+                    public void onResult(SHARE_MEDIA share_media) {
+                        showTip("分享成功");
+                    }
+
+                    @Override
+                    public void onError(SHARE_MEDIA share_media, Throwable throwable) {
+                        showTip("分享失败");
+                    }
+
+                    @Override
+                    public void onCancel(SHARE_MEDIA share_media) {
+                        showTip("取消分享");
+                    }
+                })
+                .open();
+    }
+    @OnClick(R.id.problemBtn)
+    public void toProblem(View view){
+        ProblemsActivity.launch(getContext());
+    }
+    @OnClick(R.id.aboutBtn)
+    public void toAbout(View view){
+        AboutActivity.launch(getContext());
     }
 
 }

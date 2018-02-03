@@ -8,7 +8,6 @@ import com.tenghen.ireader.R;
 import com.tenghen.ireader.adapter.BookDetailAdapter;
 import com.tenghen.ireader.adapter.BookDetailGiftDelegate;
 import com.tenghen.ireader.base.BaseListActivity;
-import com.tenghen.ireader.module.BookDetail;
 import com.tenghen.ireader.ui.present.BookDetailPresent;
 
 import java.util.ArrayList;
@@ -45,7 +44,7 @@ public class BookDetailActivity extends BaseListActivity<BookDetailPresent,Objec
         if(bookId!=null)
             ((BookDetailPresent)getPresent()).setBookId(bookId);
         data = new ArrayList<>();
-        adapter = new BookDetailAdapter(this,data);
+        adapter = new BookDetailAdapter(this,data,bookId);
     }
 
     @Override

@@ -28,7 +28,7 @@ public class AllCommentAdapter extends CommonRecyclerAdapter<Comment> {
         holder.setText(R.id.commentTimeTv,comment.getCreateDate());
         List<Comment> subComment = comment.getSub_comment();
         if (subComment != null&&subComment.size()>0) {
-            holder.getView(R.id.replyLayout).setVisibility(View.GONE);
+            holder.getView(R.id.replyLayout).setVisibility(View.VISIBLE);
             ListView listView = holder.getView(R.id.listReply);
             ReplyAdapter adapter = new ReplyAdapter(context,subComment,R.layout.item_reply);
             listView.setAdapter(adapter);

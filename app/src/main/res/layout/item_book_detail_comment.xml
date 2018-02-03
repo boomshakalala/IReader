@@ -14,63 +14,69 @@
         android:textSize="33px"
         android:layout_marginTop="30px"
         android:text="哗啦啦金币风尚，默默支持大大"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
         android:layout_marginTop="33px"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
+
         <TextView
             android:id="@+id/nickNameTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="33px"
-            android:textColor="#6dd9e5"
-            android:text="喵喵"
             android:drawableLeft="@drawable/ic_comment_user"
             android:drawablePadding="6dp"
             android:gravity="center"
-            />
+            android:text="喵喵"
+            android:textColor="#6dd9e5"
+            android:textSize="33px" />
+
         <View
             android:layout_width="0dp"
             android:layout_height="1px"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <TextView
+            android:id="@+id/commentTimeTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#959595"
-            android:textSize="18px"
-            android:drawablePadding="6dp"
             android:drawableLeft="@drawable/ic_comment_date"
+            android:drawablePadding="6dp"
             android:gravity="center"
             android:text="05-09 16:00"
-            android:id="@+id/commentTimeTv" />
+            android:textColor="#959595"
+            android:textSize="18px" />
 
         <TextView
+            android:id="@+id/replyBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#959595"
-            android:textSize="18px"
-            android:drawablePadding="6dp"
-            android:drawableLeft="@drawable/ic_comment_reply"
-            android:gravity="center"
             android:layout_marginLeft="17px"
-            android:text="回复("/>
+            android:drawableLeft="@drawable/ic_comment_reply"
+            android:drawablePadding="6dp"
+            android:gravity="center"
+            android:text="回复("
+            android:textColor="#959595"
+            android:textSize="18px" />
+
         <TextView
             android:id="@+id/replyCountTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18px"
+            android:text="01"
             android:textColor="#6ad9e2"
-            android:text="01"/>
+            android:textSize="18px" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18px"
+            android:text="条)"
             android:textColor="#959595"
-            android:text="条)"/>
+            android:textSize="18px" />
     </LinearLayout>
+
     <com.tenghen.ireader.widget.BubbleLinearLayout
         android:id="@+id/replyLayout"
         android:visibility="visible"
@@ -80,11 +86,11 @@
         app:arrowWidth="8dp"
         app:angle="4dp"
         app:arrowHeight="8dp"
-        app:arrowPosition="330dp"
+        app:arrowPosition="480dp"
         app:arrowLocation="top"
         app:bubbleColor="#d5d7d9"
         android:orientation="vertical">
-        <ListView
+        <com.tenghen.ireader.widget.MyListView
             android:id="@+id/listReply"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -380,6 +380,7 @@
             <include
                 layout="@layout/item_space_divider"/>
             <RelativeLayout
+                android:id="@+id/modifyPwdBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="48px"
@@ -409,6 +410,7 @@
                 android:layout_height="1px"
                 android:background="#cccccc"/>
             <RelativeLayout
+                android:id="@+id/shareBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="48px"
@@ -438,6 +440,7 @@
                 android:layout_height="1px"
                 android:background="#cccccc"/>
             <RelativeLayout
+                android:id="@+id/problemBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="48px"
@@ -467,6 +470,7 @@
                 android:layout_height="1px"
                 android:background="#cccccc"/>
             <RelativeLayout
+                android:id="@+id/aboutBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="48px"

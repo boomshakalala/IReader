@@ -15,6 +15,8 @@ import com.tencent.mm.opensdk.modelmsg.SendAuth;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
+import com.umeng.weixin.callback.WXCallbackActivity;
+import com.umeng.weixin.handler.UmengWXHandler;
 
 import de.greenrobot.event.EventBus;
 

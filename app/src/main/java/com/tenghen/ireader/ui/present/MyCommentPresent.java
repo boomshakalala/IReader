@@ -1,7 +1,11 @@
 package com.tenghen.ireader.ui.present;
 
+import com.chengx.mvp.net.ResponseCallback;
 import com.tenghen.ireader.base.BaseListPresent;
+import com.tenghen.ireader.module.Book;
 import com.tenghen.ireader.module.Comment;
+import com.tenghen.ireader.module.MyCommentBean;
+import com.tenghen.ireader.net.Api;
 import com.tenghen.ireader.ui.activity.MyCommentActivity;
 
 import java.util.ArrayList;
@@ -15,10 +19,30 @@ import java.util.List;
 public class MyCommentPresent extends BaseListPresent<MyCommentActivity> {
     @Override
     protected void requestData() {
-        List<Comment> data = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            data.add(new Comment());
-        }
-        getV().refresh(data);
+        getV().showProgress();
+        Api.userMyComment(currentPage, new ResponseCallback<List<MyCommentBean>>() {
+            @Override
+            public void onSuccess(List<MyCommentBean> data) {
+                if (data == null || data.size() == 0) {
+                    if (currentPage == 1) {
+                        getV().showEmpty();
+                    } else {
+                        getV().closeLoadMore();
+                    }
+                    return;
+                }
+                if (currentPage == 1) {
+                    getV().refresh(data);
+                } else {
+                    getV().loadMore(data);
+                }
+            }
+
+            @Override
+            public void onFailure(int errCode, String info) {
+                getV().showTip(info);
+                getV().showError();
+            }
+        });
     }
 }

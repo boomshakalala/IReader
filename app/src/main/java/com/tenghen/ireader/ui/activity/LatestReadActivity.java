@@ -38,6 +38,7 @@ public class LatestReadActivity extends BaseListActivity<LatestReadPresent,Lates
 
     @Override
     public void initViews() {
+        super.initViews();
         getPresent().refresh();
     }
 

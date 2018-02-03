@@ -8,6 +8,7 @@ import com.tenghen.ireader.R;
 import com.tenghen.ireader.adapter.MyCommentAdapter;
 import com.tenghen.ireader.base.BaseListActivity;
 import com.tenghen.ireader.module.Comment;
+import com.tenghen.ireader.module.MyCommentBean;
 import com.tenghen.ireader.ui.present.MyCommentPresent;
 
 import java.util.ArrayList;
@@ -20,8 +21,8 @@ import javax.xml.transform.sax.TemplatesHandler;
  * 时间：${Date}
  * 描述：
  */
-public class MyCommentActivity extends BaseListActivity<MyCommentPresent,Comment> {
-    List<Comment> data;
+public class MyCommentActivity extends BaseListActivity<MyCommentPresent,MyCommentBean> {
+    List<MyCommentBean> data;
 
     public static void launch(Context context){
         Intent intent = new Intent(context,MyCommentActivity.class);
@@ -49,6 +50,7 @@ public class MyCommentActivity extends BaseListActivity<MyCommentPresent,Comment
         super.initViews();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
+        getPresent().refresh();
     }
 
     @Override
