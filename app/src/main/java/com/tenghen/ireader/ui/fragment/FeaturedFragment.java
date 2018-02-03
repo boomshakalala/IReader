@@ -63,6 +63,7 @@ public class FeaturedFragment extends BaseListFragment<FeaturedPresent,Object> i
                 return ((FeaturedAdapter)adapter).getItemViewDelegate(viewType) instanceof FeaturedBookDelegate ? 1 : 3;
             }
         });
+        recyclerView.setCanloadMore(false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
         ((XListPresent)getPresent()).refresh();

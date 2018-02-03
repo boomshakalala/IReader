@@ -29,7 +29,6 @@ public class WXAPI {
         api.registerApp(AppConfig.WX_APP_ID);
         PayReq req = new PayReq();
         req.appId = AppConfig.WX_APP_ID;  // 测试用appId
-//        req.partnerId = AppConfig.WX_PARTNER_ID;
         req.prepayId = prepayId;
         req.nonceStr = StringUtils.getRandomString(32);
         req.timeStamp = System.currentTimeMillis()/1000+"";

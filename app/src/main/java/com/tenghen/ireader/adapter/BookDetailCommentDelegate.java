@@ -1,9 +1,15 @@
 package com.tenghen.ireader.adapter;
 
+import android.content.Context;
+import android.view.View;
+import android.widget.ListView;
+
 import com.chengx.mvp.adapter.ItemViewDelegate;
 import com.chengx.mvp.adapter.RecyclerViewHolder;
 import com.tenghen.ireader.R;
 import com.tenghen.ireader.module.Comment;
+
+import java.util.List;
 
 /**
  * 作者：chengx
@@ -12,6 +18,12 @@ import com.tenghen.ireader.module.Comment;
  */
 
 public class BookDetailCommentDelegate implements ItemViewDelegate<Object> {
+    Context context;
+
+    public BookDetailCommentDelegate(Context context) {
+        this.context = context;
+    }
+
     @Override
     public int getItemLayoutId() {
         return R.layout.item_book_detail_comment;
@@ -29,5 +41,14 @@ public class BookDetailCommentDelegate implements ItemViewDelegate<Object> {
         holder.setText(R.id.nickNameTv,comment.getNickName());
         holder.setText(R.id.replyCountTv,comment.getFid());
         holder.setText(R.id.commentTimeTv,comment.getCreateDate());
+        List<Comment> subComment = comment.getSub_comment();
+        if (subComment != null&&subComment.size()>0) {
+            holder.getView(R.id.replyLayout).setVisibility(View.GONE);
+            ListView listView = holder.getView(R.id.listReply);
+            ReplyAdapter adapter = new ReplyAdapter(context,subComment,R.layout.item_reply);
+            listView.setAdapter(adapter);
+        }else {
+            holder.getView(R.id.replyLayout).setVisibility(View.GONE);
+        }
     }
 }

@@ -71,43 +71,26 @@
             android:textColor="#959595"
             android:text="条)"/>
     </LinearLayout>
-    <LinearLayout
+    <com.tenghen.ireader.widget.BubbleLinearLayout
+        android:id="@+id/replyLayout"
         android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
+        app:arrowWidth="8dp"
+        app:angle="4dp"
+        app:arrowHeight="8dp"
+        app:arrowPosition="330dp"
+        app:arrowLocation="top"
+        app:bubbleColor="#d5d7d9"
         android:orientation="vertical">
-        <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/replyNameTv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="大壮壮 : "
-                    android:textSize="21px"
-                    android:textColor="#6cd8e4"/>
-                <TextView
-                    android:id="@+id/replyContentTv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="感谢支持！"
-                    android:textSize="21px"
-                    android:textColor="#959595"/>
-            </LinearLayout>
-        <TextView
-                android:id="@+id/replyTimeTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#959595"
-                android:textSize="21px"
-                android:drawablePadding="6dp"
-                android:layout_gravity="right"
-                android:drawableLeft="@drawable/ic_comment_date"
-                android:gravity="center"
-                android:text="05-09 16:00" />
-    </LinearLayout>
+        <ListView
+            android:id="@+id/listReply"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:listSelector="@null"/>
+
+    </com.tenghen.ireader.widget.BubbleLinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"

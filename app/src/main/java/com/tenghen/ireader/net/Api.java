@@ -145,6 +145,13 @@ public class Api {
         HttpEngine.getInstance().post(HOST + BOOK_COMMENTS,param,typeOfClass,callback);
     }
 
+    public static void book(String bookId, ResponseCallback<List<Comment>> callback){
+        RequestParam param = new RequestParam();
+        param.put("book_id",bookId);
+        Type typeOfClass = new TypeToken<List<Comment>>(){}.getType();
+        HttpEngine.getInstance().post(HOST + BOOK_COMMENTS,param,typeOfClass,callback);
+    }
+
     public static void userLogin(int type,String email,String password,String authId,ResponseCallback<User> callback){
         RequestParam param = new RequestParam();
         param.put("type",String.valueOf(type));
@@ -259,13 +266,18 @@ public class Api {
     }
 
 
-    public static void orderRecharge(String price, String priceType, String subject, ResponseCallback<OrderInfo> callback){
+    public static void orderRecharge(String price, String priceType, String subject,String packageId, ResponseCallback<OrderInfo> callback){
         RequestParam param = new RequestParam();
         param.put("price",price);
         param.put("pay_type",priceType);
         param.put("subject",subject);
+        param.put("package_id",packageId);
+        param.put("user_id",getUserId());
+        param.put("token",getToken());
         HttpEngine.getInstance().post(HOST + ORDER_RECHARGE,param,OrderInfo.class,callback);
     }
+
+
 
 
 

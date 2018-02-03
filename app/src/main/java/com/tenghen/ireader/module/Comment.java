@@ -3,6 +3,7 @@ package com.tenghen.ireader.module;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * 作者：chengx
@@ -21,6 +22,16 @@ public class Comment implements Serializable {
     private String path;
     @SerializedName("create_date")
     private String createDate;
+    private List<Comment> sub_comment;
+
+    public List<Comment> getSub_comment() {
+        return sub_comment;
+    }
+
+    public void setSub_comment(List<Comment> sub_comment) {
+        this.sub_comment = sub_comment;
+    }
+
     public void setId(String id) {
         this.id = id;
     }
@@ -69,4 +80,5 @@ public class Comment implements Serializable {
     public String getCreateDate() {
         return createDate;
     }
+
 }

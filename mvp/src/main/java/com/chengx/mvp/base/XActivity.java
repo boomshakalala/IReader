@@ -86,6 +86,7 @@ public abstract class XActivity<P extends IPresent> extends AutoLayoutActivity i
     }
 
     public void showDialog(){
+
         getDialog().show();
     }
 
@@ -161,7 +162,9 @@ public abstract class XActivity<P extends IPresent> extends AutoLayoutActivity i
         if (getPresent() != null){
             present.detachV();
         }
-        dismissDialog();
+        if (dialog != null) {
+            dialog.dismiss();
+        }
         present = null;
     }
 

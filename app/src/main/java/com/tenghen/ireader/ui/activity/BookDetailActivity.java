@@ -59,6 +59,7 @@ public class BookDetailActivity extends BaseListActivity<BookDetailPresent,Objec
                 return ((BookDetailAdapter)adapter).getItemViewDelegate(viewType) instanceof BookDetailGiftDelegate ? 1 : 3;
             }
         });
+        recyclerView.setCanloadMore(false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
         getPresent().refresh();

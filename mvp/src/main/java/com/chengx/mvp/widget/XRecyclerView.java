@@ -32,6 +32,8 @@ public class XRecyclerView extends FrameLayout {
     private int errorViewId;
     private int progressViewId;
 
+    private boolean canloadMore = true;
+
     private Context context;
 
     public XRecyclerView(Context context) {
@@ -65,17 +67,8 @@ public class XRecyclerView extends FrameLayout {
     private void initView(){
         View v = LayoutInflater.from(getContext()).inflate(R.layout.common_recyclerview,this);
         recyclerView = (PullToRefreshRecyclerView) v.findViewById(R.id.recyclerView);
-        recyclerView.setMode(PullToRefreshBase.Mode.BOTH);
         recyclerView.getLoadingLayoutProxy(true, true).setLoadingDrawable(getResources().getDrawable(R.drawable.default_ptr_rotate));
-        // 下拉刷新时的提示文本设置
-        recyclerView.getLoadingLayoutProxy(true, false).setPullLabel("下拉刷新");
-        recyclerView.getLoadingLayoutProxy(true, false).setRefreshingLabel("正在加载...");
-        recyclerView.getLoadingLayoutProxy(true, false).setReleaseLabel("放开以刷新");
-        // 上拉加载更多时的提示文本设置
-        recyclerView.getLoadingLayoutProxy(false, true).setPullLabel("上拉加载");
-        recyclerView.getLoadingLayoutProxy(false, true).setRefreshingLabel("正在加载...");
-        recyclerView.getLoadingLayoutProxy(false, true).setReleaseLabel("放开以加载");
-
+        setCanloadMore(true);
         progressView = (FrameLayout) findViewById(R.id.progressView);
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, Gravity.CENTER);
         progressView.setLayoutParams(params);
@@ -171,5 +164,22 @@ public class XRecyclerView extends FrameLayout {
 
     public void smoothToTop(){
         recyclerView.getRefreshableView().smoothScrollToPosition(0);
+    }
+
+    public void setCanloadMore(boolean canloadMore) {
+        // 下拉刷新时的提示文本设置
+        recyclerView.getLoadingLayoutProxy(true, false).setPullLabel("下拉刷新");
+        recyclerView.getLoadingLayoutProxy(true, false).setRefreshingLabel("正在加载...");
+        recyclerView.getLoadingLayoutProxy(true, false).setReleaseLabel("放开以刷新");
+        // 上拉加载更多时的提示文本设置
+        if (canloadMore){
+            recyclerView.setMode(PullToRefreshBase.Mode.BOTH);
+            recyclerView.getLoadingLayoutProxy(false, true).setPullLabel("上拉加载");
+            recyclerView.getLoadingLayoutProxy(false, true).setRefreshingLabel("正在加载...");
+            recyclerView.getLoadingLayoutProxy(false, true).setReleaseLabel("放开以加载");
+        }else {
+            recyclerView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
+        }
+        requestLayout();
     }
 }

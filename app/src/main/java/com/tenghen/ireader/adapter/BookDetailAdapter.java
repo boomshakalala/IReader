@@ -15,7 +15,7 @@ import java.util.List;
 public class BookDetailAdapter extends MultiItemCommonAdapter<Object> {
     public BookDetailAdapter(Context context, List<Object> data) {
         super(context, data);
-        addItemViewDelegate(new BookDetailCommentDelegate());
+        addItemViewDelegate(new BookDetailCommentDelegate(context));
         addItemViewDelegate(new BookDetailCommentLabelDelegate());
         addItemViewDelegate(new BookDetailGiftDelegate());
         addItemViewDelegate(new BookDetailGiftLabelDelegate());

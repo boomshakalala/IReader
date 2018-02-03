@@ -146,6 +146,9 @@
         <activity
             android:name=".ui.activity.MoreCommentActivity"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.RechargeMoneyActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

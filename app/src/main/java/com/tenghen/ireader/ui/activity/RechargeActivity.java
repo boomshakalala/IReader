@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.chengx.mvp.net.ResponseCallback;
 import com.tenghen.ireader.R;
 import com.tenghen.ireader.base.BaseActivity;
+import com.tenghen.ireader.module.RechareMoney;
 import com.tenghen.ireader.module.Wallet;
 import com.tenghen.ireader.net.Api;
 
@@ -73,6 +74,7 @@ public class RechargeActivity extends BaseActivity {
     public void toRecharge(View v){
         switch (v.getId()){
             case R.id.btn_recharge_alipay:
+                RechargeMoneyActivity.launch(this,"1");
                 break;
             case R.id.btn_recharge_wechat:
                 break;

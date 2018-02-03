@@ -1,6 +1,8 @@
 package com.tenghen.ireader.adapter;
 
 import android.content.Context;
+import android.view.View;
+import android.widget.ListView;
 
 import com.chengx.mvp.adapter.CommonRecyclerAdapter;
 import com.chengx.mvp.adapter.RecyclerViewHolder;
@@ -20,6 +22,18 @@ public class AllCommentAdapter extends CommonRecyclerAdapter<Comment> {
 
     @Override
     public void convert(RecyclerViewHolder holder, Comment comment) {
-
+        holder.setText(R.id.contentTv,comment.getContent());
+        holder.setText(R.id.nickNameTv,comment.getNickName());
+        holder.setText(R.id.replyCountTv,comment.getFid());
+        holder.setText(R.id.commentTimeTv,comment.getCreateDate());
+        List<Comment> subComment = comment.getSub_comment();
+        if (subComment != null&&subComment.size()>0) {
+            holder.getView(R.id.replyLayout).setVisibility(View.GONE);
+            ListView listView = holder.getView(R.id.listReply);
+            ReplyAdapter adapter = new ReplyAdapter(context,subComment,R.layout.item_reply);
+            listView.setAdapter(adapter);
+        }else {
+            holder.getView(R.id.replyLayout).setVisibility(View.GONE);
+        }
     }
 }
