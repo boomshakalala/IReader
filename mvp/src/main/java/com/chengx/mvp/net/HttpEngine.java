@@ -2,10 +2,23 @@ package com.chengx.mvp.net;
 
 
 
+import android.text.TextUtils;
+
 import com.chengx.mvp.utils.KLog;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
+import com.google.gson.JsonSyntaxException;
+
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -79,7 +92,8 @@ public class HttpEngine {
      * @return T
      */
     private <T> ApiResponse<T> formatJson(String json,Type typeOfClass){
-        Gson gson = new Gson();
+        GsonBuilder gb = new GsonBuilder();
+        Gson gson = gb.create();
         ApiResponse<T> response = new ApiResponse<>();
         JsonParser parser = new JsonParser();
         try {
@@ -93,8 +107,13 @@ public class HttpEngine {
             }
             if (jsonObject.has("data")&&!(typeOfClass==Void.class)){
                 String jsonDataStr = jsonObject.get("data").toString();
-                T data = gson.fromJson(jsonDataStr,typeOfClass);
-                response.setData(data);
+                if (jsonDataStr.equals("\"\""))
+                    response.setData(null);
+                else {
+                    T data = gson.fromJson(jsonDataStr,typeOfClass);
+                    response.setData(data);
+                }
+
             }
             return response;
         }catch (Exception e){
@@ -102,6 +121,10 @@ public class HttpEngine {
             return response;
         }
     }
+
+
+
+
 
     public <T> void get(String url, RequestParam param, final Type typeOfClass, final ResponseCallback<T> callback){
         url = getUrl(url, param);

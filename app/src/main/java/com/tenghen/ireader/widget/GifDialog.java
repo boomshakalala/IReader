@@ -36,7 +36,7 @@ public class GifDialog extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setCancelable(true);
-        View inflate = LayoutInflater.from(getContext()).inflate(R.layout.dialog_comment, null);
+        View inflate = LayoutInflater.from(getContext()).inflate(R.layout.dialog_gift, null);
         setContentView(inflate);
         //获取当前Activity所在的窗体
         Window dialogWindow = getWindow();

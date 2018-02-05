@@ -11,14 +11,17 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.chengx.mvp.utils.AppUtils;
 import com.chengx.mvp.utils.SizeUtils;
 import com.chengx.mvp.widget.auto.AutoScrollView;
 import com.tenghen.ireader.R;
 import com.tenghen.ireader.base.BaseActivity;
+import com.tenghen.ireader.widget.GifDialog;
 
 import java.util.TimerTask;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * 作者：chengx
@@ -28,9 +31,9 @@ import butterknife.BindView;
 
 public class ReadActivity extends BaseActivity{
 
-    public  float LargeTextSize = SizeUtils.sp2px(this,24);
-    public  float MidTextSize = SizeUtils.sp2px(this,18);
-    public  float SmallTextSize = SizeUtils.sp2px(this,12);
+    public  float LargeTextSize = SizeUtils.sp2px(AppUtils.getAppContext(),24);
+    public  float MidTextSize = SizeUtils.sp2px(AppUtils.getAppContext(),18);
+    public  float SmallTextSize = SizeUtils.sp2px(AppUtils.getAppContext(),12);
 
     @BindView(R.id.bookContentTv)
     public TextView bookContentTv;
@@ -127,5 +130,14 @@ public class ReadActivity extends BaseActivity{
             super.handleMessage(msg);
         }
     };
+
+    @OnClick(R.id.giftBtn)
+    public void onClick(View v){
+        switch (v.getId()){
+            case R.id.giftBtn:
+                new GifDialog(this).show();
+                break;
+        }
+    }
 
 }

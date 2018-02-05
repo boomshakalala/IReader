@@ -44,6 +44,9 @@ import java.util.List;
  */
 
 public class Api {
+
+    //http://blog.csdn.net/ljy_programmer/article/details/78180445
+
         public static final String HOST = "http://139.129.217.33:8088";
     public static final String WX_HOST = "https://api.weixin.qq.com/sns/";
     public static final String IMG_HOST = "";
