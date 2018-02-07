@@ -5,9 +5,14 @@ package com.tenghen.ireader.net;
 import com.chengx.mvp.utils.KLog;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.tenghen.ireader.CommonUtils;
+import com.tenghen.ireader.JsonUtils;
+import com.tenghen.ireader.module.ParentComment;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -81,7 +86,7 @@ public class HttpEngine {
      * @return T
      */
     private <T> ApiResponse<T> formatJson(String json,Type typeOfClass){
-        GsonBuilder gb = new GsonBuilder();
+        GsonBuilder gb = new GsonBuilder().registerTypeAdapter(ParentComment.class,new JsonUtils.ParentCommentDeserializer());
         Gson gson = gb.create();
         ApiResponse<T> response = new ApiResponse<>();
         JsonParser parser = new JsonParser();
@@ -109,6 +114,8 @@ public class HttpEngine {
             KLog.e(TAG,e.getMessage());
             return response;
         }
+
+
     }
 
 
@@ -200,12 +207,13 @@ public class HttpEngine {
                             resp.callback.onSuccess(null);
                         if (response.getData() != null) {
                             resp.callback.onSuccess(response.getData());
+                        }else {
+                            resp.callback.onFailure(response.getCode(),response.getMessage());
                         }
                     }else {
                         KLog.e(TAG,response.getMessage());
                         if (response.getCode() == 9){
                             CommonUtils.clearUserInfo();
-
                         }
                         resp.callback.onFailure(response.getCode(),response.getMessage());
                     }

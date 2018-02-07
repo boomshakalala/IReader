@@ -8,6 +8,7 @@ import com.tenghen.ireader.module.Book;
 import com.tenghen.ireader.module.BookDetail;
 import com.tenghen.ireader.module.CategoryBook;
 import com.tenghen.ireader.module.Chapter;
+import com.tenghen.ireader.module.ChapterContent;
 import com.tenghen.ireader.module.Charts;
 import com.tenghen.ireader.module.Comment;
 import com.tenghen.ireader.module.Cost;
@@ -67,7 +68,17 @@ public class Api {
     public static final String ORDER_RECHARGE = "/order/recharge";
     public static final String USER_GET_VERIFY_CODE = "/user/getVertifyCode";
     public static final String USER_CHENGE_PWD = "/user/changePwd";
+    public static final String CHAPTER_CHAPTER_CONTENT = "/chapter/chapterContent";
 
+
+    public static void chapterChapterContent(String bookId,String chapterId,ResponseCallback<ChapterContent> callback){
+        RequestParam param = new RequestParam();
+        param.put("book_id",bookId);
+        param.put("chapter_id",chapterId);
+        param.put("user_id",getUserId());
+        param.put("token",getToken());
+        HttpEngine.getInstance().post(HOST + CHAPTER_CHAPTER_CONTENT,param,ChapterContent.class,callback);
+    }
 
     public static void getAllViewBooks(ResponseCallback<List<Book>> callback){
         Type typeOfClass = new TypeToken<List<Book>>(){}.getType();
@@ -143,14 +154,19 @@ public class Api {
         HttpEngine.getInstance().post(HOST + USER_LOGIN,param, User.class,callback);
     }
 
-    public static void userRegister(int type,String email,String password,String authId,String name,ResponseCallback<User> callback){
+    public static void userRegister(int type,String email,String mobile,String verifyCode,String password,String authId,String name,ResponseCallback<User> callback){
         RequestParam param = new RequestParam();
         param.put("type",String.valueOf(type));
         param.put("name",name);
         if (type == 1){
             param.put("email",email);
             param.put("password",password);
-        }else {
+        } else if (type == 5){
+            param.put("mobile",mobile);
+            param.put("verify_code",verifyCode);
+            param.put("password",password);
+        }
+        else {
             param.put("auth_id",authId);
         }
         HttpEngine.getInstance().post(HOST + USER_REGISTER,param, User.class,callback);

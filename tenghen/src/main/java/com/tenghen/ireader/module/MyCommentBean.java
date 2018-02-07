@@ -1,6 +1,9 @@
 package com.tenghen.ireader.module;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by Administrator on 2018/2/4/004.

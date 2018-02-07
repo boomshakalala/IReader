@@ -1,21 +1,28 @@
 package com.tenghen.ireader.ui.activity;
 
+import android.app.AlertDialog;
+import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.chengx.mvp.utils.AppUtils;
 import com.chengx.mvp.utils.SizeUtils;
 import com.chengx.mvp.widget.auto.AutoScrollView;
+import com.google.android.gms.auth.firstparty.shared.FACLConfig;
 import com.tenghen.ireader.R;
 import com.tenghen.ireader.base.BaseActivity;
+import com.tenghen.ireader.module.ChapterContent;
+import com.tenghen.ireader.ui.present.ReadPresent;
 import com.tenghen.ireader.widget.CommentDialog;
 import com.tenghen.ireader.widget.GifDialog;
 import com.tenghen.ireader.widget.SettingDialog;
@@ -32,7 +39,7 @@ import de.greenrobot.event.EventBus;
  * 描述：
  */
 
-public class ReadActivity extends BaseActivity{
+public class ReadActivity extends BaseActivity<ReadPresent>{
 
     public  static float LargeTextSize = SizeUtils.sp2px(AppUtils.getAppContext(),12);
     public  static float MidTextSize = SizeUtils.sp2px(AppUtils.getAppContext(),9);
@@ -42,19 +49,54 @@ public class ReadActivity extends BaseActivity{
     public TextView bookContentTv;
     @BindView(R.id.readRootView)
     public LinearLayout readRootView;
+    @BindView(R.id.readPopView)
+    public FrameLayout readPopView;
     @BindView(R.id.chapterNameTv)
     public TextView chapterNameTv;
     @BindView(R.id.bookNameTv)
     public TextView bookNameTv;
     @BindView(R.id.sv)
     public AutoScrollView sv;
+    @BindView(R.id.collectBtn)
+    ImageView collectBtn;
+    @BindView(R.id.zddyBtn)
+    TextView zddyBtn;
+
+    String bookId = "";
+    String chapterId = "";
+
 
 
     private int mode = 1;
 
-    public static void launch(Context context){
+    public static void launch(Context context,String bookId,String chapterId){
         Intent intent = new Intent(context,ReadActivity.class);
+        intent.putExtra("bookId",bookId);
+        intent.putExtra("chapterId",chapterId);
         context.startActivity(intent);
+    }
+
+    public void showUserState(ChapterContent.User_status userStatus){
+        if (userStatus.getIs_collect() == 1){
+            collectBtn.setClickable(false);
+            collectBtn.setImageResource(R.drawable.btn_read_collect_p);
+        }else {
+            collectBtn.setClickable(true);
+            collectBtn.setImageResource(R.drawable.btn_read_collect);
+        }
+        if (userStatus.getIs_auto_subscribe() == 1){
+            zddyBtn.setSelected(true);
+        }else {
+            zddyBtn.setSelected(false);
+        }
+    }
+
+    public void showMsg(ChapterContent.Msg msg){
+
+    }
+
+    public void showTextData(ChapterContent.Text text){
+        bookContentTv.setText(text.getContent());
     }
 
     @Override
@@ -71,6 +113,8 @@ public class ReadActivity extends BaseActivity{
 
     @Override
     public void initData() {
+        bookId = getIntent().getStringExtra("bookId");
+        chapterId = getIntent().getStringExtra("chapterId");
         mode = sp.getInt("mode",1);
         setMode(mode);
         EventBus.getDefault().register(this);
@@ -99,7 +143,7 @@ public class ReadActivity extends BaseActivity{
 
     @Override
     public void initViews() {
-
+        getPresent().getChapterContent(bookId,chapterId);
     }
 
     @Override
@@ -108,8 +152,8 @@ public class ReadActivity extends BaseActivity{
     }
 
     @Override
-    public Object newPresent() {
-        return null;
+    public ReadPresent newPresent() {
+        return new ReadPresent();
     }
 
     class AutoScrollTask extends TimerTask {
@@ -138,17 +182,35 @@ public class ReadActivity extends BaseActivity{
         }
     };
 
-    @OnClick({R.id.giftBtn,R.id.commentBtn,R.id.settingBtn})
+    @OnClick({R.id.giftBtn,R.id.commentBtn,R.id.settingBtn,R.id.lastChapterBtn,R.id.nextChapterBtn,R.id.btn_back,R.id.homeBtn,R.id.collectBtn})
     public void onClick(View v){
         switch (v.getId()){
             case R.id.giftBtn:
                 new GifDialog(this).show();
                 break;
             case R.id.commentBtn:
-//                new CommentDialog(this,)
+                new CommentDialog(this,bookId,"").show();
                 break;
             case R.id.settingBtn:
                 new SettingDialog(this).show();
+                break;
+            case R.id.collectBtn:
+                break;
+            case R.id.homeBtn:
+
+                break;
+            case R.id.lastChapterBtn:
+                break;
+            case R.id.nextChapterBtn:
+                break;
+            case R.id.btn_back:
+                finish();
+                break;
+            case R.id.readRootView:
+                readPopView.setVisibility(View.VISIBLE);
+                break;
+            case R.id.readPopView:
+                readPopView.setVisibility(View.GONE);
                 break;
         }
     }
