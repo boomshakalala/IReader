@@ -3,8 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/IReader.iml" filepath="$PROJECT_DIR$/IReader.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tenghen/app.iml" filepath="$PROJECT_DIR$/tenghen/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/mvp/mvp.iml" filepath="$PROJECT_DIR$/mvp/mvp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tenghen/tenghen.iml" filepath="$PROJECT_DIR$/tenghen/tenghen.iml" />
     </modules>
   </component>
 </project>

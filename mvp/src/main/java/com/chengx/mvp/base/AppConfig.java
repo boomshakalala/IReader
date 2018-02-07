@@ -14,4 +14,8 @@ public class AppConfig {
     public static final String WB_APP_SECRET = "179761d7876545d49f2a252c00dba5e1";
     public static final String QQ_APP_ID = "1106049570";
     public static final String QQ_APP_SECRET = "";
+
+    //新浪MD5 192505897288b774421e25d16de596d5
+    //微信MD5
+
 }
