@@ -77,7 +77,7 @@
                     android:textColor="@color/black"
                     android:textSize="33px"
                     android:inputType="phone"
-                    android:digits="123456790"
+                    android:digits="1234567890"
                     android:hint="请输入手机号"/>
                 <TextView
                     android:id="@+id/getVerifyBtn"
@@ -115,6 +115,7 @@
                 android:background="@drawable/shape_white_black_stroke_rect"
                 android:gravity="center_vertical"
                 android:textSize="33px"
+                android:inputType="textPassword"
                 android:digits="1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ_"
                 android:textColor="@color/black"
                 android:hint="请输入密码"/>
@@ -125,6 +126,7 @@
                 android:layout_marginTop="54px"
                 android:paddingLeft="50px"
                 android:paddingRight="50px"
+                android:inputType="textPassword"
                 android:digits="1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ_"
                 android:background="@drawable/shape_white_black_stroke_rect"
                 android:gravity="center_vertical"

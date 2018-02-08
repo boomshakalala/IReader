@@ -34,6 +34,12 @@ public class ChapterListActivity extends BaseListActivity<ChapterListPresent,Cha
     }
 
     @Override
+    protected void onNewIntent(Intent intent) {
+        initData();
+        initViews();
+    }
+
+    @Override
     public int getLayoutId() {
         return R.layout.activity_chapter_list;
     }
@@ -49,9 +55,10 @@ public class ChapterListActivity extends BaseListActivity<ChapterListPresent,Cha
     @Override
     public void initViews() {
         super.initViews();
-        recyclerView.setCanloadMore(false);
+        recyclerView.setCanloadMore(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
+        getPresent().refresh();
     }
 
     @Override

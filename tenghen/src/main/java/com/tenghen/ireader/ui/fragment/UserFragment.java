@@ -15,6 +15,7 @@ import com.tenghen.ireader.module.UserInfo;
 import com.tenghen.ireader.module.Wallet;
 import com.tenghen.ireader.net.Api;
 import com.tenghen.ireader.ui.activity.AboutActivity;
+import com.tenghen.ireader.ui.activity.BindPhoneActivity;
 import com.tenghen.ireader.ui.activity.CostLogActivity;
 import com.tenghen.ireader.ui.activity.LatestReadActivity;
 import com.tenghen.ireader.ui.activity.LoginActivity;
@@ -112,6 +113,11 @@ public class UserFragment extends BaseFragment<UserPresent> {
         }else {
             clearUserInfo();
         }
+    }
+
+    @OnClick(R.id.phoneNumTv)
+    public void bindPhone(View v){
+        BindPhoneActivity.launch(getContext());
     }
 
     @OnClick(R.id.latestReadBtn)
@@ -233,7 +239,7 @@ public class UserFragment extends BaseFragment<UserPresent> {
                 break;
             case OPT_TO_RESET_PSD:
                 if (isLogin())
-                    ModifyPwdActivity.launch(getContext());
+                    ModifyPwdActivity.launch(getContext(),"2");
                 break;
         }
 
@@ -250,7 +256,7 @@ public class UserFragment extends BaseFragment<UserPresent> {
     @OnClick(R.id.modifyPwdBtn)
     public void modifyPwd(View view){
         if (isLogin())
-            ModifyPwdActivity.launch(getContext());
+            ModifyPwdActivity.launch(getContext(),"2");
         else
             LoginActivity.launch(this,OPT_TO_RESET_PSD);
     }

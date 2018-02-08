@@ -53,6 +53,7 @@ public class ModifyPresent extends BasePresent<ModifyPwdActivity> {
         Api.userUserInfo(new ResponseCallback<UserInfo>() {
             @Override
             public void onSuccess(UserInfo data) {
+                getV().dismissDialog();
                 if (data!=null){
                     UserInfo.BaseInfo baseInfo = data.getBase_info();
                     if (baseInfo != null){
@@ -99,5 +100,24 @@ public class ModifyPresent extends BasePresent<ModifyPwdActivity> {
                 dialog.show();
             }
         });
+    }
+
+    public void resetPwd(String newPwd,String verifyCode,String phone){
+        Api.userResetPwd(newPwd, verifyCode,phone ,new ResponseCallback<Void>() {
+            @Override
+            public void onSuccess(Void data) {
+                getV().showTip("修改成功");
+                getV().finish();
+            }
+
+            @Override
+            public void onFailure(int errCode, String info) {
+                getV().showTip(info);
+            }
+        });
+    }
+
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
     }
 }

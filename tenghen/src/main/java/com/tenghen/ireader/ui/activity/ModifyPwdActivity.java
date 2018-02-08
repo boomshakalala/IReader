@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.tenghen.ireader.R;
@@ -31,9 +32,18 @@ public class ModifyPwdActivity extends BaseActivity<ModifyPresent> implements Vi
     TextView getVerifyBtn;
     @BindView(R.id.modifyBtn)
     Button modifyBtn;
+    @BindView(R.id.phoneLayout)
+    LinearLayout phoneLayout;
+    @BindView(R.id.oldPwdLayout)
+    LinearLayout oldPwdLayout;
+    @BindView(R.id.phoneEt)
+    EditText phoneEt;
 
-    public static void launch(Context context){
+    String type;
+
+    public static void launch(Context context,String type){
         Intent intent = new Intent(context,ModifyPwdActivity.class);
+        intent.putExtra("type",type);
         context.startActivity(intent);
     }
 
@@ -49,17 +59,27 @@ public class ModifyPwdActivity extends BaseActivity<ModifyPresent> implements Vi
 
     @Override
     public void initData() {
-        getPresent().getUserInfo();
+        type = getIntent().getStringExtra("type");
+        if (type.equals("2")){
+            getPresent().getUserInfo();
+        }
     }
 
     @Override
     public void initViews() {
-
+        if (type.equals("1")){
+            oldPwdLayout.setVisibility(View.GONE);
+            phoneLayout.setVisibility(View.VISIBLE);
+        }else {
+            oldPwdLayout.setVisibility(View.VISIBLE);
+            phoneLayout.setVisibility(View.GONE);
+        }
     }
 
     @Override
     public void setListener() {
         modifyBtn.setOnClickListener(this);
+        getVerifyBtn.setOnClickListener(this);
     }
 
     @Override
@@ -75,7 +95,12 @@ public class ModifyPwdActivity extends BaseActivity<ModifyPresent> implements Vi
                 String newPwd = newPwdEt.getText().toString().trim();
                 String confirmPwd = confirmPwdEt.getText().toString().trim();
                 String verifyCode = verifyEt.getText().toString().trim();
-                if (TextUtils.isEmpty(oldPwd)){
+                String phone = phoneEt.getText().toString().trim();
+                if (TextUtils.isEmpty(phone)&&type.equals("1")){
+                    showTip("请输入手机号");
+                    return;
+                }
+                if (TextUtils.isEmpty(oldPwd)&&type.equals("2")){
                     showTip("请输入旧密码");
                     return;
                 }
@@ -87,7 +112,7 @@ public class ModifyPwdActivity extends BaseActivity<ModifyPresent> implements Vi
                     showTip("请确认新密码");
                     return;
                 }
-                if (TextUtils.isEmpty(verifyCode)){
+                if (TextUtils.isEmpty(verifyCode)&&type.equals("1")){
                     showTip("请输入验证码");
                     return;
                 }
@@ -96,9 +121,19 @@ public class ModifyPwdActivity extends BaseActivity<ModifyPresent> implements Vi
                     return;
 
                 }
-                getPresent().modifyPwd(oldPwd,newPwd,verifyCode);
+                if (type.equals("2"))
+                    getPresent().modifyPwd(oldPwd,newPwd,verifyCode);
+                else
+                    getPresent().resetPwd(newPwd,verifyCode,phone);
+
                 break;
             case R.id.getVerifyBtn:
+                String phoneNo = phoneEt.getText().toString().trim();
+                if (TextUtils.isEmpty(phoneNo)){
+                    showTip("请输入手机号");
+                    return;
+                }
+                getPresent().setPhoneNum(phoneNo);
                 getPresent().getVerifyCode();
                 break;
         }

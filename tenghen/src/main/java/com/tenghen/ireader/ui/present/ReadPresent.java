@@ -39,6 +39,9 @@ public class ReadPresent extends BasePresent<ReadActivity> {
                 if (chapterInfo != null) {
                     getV().showChapterInfo(chapterInfo);
                 }
+
+                ChapterContent.LastAndNext context = data.getContext();
+                getV().setContextInfo(context);
             }
 
             @Override
@@ -59,6 +62,62 @@ public class ReadPresent extends BasePresent<ReadActivity> {
                     dialog.show();
                 }
                 getV().dismissDialog();
+                getV().showTip(info);
+            }
+        });
+    }
+
+    public void addBookCase(String bookId){
+        Api.userAddBookCase(bookId, new ResponseCallback<Void>() {
+            @Override
+            public void onSuccess(Void data) {
+                getV().showCollected();
+            }
+
+            @Override
+            public void onFailure(int errCode, String info) {
+                getV().showTip(info);
+            }
+        });
+    }
+
+    public void addSub(String bookId,String chapterId){
+        Api.userAddSubscribe(bookId,chapterId, new ResponseCallback<Void>() {
+            @Override
+            public void onSuccess(Void data) {
+                getV().showAddSub();
+            }
+
+            @Override
+            public void onFailure(int errCode, String info) {
+                getV().showTip(info);
+            }
+        });
+    }
+
+    public void delSub(String bookId){
+        Api.userDelSubscribe(bookId, new ResponseCallback<Void>() {
+            @Override
+            public void onSuccess(Void data) {
+                getV().showDelSub();
+            }
+
+            @Override
+            public void onFailure(int errCode, String info) {
+                getV().showTip(info);
+            }
+        });
+    }
+
+    public void buyChapter(final String bookId, final String chapterId){
+        Api.userBuyChapter(bookId, chapterId, new ResponseCallback<Void>() {
+            @Override
+            public void onSuccess(Void data) {
+                getChapterContent(bookId,chapterId);
+            }
+
+            @Override
+            public void onFailure(int errCode, String info) {
                 getV().showTip(info);
             }
         });

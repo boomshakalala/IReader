@@ -146,22 +146,22 @@ public class StacksFragment extends BaseListFragment implements View.OnClickList
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.stacksModernBtn:
-                BookTypeActivity.launch(getContext());
+                BookTypeActivity.launch(getContext(),BookTypeActivity.INDEX_TYPE_MODERN_ROMANCE);
                 break;
             case R.id.stacksAncientBtn:
-                BookTypeActivity.launch(getContext());
+                BookTypeActivity.launch(getContext(),BookTypeActivity.INDEX_TYPE_ANCIENT_ROMANCE);
                 break;
             case R.id.stacksCityBtn:
-                BookTypeActivity.launch(getContext());
+                BookTypeActivity.launch(getContext(),BookTypeActivity.INDEX_TYPE_MODERN_CITY);
                 break;
             case R.id.stacksFantasyBtn:
-                BookTypeActivity.launch(getContext());
+                BookTypeActivity.launch(getContext(),BookTypeActivity.INDEX_TYPE_FANTASY_MAGIC);
                 break;
             case R.id.stacksFantasyLoveBtn:
-                BookTypeActivity.launch(getContext());
+                BookTypeActivity.launch(getContext(),BookTypeActivity.INDEX_TYPE_FANTASY_ROMANCE);
                 break;
             case R.id.stacksSchoolBtn:
-                BookTypeActivity.launch(getContext());
+                BookTypeActivity.launch(getContext(),BookTypeActivity.INDEX_TYPE_YOUTH_SCHOOL);
                 break;
 
             case R.id.clickRankBtn:

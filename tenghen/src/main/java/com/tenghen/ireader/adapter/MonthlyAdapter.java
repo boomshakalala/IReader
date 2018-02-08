@@ -18,9 +18,9 @@ public class MonthlyAdapter extends MultiItemCommonAdapter<Object> {
         addItemViewDelegate(new MonthlyHeadDelegate());
         addItemViewDelegate(new SpaceDividerItemDelegate());
         addItemViewDelegate(new FeaturedLeble());
-        addItemViewDelegate(new FeatureRecDelegate());
-        addItemViewDelegate(new FeaturedBookDelegate());
+        addItemViewDelegate(new FeatureRecDelegate(context));
+        addItemViewDelegate(new FeaturedBookDelegate(context));
         addItemViewDelegate(new LineDividerItemDelegate());
-        addItemViewDelegate(new MonthlyHotBookDelegate());
+        addItemViewDelegate(new MonthlyHotBookDelegate(context));
     }
 }

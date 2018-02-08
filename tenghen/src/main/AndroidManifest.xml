@@ -90,6 +90,7 @@
 
         <activity
             android:name=".ui.activity.MainActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -120,6 +121,7 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.activity.ReadActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.activity.LoginActivity"
@@ -159,6 +161,12 @@
             android:name=".ui.activity.MoreCommentActivity"
             android:screenOrientation="portrait"/>
         <activity
+            android:name=".ui.activity.MoreGiftActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.BindPhoneActivity"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".ui.activity.RechargeMoneyActivity"
             android:screenOrientation="portrait"/>
         <activity
@@ -172,6 +180,7 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.activity.ChapterListActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.activity.SettingActivity"

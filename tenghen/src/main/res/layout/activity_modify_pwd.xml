@@ -7,6 +7,36 @@
     <include
         layout="@layout/common_toolbar"/>
     <LinearLayout
+        android:id="@+id/phoneLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="96px"
+        android:layout_marginRight="96px"
+        android:paddingLeft="48px"
+        android:paddingRight="48px"
+        android:layout_marginTop="54px"
+        android:background="@drawable/shape_white_black_stroke_rect">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="36px"
+            android:text="手机号"/>
+        <EditText
+            android:id="@+id/phoneEt"
+            android:layout_width="match_parent"
+            android:layout_height="111px"
+            android:layout_marginLeft="98px"
+            android:background="@null"
+            android:textColor="@color/black"
+            android:textSize="36px"
+            android:singleLine="true"
+            android:inputType="phone"
+            android:hint="请输入手机号"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/oldPwdLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="96px"
@@ -28,6 +58,7 @@
             android:layout_marginLeft="98px"
             android:background="@null"
             android:textColor="@color/black"
+            android:digits="1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ_"
             android:textSize="36px"
             android:singleLine="true"
             android:inputType="textPassword"
@@ -54,6 +85,7 @@
             android:layout_width="match_parent"
             android:layout_height="111px"
             android:layout_marginLeft="98px"
+            android:digits="1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ_"
             android:background="@null"
             android:textColor="@color/black"
             android:textSize="36px"
@@ -85,6 +117,7 @@
         android:background="@null"
         android:textColor="@color/black"
         android:textSize="36px"
+        android:digits="1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ_"
         android:singleLine="true"
         android:inputType="textPassword"
         android:hint="请确认新密码"/>

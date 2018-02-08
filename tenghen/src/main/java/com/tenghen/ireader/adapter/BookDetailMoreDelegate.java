@@ -8,6 +8,7 @@ import com.chengx.mvp.adapter.RecyclerViewHolder;
 import com.tenghen.ireader.R;
 import com.tenghen.ireader.module.Label;
 import com.tenghen.ireader.ui.activity.MoreCommentActivity;
+import com.tenghen.ireader.ui.activity.MoreGiftActivity;
 
 /**
  * 作者：chengx
@@ -44,7 +45,7 @@ public class BookDetailMoreDelegate implements ItemViewDelegate<Object> {
                         MoreCommentActivity.launch(context,label.getId());
                         break;
                     case 1:
-
+                        MoreGiftActivity.launch(context,label.getId());
                         break;
                 }
             }

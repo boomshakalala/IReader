@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 
 import com.tenghen.ireader.R;
-import com.tenghen.ireader.adapter.FeaturedAdapter;
 import com.tenghen.ireader.adapter.FeaturedBookDelegate;
 import com.tenghen.ireader.adapter.MonthlyAdapter;
 import com.tenghen.ireader.base.BaseListActivity;

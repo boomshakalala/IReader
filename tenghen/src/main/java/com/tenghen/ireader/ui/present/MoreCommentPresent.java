@@ -27,7 +27,7 @@ public class MoreCommentPresent extends XListPresent<MoreCommentActivity> {
     @Override
     protected void requestData() {
         getV().showProgress();
-        Api.bookComments(bookId, new ResponseCallback<List<Comment>>() {
+        Api.bookComments(bookId, currentPage,new ResponseCallback<List<Comment>>() {
             @Override
             public void onSuccess(List<Comment> data) {
                 if (data == null || data.size() == 0){

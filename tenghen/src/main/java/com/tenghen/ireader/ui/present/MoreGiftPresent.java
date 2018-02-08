@@ -1,10 +1,13 @@
 package com.tenghen.ireader.ui.present;
 
 import com.chengx.mvp.base.XListPresent;
+import com.tenghen.ireader.module.GiftLog;
+import com.tenghen.ireader.module.RewardsLog;
 import com.tenghen.ireader.net.ResponseCallback;
 import com.tenghen.ireader.module.Comment;
 import com.tenghen.ireader.net.Api;
 import com.tenghen.ireader.ui.activity.MoreCommentActivity;
+import com.tenghen.ireader.ui.activity.MoreGiftActivity;
 
 import java.util.List;
 
@@ -12,7 +15,7 @@ import java.util.List;
  * Created by chengx on 18-2-1.
  */
 
-public class MoreGiftPresent extends XListPresent<MoreCommentActivity> {
+public class MoreGiftPresent extends XListPresent<MoreGiftActivity> {
 
     String bookId;
 
@@ -27,22 +30,32 @@ public class MoreGiftPresent extends XListPresent<MoreCommentActivity> {
     @Override
     protected void requestData() {
         getV().showProgress();
-        Api.bookComments(bookId, new ResponseCallback<List<Comment>>() {
+        Api.bookGift(bookId,currentPage, new ResponseCallback<RewardsLog>() {
             @Override
-            public void onSuccess(List<Comment> data) {
-                if (data == null || data.size() == 0){
+            public void onSuccess(RewardsLog RewardsLog) {
+                if (RewardsLog != null) {
+                    List<GiftLog> data = RewardsLog.getList();
+                    if (data == null || data.size() == 0){
+                        if (currentPage == 1){
+                            getV().showEmpty();
+                        }else {
+                            getV().closeLoadMore();
+                        }
+                        return;
+                    }
+                    if (currentPage == 1){
+                        getV().refresh(data);
+                    }else {
+                        getV().loadMore(data);
+                    }
+                }else {
                     if (currentPage == 1){
                         getV().showEmpty();
                     }else {
                         getV().closeLoadMore();
                     }
-                    return;
                 }
-                if (currentPage == 1){
-                    getV().refresh(data);
-                }else {
-                    getV().loadMore(data);
-                }
+
             }
 
             @Override

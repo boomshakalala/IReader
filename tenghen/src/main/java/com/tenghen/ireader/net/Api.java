@@ -2,6 +2,7 @@ package com.tenghen.ireader.net;
 
 import com.chengx.mvp.base.AppConfig;
 import com.chengx.mvp.utils.AppUtils;
+import com.chengx.mvp.utils.EncodeUtils;
 import com.chengx.mvp.utils.SPUtils;
 import com.google.gson.reflect.TypeToken;
 import com.tenghen.ireader.module.BindInfo;
@@ -13,12 +14,14 @@ import com.tenghen.ireader.module.ChapterContent;
 import com.tenghen.ireader.module.Charts;
 import com.tenghen.ireader.module.Comment;
 import com.tenghen.ireader.module.Cost;
+import com.tenghen.ireader.module.GiftLog;
 import com.tenghen.ireader.module.IndexBanner;
 import com.tenghen.ireader.module.LatestBook;
 import com.tenghen.ireader.module.MyCommentBean;
 import com.tenghen.ireader.module.MyRehargeRecord;
 import com.tenghen.ireader.module.OrderInfo;
 import com.tenghen.ireader.module.RankBook;
+import com.tenghen.ireader.module.RewardsLog;
 import com.tenghen.ireader.module.User;
 import com.tenghen.ireader.module.UserInfo;
 import com.tenghen.ireader.module.VerifyCode;
@@ -51,6 +54,7 @@ public class Api {
     public static final String BOOK_BOOK_KEYWORDS =  "/book/bookkeywords";
     public static final String BOOK_INFO = "/book/info";
     public static final String BOOK_COMMENTS = "/book/bookComments";
+    public static final String BOOK_REWARDS = "/book/bookRewards";
     public static final String CHATER_BOOK_CHAPTERS = "/chapter/bookchapters";
     public static final String USER_LOGIN = "/user/login";
     public static final String USER_REGISTER = "/user/register";
@@ -69,11 +73,66 @@ public class Api {
     public static final String ORDER_RECHARGE = "/order/recharge";
     public static final String USER_GET_VERIFY_CODE = "/user/getVertifyCode";
     public static final String USER_CHENGE_PWD = "/user/changePwd";
+    public static final String USER_RESET_PWD = "/user/resetPwd";
     public static final String CHAPTER_CHAPTER_CONTENT = "/chapter/chapterContent";
     public static final String USER_REWARD_BOOK = "/user/rewardBook";
     public static final String USER_ACCOUNT_BIND_STATUS = "/user/accountBindStatus";
+    public static final String USER_ADD_SUBSCRIBE = "/chapter/addSubscribe";
+    public static final String USER_DEL_SUBSCRIBE = "/chapter/removeSubscribe";
+    public static final String USER_BUY_CHAPTER = "/chapter/buyChapter";
+    public static final String USER_ADD_BOOKCACE = "/user/addBookcase";
+
+    public static void userAddSubscribe(String bookId,String chapterId,ResponseCallback<Void> callback){
+        RequestParam param = new RequestParam();
+        param.put("user_id",getUserId());
+        param.put("token",getToken());
+        param.put("book_id",bookId);
+        param.put("chapter_id",chapterId);
+        HttpEngine.getInstance().post(HOST + USER_ADD_SUBSCRIBE,param,Void.class,callback);
+    }
+
+    public static void userDelSubscribe(String bookId,ResponseCallback<Void> callback){
+        RequestParam param = new RequestParam();
+        param.put("user_id",getUserId());
+        param.put("token",getToken());
+        param.put("book_id",bookId);
+        HttpEngine.getInstance().post(HOST + USER_DEL_SUBSCRIBE,param,Void.class,callback);
+    }
+
+    public static void userBuyChapter(String bookId,String chapterId,ResponseCallback<Void> callback){
+        RequestParam param = new RequestParam();
+        param.put("user_id",getUserId());
+        param.put("token",getToken());
+        param.put("book_id",bookId);
+        param.put("chapter_id",chapterId);
+        HttpEngine.getInstance().post(HOST + USER_BUY_CHAPTER,param,Void.class,callback);
+    }
+
+    public static void userAddBookCase(String bookId,ResponseCallback<Void> callback){
+        RequestParam param = new RequestParam();
+        param.put("user_id",getUserId());
+        param.put("token",getToken());
+        param.put("book_id",bookId);
+        HttpEngine.getInstance().post(HOST + USER_ADD_BOOKCACE,param,Void.class,callback);
+    }
 
 
+
+
+
+    public static void userAccountBinding(String user_type,String auth_id,String mobile,String verify_code,ResponseCallback<Void> callback){
+        RequestParam param = new RequestParam();
+        param.put("user_id",getUserId());
+        param.put("token",getToken());
+        param.put("user_type",user_type);
+        if (user_type.equals("5")){
+            param.put("mobile",mobile);
+            param.put("verify_code",verify_code);
+        }else
+         param.put("auth_id",auth_id);
+
+        HttpEngine.getInstance().post(HOST + USER_ACCOUNT_BINDING,param,Void.class,callback);
+    }
 
     public static void userAccountBIndStatus(ResponseCallback<BindInfo> callback){
         RequestParam param = new RequestParam();
@@ -139,11 +198,19 @@ public class Api {
         HttpEngine.getInstance().post(HOST + BOOK_INFO,param, BookDetail.class,callback);
     }
 
-    public static void bookComments(String bookId, ResponseCallback<List<Comment>> callback){
+    public static void bookComments(String bookId, int p,ResponseCallback<List<Comment>> callback){
         RequestParam param = new RequestParam();
         param.put("book_id",bookId);
+        param.put("p",String.valueOf(p));
         Type typeOfClass = new TypeToken<List<Comment>>(){}.getType();
         HttpEngine.getInstance().post(HOST + BOOK_COMMENTS,param,typeOfClass,callback);
+    }
+
+    public static void bookGift(String bookId, int p,ResponseCallback<RewardsLog> callback){
+        RequestParam param = new RequestParam();
+        param.put("book_id",bookId);
+        param.put("p",String.valueOf(p));
+        HttpEngine.getInstance().post(HOST + BOOK_REWARDS,param,RewardsLog.class,callback);
     }
 
     public static void book(String bookId, ResponseCallback<List<Comment>> callback){
@@ -153,13 +220,17 @@ public class Api {
         HttpEngine.getInstance().post(HOST + BOOK_COMMENTS,param,typeOfClass,callback);
     }
 
-    public static void userLogin(int type,String email,String password,String authId,ResponseCallback<User> callback){
+    public static void userLogin(int type,String email,String password,String authId,String mobile,ResponseCallback<User> callback){
         RequestParam param = new RequestParam();
+        password = EncodeUtils.base64Encode2String(password);
         param.put("type",String.valueOf(type));
         if (type == 1){
             param.put("email",email);
             param.put("password",password);
-        }else {
+        }if (type == 5){
+            param.put("mobile",mobile);
+            param.put("password",password);
+        } else {
             param.put("auth_id",authId);
         }
         HttpEngine.getInstance().post(HOST + USER_LOGIN,param, User.class,callback);
@@ -169,6 +240,7 @@ public class Api {
         RequestParam param = new RequestParam();
         param.put("type",String.valueOf(type));
         param.put("name",name);
+        password = EncodeUtils.base64Encode2String(password);
         if (type == 1){
             param.put("email",email);
             param.put("password",password);
@@ -229,9 +301,10 @@ public class Api {
         HttpEngine.getInstance().post(HOST + BANNNER_INDEX_BANNER,param,typeOfClass,callback);
     }
 
-    public static void chapterBookChapters(String bookId, ResponseCallback<List<Chapter>> callback){
+    public static void chapterBookChapters(String bookId,int p, ResponseCallback<List<Chapter>> callback){
         RequestParam param = new RequestParam();
         param.put("book_id",bookId);
+        param.put("p",String.valueOf(p));
         Type typeOfClass = new TypeToken<List<Chapter>>(){}.getType();
         HttpEngine.getInstance().post(HOST + CHATER_BOOK_CHAPTERS,param,typeOfClass,callback);
     }
@@ -312,13 +385,24 @@ public class Api {
 
     public static void userChengePwd(String oldPwd,String newPwd,String verifyCode,ResponseCallback<Void> callback){
         RequestParam param = new RequestParam();
+        oldPwd = EncodeUtils.base64Encode2String(oldPwd);
+        newPwd = EncodeUtils.base64Encode2String(newPwd);
         param.put("user_id",getUserId());
         param.put("token",getToken());
         param.put("verify_code",verifyCode);
         param.put("old_password",oldPwd);
         param.put("password",newPwd);
-        Type typeOfClass = new TypeToken<List<LatestBook>>(){}.getType();
-        HttpEngine.getInstance().post(HOST + USER_CHENGE_PWD,param,typeOfClass,callback);
+
+        HttpEngine.getInstance().post(HOST + USER_CHENGE_PWD,param,Void.class,callback);
+    }
+
+    public static void userResetPwd(String newPwd,String verifyCode,String mobile,ResponseCallback<Void> callback){
+        RequestParam param = new RequestParam();
+        newPwd = EncodeUtils.base64Encode2String(newPwd);
+        param.put("verify_code",verifyCode);
+        param.put("password",newPwd);
+        param.put("mobile",mobile);
+        HttpEngine.getInstance().post(HOST + USER_RESET_PWD,param,Void.class,callback);
     }
 
     public static void userRewardBook(String bookId,String type,String giftNum,ResponseCallback<Void> callback){

@@ -65,6 +65,11 @@ public class ReadActivity extends BaseActivity<ReadPresent>{
     String bookId = "";
     String chapterId = "";
 
+    String lastId;
+    String nextId;
+
+    boolean zddy;
+
 
 
     private int mode = 1;
@@ -85,35 +90,44 @@ public class ReadActivity extends BaseActivity<ReadPresent>{
             collectBtn.setImageResource(R.drawable.btn_read_collect);
         }
         if (userStatus.getIs_auto_subscribe() == 1){
+            zddy  = true;
             zddyBtn.setSelected(true);
         }else {
             zddyBtn.setSelected(false);
+            zddy  = false;
         }
     }
 
     public void showMsg(ChapterContent.Msg msg){
-        switch (msg.getCostCode()){
-            case 0:
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                break;
-            case 6:
-                break;
-            case 7:
-                break;
-            case 8:
-                break;
-            case 9:
-                break;
+        if (msg.getCostCode() == 8 || msg.getCostCode() == 9){
+            AlertDialog dialog = new AlertDialog.Builder(this)
+                    .setTitle("提示")
+                    .setMessage(msg.getWarning())
+                    .create();
+            dialog.setButton("确定", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    getPresent().buyChapter(bookId,chapterId);
+                    dialog.dismiss();
+                }
+            });
+            dialog.setButton2("取消", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                    finish();
+                }
+            });
+
+            dialog.show();
+
+        }else if (msg.getCostCode() == 1 || msg.getCostCode() == 3 || msg.getCostCode() == 4){
+            showTip(msg.getWarning());
+        }else {
+            showTip(msg.getWarning());
         }
+
+
     }
 
     public void showTextData(ChapterContent.Text text){
@@ -126,6 +140,12 @@ public class ReadActivity extends BaseActivity<ReadPresent>{
 
     public void showChapterInfo(ChapterContent.ChapterInfo chapterInfo){
         chapterNameTv.setText(chapterInfo.getName());
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        initData();
+        initViews();
     }
 
     @Override
@@ -185,6 +205,26 @@ public class ReadActivity extends BaseActivity<ReadPresent>{
         return new ReadPresent();
     }
 
+    public void showCollected() {
+        collectBtn.setClickable(false);
+        collectBtn.setImageResource(R.drawable.btn_read_collect_p);
+    }
+
+    public void showAddSub() {
+        zddyBtn.setSelected(true);
+        zddy = true;
+    }
+
+    public void showDelSub() {
+        zddyBtn.setSelected(false);
+        zddy = false;
+    }
+
+    public void setContextInfo(ChapterContent.LastAndNext context) {
+            lastId = context.getPre_chapter_id();
+            nextId = context.getNext_chapter_id();
+    }
+
     class AutoScrollTask extends TimerTask {
         public void run(){
             Message msg=new Message();
@@ -211,7 +251,10 @@ public class ReadActivity extends BaseActivity<ReadPresent>{
         }
     };
 
-    @OnClick({R.id.giftBtn,R.id.commentBtn,R.id.settingBtn,R.id.lastChapterBtn,R.id.nextChapterBtn,R.id.btn_back,R.id.homeBtn,R.id.collectBtn,R.id.readRootView,R.id.readPopView})
+    @OnClick({R.id.giftBtn,
+            R.id.commentBtn,R.id.settingBtn,R.id.lastChapterBtn,R.id.nextChapterBtn,R.id.btn_back,R.id.homeBtn,
+            R.id.collectBtn,R.id.readRootView,R.id.readPopView,R.id.zddyBtn,
+            R.id.last,R.id.next,R.id.chapterList})
     public void onClick(View v){
         switch (v.getId()){
             case R.id.giftBtn:
@@ -224,14 +267,58 @@ public class ReadActivity extends BaseActivity<ReadPresent>{
                 new SettingDialog(this).show();
                 break;
             case R.id.collectBtn:
+                getPresent().addBookCase(bookId);
                 break;
             case R.id.homeBtn:
-
+                MainActivity.launch(this);
+                break;
+            case R.id.zddyBtn:
+                if (zddy)
+                getPresent().delSub(bookId);
+                else
+                getPresent().addSub(bookId,chapterId);
                 break;
             case R.id.lastChapterBtn:
+                if (Long.valueOf(lastId)==-1){
+                    showTip("没有上一章了");
+                    return;
+                }else {
+                    chapterId = lastId;
+                    getPresent().getChapterContent(bookId,lastId);
+                }
                 break;
             case R.id.nextChapterBtn:
+                if (Long.valueOf(nextId)==-1){
+                    showTip("没有下一章了");
+                    return;
+                }else {
+                    chapterId = nextId;
+                    getPresent().getChapterContent(bookId,nextId);
+                }
                 break;
+            case R.id.last:
+                if (Long.valueOf(lastId)==-1){
+                    showTip("没有上一章了");
+                    return;
+                }else {
+                    chapterId = lastId;
+                    getPresent().getChapterContent(bookId,lastId);
+                }
+                break;
+            case R.id.next:
+                if (Long.valueOf(nextId)==-1){
+                    showTip("没有下一章了");
+                    return;
+                }else {
+                    chapterId = nextId;
+                    getPresent().getChapterContent(bookId,nextId);
+                }
+                break;
+
+            case R.id.chapterList:
+                ChapterListActivity.launch(this,bookId);
+                break;
+
             case R.id.btn_back:
                 finish();
                 break;

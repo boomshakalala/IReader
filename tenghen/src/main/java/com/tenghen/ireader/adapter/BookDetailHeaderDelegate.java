@@ -64,7 +64,7 @@ public class BookDetailHeaderDelegate implements ItemViewDelegate<Object> {
         holder.setOnclickListener(R.id.readBookBtn, new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ReadActivity.launch(context,book.getId(),book.getLastUpdateChapterId());
+                ReadActivity.launch(context,book.getId(),book.getFirstChapterId());
             }
         });
         holder.setOnclickListener(R.id.chapterListBtn, new View.OnClickListener() {

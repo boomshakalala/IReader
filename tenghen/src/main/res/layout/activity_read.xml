@@ -62,6 +62,7 @@
                         android:paddingTop="60px"
                         android:paddingBottom="84px">
                         <TextView
+                            android:id="@+id/last"
                             android:layout_width="198px"
                             android:layout_height="60px"
                             android:layout_marginLeft="84px"
@@ -75,6 +76,7 @@
                             android:layout_height="1px"
                             android:layout_weight="1"/>
                         <TextView
+                            android:id="@+id/chapterList"
                             android:layout_width="198px"
                             android:layout_height="60px"
                             android:gravity="center"
@@ -87,6 +89,7 @@
                             android:layout_height="1px"
                             android:layout_weight="1"/>
                         <TextView
+                            android:id="@+id/next"
                             android:layout_width="198px"
                             android:layout_height="60px"
                             android:gravity="center"
@@ -112,7 +115,7 @@
 
     <FrameLayout
         android:id="@+id/readPopView"
-        android:visibility="gone"
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

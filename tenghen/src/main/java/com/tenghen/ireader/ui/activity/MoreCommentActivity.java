@@ -51,7 +51,7 @@ public class MoreCommentActivity extends BaseListActivity<MoreCommentPresent,Com
         super.initViews();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
-        recyclerView.setCanloadMore(false);
+        recyclerView.setCanloadMore(true);
         getPresent().refresh();
     }
 

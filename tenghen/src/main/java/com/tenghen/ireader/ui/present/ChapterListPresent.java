@@ -23,7 +23,7 @@ public class ChapterListPresent extends BaseListPresent<ChapterListActivity> {
     @Override
     protected void requestData() {
         getV().showProgress();
-        Api.chapterBookChapters(bookId, new ResponseCallback<List<Chapter>>() {
+        Api.chapterBookChapters(bookId,currentPage, new ResponseCallback<List<Chapter>>() {
             @Override
             public void onSuccess(List<Chapter> data) {
                 if (data == null || data.size() == 0){

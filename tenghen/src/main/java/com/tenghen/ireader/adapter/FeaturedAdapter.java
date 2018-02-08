@@ -17,8 +17,8 @@ public class FeaturedAdapter extends MultiItemCommonAdapter<Object> {
         super(context, data);
         addItemViewDelegate(new FeaturedHeaderDelegate(context));
         addItemViewDelegate(new FeaturedLeble());
-        addItemViewDelegate(new FeatureRecDelegate());
-        addItemViewDelegate(new FeaturedBookDelegate());
+        addItemViewDelegate(new FeatureRecDelegate(context));
+        addItemViewDelegate(new FeaturedBookDelegate(context));
         addItemViewDelegate(new SpaceDividerItemDelegate());
         addItemViewDelegate(new LineDividerItemDelegate());
     }

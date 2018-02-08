@@ -149,6 +149,7 @@ public class BookTypeActivity extends BaseListActivity<BookTypePresent,CategoryB
     public LinearLayout orderLayout;
 
 
+    int type;
 
 
 
@@ -157,8 +158,9 @@ public class BookTypeActivity extends BaseListActivity<BookTypePresent,CategoryB
 
     private List<CategoryBook> data;
 
-    public static void launch(Context context){
+    public static void launch(Context context,int type){
         Intent intent = new Intent(context,BookTypeActivity.class);
+        intent.putExtra("type",type);
         context.startActivity(intent);
     }
 
@@ -174,6 +176,7 @@ public class BookTypeActivity extends BaseListActivity<BookTypePresent,CategoryB
 
     @Override
     public void initData() {
+        type = getIntent().getIntExtra("type",INDEX_TYPE_ALL);
         data = new ArrayList<>();
         adapter = new BookTypeAdapter(this,R.layout.item_book_type,data);
 
@@ -184,7 +187,7 @@ public class BookTypeActivity extends BaseListActivity<BookTypePresent,CategoryB
         super.initViews();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
-        setTypeSelected(INDEX_TYPE_ALL);
+        setTypeSelected(type);
         setCostSelected(INDEX_COST_ALL);
         setCompeleteSelected(INDEX_COMPELETE_ALL);
         setOrderSelected(INDEX_ORDER_NEW);

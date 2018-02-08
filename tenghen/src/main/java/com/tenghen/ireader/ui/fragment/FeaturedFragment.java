@@ -72,7 +72,7 @@ public class FeaturedFragment extends BaseListFragment<FeaturedPresent,Object> i
     @Override
     public void setListener() {
         searchBtn.setOnClickListener(this);
-        ((FeaturedAdapter)adapter).setOnItemClickListener(this);
+//        ((FeaturedAdapter)adapter).setOnItemClickListener(this);
     }
 
     @Override

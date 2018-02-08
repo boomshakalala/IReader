@@ -2,10 +2,17 @@ package com.tenghen.ireader.ui.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.chengx.mvp.utils.PhoneUtils;
+import com.chengx.mvp.utils.RegexUtils;
+import com.chengx.mvp.utils.StringUtils;
 import com.tenghen.ireader.R;
 import com.tenghen.ireader.base.BaseActivity;
 import com.tenghen.ireader.ui.present.LoginPresent;
@@ -29,6 +36,22 @@ public class LoginActivity extends BaseActivity<LoginPresent> implements UMAuthL
     EditText userNameEt;
     @BindView(R.id.loginPasswordEt)
     EditText passwordEt;
+
+    @BindView(R.id.verifyCodeLayout)
+    LinearLayout verifyCodeLayout;
+
+    @BindView(R.id.verifyCodeEt)
+    EditText verifyCodeEt;
+
+    @BindView(R.id.getVerifyBtn)
+    TextView getVerifyBtn;
+
+    @BindView(R.id.emailRegisterBtn)
+    TextView emailLoginBtn;
+    @BindView(R.id.phoneRegisterBtn)
+    TextView phoneLoginBtn;
+
+    int type;
 
     public static void launch(Activity context,int requestCode){
         Intent intent = new Intent(context,LoginActivity.class);
@@ -65,10 +88,39 @@ public class LoginActivity extends BaseActivity<LoginPresent> implements UMAuthL
 
     }
 
+
+
+
     @Override
     public LoginPresent newPresent() {
         return new LoginPresent();
     }
+
+    @OnClick(R.id.resetPwdBtn)
+    public void resetPwd(View textView){
+       ModifyPwdActivity.launch(this,"1");
+    }
+
+    @OnClick(R.id.phoneRegisterBtn)
+    public void phoneLogin(TextView textView){
+        verifyCodeLayout.setVisibility(View.VISIBLE);
+        passwordEt.setVisibility(View.GONE);
+        type = 5;
+    }
+
+    @OnClick(R.id.emailRegisterBtn)
+    public void emailLogin(TextView textView){
+        verifyCodeLayout.setVisibility(View.GONE);
+        passwordEt.setVisibility(View.VISIBLE);
+        type = 1;
+    }
+
+    @OnClick(R.id.getVerifyBtn)
+    public void getVerify(TextView textView){
+        String phoneNum = userNameEt.getText().toString().trim();
+        getPresent().getVerifyCode(phoneNum);
+    }
+
 
     @OnClick(R.id.registerBtn)
     public void register(TextView textView){
@@ -79,7 +131,15 @@ public class LoginActivity extends BaseActivity<LoginPresent> implements UMAuthL
     public void login(){
         String userName = userNameEt.getText().toString().trim();
         String password = passwordEt.getText().toString().trim();
-        getPresent().login(userName,password);
+        if (RegexUtils.isEmail(userName)){
+            type = 1;
+        }else if (RegexUtils.isMobileExact(userName)){
+            type = 5;
+        }else {
+            showTip("请输入正确的邮箱或手机号");
+            return;
+        }
+        getPresent().login(userName,password,type,userName,"");
     }
     @OnClick(R.id.wxLoginBtn)
     public void wxLogin(){
@@ -132,5 +192,30 @@ public class LoginActivity extends BaseActivity<LoginPresent> implements UMAuthL
     @Override
     public void onCancel(SHARE_MEDIA share_media, int i) {
         showToast("取消登录");
+    }
+
+    public void startCountDown(){
+        new CountDown(60000,1000).start();
+    }
+
+    class CountDown extends CountDownTimer {
+
+        public CountDown(long millisInFuture, long countDownInterval) {
+            super(millisInFuture, countDownInterval);
+        }
+
+        @Override
+        public void onTick(long l) {
+            getVerifyBtn.setTextColor(getResources().getColor(R.color.text_color_gray));
+            getVerifyBtn.setClickable(false);
+            getVerifyBtn.setText(l/1000 + "s");
+        }
+
+        @Override
+        public void onFinish() {
+            getVerifyBtn.setTextColor(Color.parseColor("#1585b1"));
+            getVerifyBtn.setClickable(true);
+            getVerifyBtn.setText("重试");
+        }
     }
 }

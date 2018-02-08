@@ -86,6 +86,10 @@ public class EncodeUtils {
         return base64Encode(input.getBytes());
     }
 
+    public static String base64Encode2String(String input){
+        return new String(base64Encode(input));
+    }
+
     /**
      * Base64编码
      *

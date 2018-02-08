@@ -1,10 +1,16 @@
 package com.tenghen.ireader.adapter;
 
 import android.content.Context;
+import android.os.Handler;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.chengx.mvp.adapter.CommonRecyclerAdapter;
 import com.chengx.mvp.adapter.RecyclerViewHolder;
+import com.chengx.mvp.utils.KLog;
+import com.chengx.mvp.widget.auto.AutoHorizontalScrollView;
 import com.tenghen.ireader.R;
 import com.tenghen.ireader.module.Book;
 import com.tenghen.ireader.module.Chapter;
@@ -36,6 +42,16 @@ public class CostLogAdapter extends CommonRecyclerAdapter<Cost> {
             @Override
             public void onClick(View v) {
                 BookDetailActivity.launch(context,book.getId());
+            }
+        });
+
+        TextView textView = holder.getView(R.id.costTv);
+        textView.setText("于"+cost.getCreate_date()+" "+cost.getCreate_time()+" 花费 "+cost.getPrice()+"腾币");
+        final ImageView imageView = holder.getView(R.id.bookIv);
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                KLog.d("size",imageView.getHeight());
             }
         });
     }

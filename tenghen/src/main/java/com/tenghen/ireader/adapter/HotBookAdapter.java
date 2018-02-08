@@ -1,11 +1,13 @@
 package com.tenghen.ireader.adapter;
 
 import android.content.Context;
+import android.view.View;
 
 import com.chengx.mvp.adapter.CommonRecyclerAdapter;
 import com.chengx.mvp.adapter.RecyclerViewHolder;
 import com.tenghen.ireader.R;
 import com.tenghen.ireader.module.Book;
+import com.tenghen.ireader.ui.activity.BookDetailActivity;
 
 import java.util.List;
 
@@ -21,8 +23,14 @@ public class HotBookAdapter extends CommonRecyclerAdapter<Book> {
     }
 
     @Override
-    public void convert(RecyclerViewHolder holder, Book book) {
+    public void convert(RecyclerViewHolder holder, final Book book) {
         holder.setText(R.id.bookNameTv,book.getName());
         holder.setImageUrl(R.id.bookIv,book.getCover());
+        holder.getConvertView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BookDetailActivity.launch(context,book.getId());
+            }
+        });
     }
 }

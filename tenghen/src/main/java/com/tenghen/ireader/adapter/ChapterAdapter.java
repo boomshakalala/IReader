@@ -23,11 +23,12 @@ public class ChapterAdapter extends CommonRecyclerAdapter<Chapter> {
     @Override
     public void convert(RecyclerViewHolder holder, final Chapter chapter) {
         holder.setText(R.id.chapterNameTv,chapter.getCname());
-        if (chapter.getIs_vip().equals("N")){
-            holder.setVisibility(R.id.vipTagView, View.VISIBLE);
-        }else {
-            holder.setVisibility(R.id.vipTagView, View.GONE);
-        }
+//        if (chapter.getIs_vip().equals("N")){
+//            holder.setVisibility(R.id.vipTagView, View.VISIBLE);
+//        }else {
+//            holder.setVisibility(R.id.vipTagView, View.GONE);
+//        }
+        holder.setVisibility(R.id.vipTagView, View.GONE);
         holder.getConvertView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

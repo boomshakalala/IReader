@@ -1,6 +1,8 @@
 package com.tenghen.ireader.ui.activity;
 
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.TextView;
@@ -49,6 +51,10 @@ public class MainActivity extends BaseActivity<MainPresent> implements View.OnCl
     private UserFragment userFragment;
 
 
+    public static void launch(Context context){
+        Intent intent = new Intent(context,MainActivity.class);
+        context.startActivity(intent);
+    }
 
     @Override
     public void initToolBar() {

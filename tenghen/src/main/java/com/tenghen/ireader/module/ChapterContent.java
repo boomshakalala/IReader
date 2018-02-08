@@ -8,6 +8,16 @@ public class ChapterContent implements Serializable {
     private Text text;
     private BookInfo book_info;
     private ChapterInfo chapter_info;
+    private LastAndNext context;
+
+    public LastAndNext getContext() {
+        return context;
+    }
+
+    public void setContext(LastAndNext context) {
+        this.context = context;
+    }
+
     public void setUser_status(User_status user_status) {
         this.user_status = user_status;
     }
@@ -43,6 +53,27 @@ public class ChapterContent implements Serializable {
 
     public void setChapter_info(ChapterInfo chapter_info) {
         this.chapter_info = chapter_info;
+    }
+
+    public static class LastAndNext{
+        String pre_chapter_id;
+        String next_chapter_id;
+
+        public String getPre_chapter_id() {
+            return pre_chapter_id;
+        }
+
+        public void setPre_chapter_id(String pre_chapter_id) {
+            this.pre_chapter_id = pre_chapter_id;
+        }
+
+        public String getNext_chapter_id() {
+            return next_chapter_id;
+        }
+
+        public void setNext_chapter_id(String next_chapter_id) {
+            this.next_chapter_id = next_chapter_id;
+        }
     }
 
     public static class  Text implements Serializable{
