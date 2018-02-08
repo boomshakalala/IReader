@@ -500,6 +500,7 @@
                 android:layout_height="1px"
                 android:background="#cccccc"/>
             <RelativeLayout
+                android:id="@+id/settingBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="48px"

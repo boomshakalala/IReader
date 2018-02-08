@@ -12,7 +12,31 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.tenghen.ireader.CommonUtils;
 import com.tenghen.ireader.JsonUtils;
+import com.tenghen.ireader.module.Banner;
+import com.tenghen.ireader.module.Book;
+import com.tenghen.ireader.module.BookDetail;
+import com.tenghen.ireader.module.BookDetailHeader;
+import com.tenghen.ireader.module.CategoryBook;
+import com.tenghen.ireader.module.Chapter;
+import com.tenghen.ireader.module.ChapterContent;
+import com.tenghen.ireader.module.Charts;
+import com.tenghen.ireader.module.Comment;
+import com.tenghen.ireader.module.Cost;
+import com.tenghen.ireader.module.Gift;
+import com.tenghen.ireader.module.GiftLog;
+import com.tenghen.ireader.module.IndexBanner;
+import com.tenghen.ireader.module.LatestBook;
+import com.tenghen.ireader.module.MyCommentBean;
+import com.tenghen.ireader.module.MyRehargeRecord;
+import com.tenghen.ireader.module.OrderInfo;
 import com.tenghen.ireader.module.ParentComment;
+import com.tenghen.ireader.module.RankBook;
+import com.tenghen.ireader.module.Recharge;
+import com.tenghen.ireader.module.User;
+import com.tenghen.ireader.module.UserInfo;
+import com.tenghen.ireader.module.UserRecord;
+import com.tenghen.ireader.module.VerifyCode;
+import com.tenghen.ireader.module.Wallet;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -86,7 +110,40 @@ public class HttpEngine {
      * @return T
      */
     private <T> ApiResponse<T> formatJson(String json,Type typeOfClass){
-        GsonBuilder gb = new GsonBuilder().registerTypeAdapter(ParentComment.class,new JsonUtils.ParentCommentDeserializer());
+        GsonBuilder gb = new GsonBuilder()
+                .registerTypeAdapter(ParentComment.class,new JsonUtils.ParentCommentDeserializer())
+                .registerTypeAdapter(ChapterContent.Text.class,new JsonUtils.TextDeserializer())
+                .registerTypeAdapter(ChapterContent.Msg.class,new JsonUtils.MsgDeserializer())
+                .registerTypeAdapter(ChapterContent.User_status.class,new JsonUtils.UserStatusDeserializer())
+                .registerTypeAdapter(ChapterContent.ChapterInfo.class,new JsonUtils.ChapterInfofoDeserializer())
+                .registerTypeAdapter(ChapterContent.BookInfo.class,new JsonUtils.BookInfoDeserializer())
+//                .registerTypeAdapter(Banner.class,new JsonUtils.BannerDeserializer())
+                .registerTypeAdapter(Book.class,new JsonUtils.BookDeserializer())
+//                .registerTypeAdapter(BookDetail.class,new JsonUtils.BookDetailDeserializer())
+//                .registerTypeAdapter(BookDetailHeader.class,new JsonUtils.BookDetailHeaderDeserializer())
+                .registerTypeAdapter(BookDetail.Rewards.class,new JsonUtils.RewordsDeserializer())
+                .registerTypeAdapter(UserRecord.class,new JsonUtils.UserRecordDeserializer())
+                .registerTypeAdapter(CategoryBook.class,new JsonUtils.CategoryBookDeserializer())
+                .registerTypeAdapter(Chapter.class,new JsonUtils.ChapterDeserializer())
+//                .registerTypeAdapter(ChapterContent.class,new JsonUtils.ChapterContentDeserializer())
+                .registerTypeAdapter(Charts.class,new JsonUtils.ChartsDeserializer())
+                .registerTypeAdapter(Comment.class,new JsonUtils.CommentDeserializer())
+                .registerTypeAdapter(Cost.class,new JsonUtils.CostDeserializer())
+                .registerTypeAdapter(Gift.class,new JsonUtils.GiftDeserializer())
+                .registerTypeAdapter(GiftLog.class,new JsonUtils.GiftLogDeserializer())
+                .registerTypeAdapter(IndexBanner.class,new JsonUtils.IndexBannerDeserializer())
+                .registerTypeAdapter(LatestBook.class,new JsonUtils.LatestBookDeserializer())
+//                .registerTypeAdapter(MyCommentBean.class,new JsonUtils.MyCommentBeanDeserializer())
+                .registerTypeAdapter(MyRehargeRecord.class,new JsonUtils.MyRehargeRecordDeserializer())
+                .registerTypeAdapter(OrderInfo.class,new JsonUtils.OrderInfoDeserializer())
+                .registerTypeAdapter(RankBook.class,new JsonUtils.RankBookDeserializer())
+                .registerTypeAdapter(Recharge.class,new JsonUtils.RechargeDeserializer())
+                .registerTypeAdapter(User.class,new JsonUtils.UserDeserializer())
+                .registerTypeAdapter(UserInfo.class,new JsonUtils.UserInfoDeserializer())
+                .registerTypeAdapter(UserInfo.BaseInfo.class,new JsonUtils.BaseInfoDeserializer())
+                .registerTypeAdapter(UserInfo.MonthlyInfo.class,new JsonUtils.MonthlyInfoDeserializer())
+                .registerTypeAdapter(VerifyCode.class,new JsonUtils.VerifyCodeDeserializer())
+                .registerTypeAdapter(Wallet.class,new JsonUtils.WalletDeserializer());
         Gson gson = gb.create();
         ApiResponse<T> response = new ApiResponse<>();
         JsonParser parser = new JsonParser();
@@ -208,7 +265,7 @@ public class HttpEngine {
                         if (response.getData() != null) {
                             resp.callback.onSuccess(response.getData());
                         }else {
-                            resp.callback.onFailure(response.getCode(),response.getMessage());
+                            resp.callback.onSuccess(null);
                         }
                     }else {
                         KLog.e(TAG,response.getMessage());

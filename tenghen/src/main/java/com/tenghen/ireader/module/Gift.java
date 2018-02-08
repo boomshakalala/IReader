@@ -12,6 +12,8 @@ public class Gift implements Serializable {
     String giftId;
     int giftImage;
 
+    public boolean isChecked;
+
     public Gift(String giftId, int giftImage) {
         this.giftId = giftId;
         this.giftImage = giftImage;

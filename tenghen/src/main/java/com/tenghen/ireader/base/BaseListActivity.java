@@ -59,7 +59,7 @@ public abstract class BaseListActivity<T extends IListPresent,M> extends XListAc
     }
 
     @Override
-    protected XListPresent getPresent() {
+    public XListPresent getPresent() {
         return (XListPresent) super.getPresent();
     }
 

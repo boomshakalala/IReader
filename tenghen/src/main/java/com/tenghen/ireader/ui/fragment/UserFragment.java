@@ -25,10 +25,13 @@ import com.tenghen.ireader.ui.activity.MyShelfActivity;
 import com.tenghen.ireader.ui.activity.ProblemsActivity;
 import com.tenghen.ireader.ui.activity.RechargeActivity;
 import com.tenghen.ireader.ui.activity.RechargeLogActivity;
+import com.tenghen.ireader.ui.activity.SettingActivity;
 import com.tenghen.ireader.ui.present.UserPresent;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.media.UMImage;
+import com.umeng.socialize.media.UMWeb;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -78,11 +81,7 @@ public class UserFragment extends BaseFragment<UserPresent> {
 
     @Override
     public void initViews() {
-        if (CommonUtils.isLogin()){
-            getData();
-        }else {
-            clearUserInfo();
-        }
+
     }
 
     @Override
@@ -105,6 +104,15 @@ public class UserFragment extends BaseFragment<UserPresent> {
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (CommonUtils.isLogin()){
+            getData();
+        }else {
+            clearUserInfo();
+        }
+    }
 
     @OnClick(R.id.latestReadBtn)
     public void toLatestRead(){
@@ -249,31 +257,7 @@ public class UserFragment extends BaseFragment<UserPresent> {
 
     @OnClick(R.id.shareBtn)
     public void share(View view){
-        new ShareAction(getActivity())
-                .withText("分享给你一个超赞的小说阅读App")
-                .setDisplayList(SHARE_MEDIA.QZONE,SHARE_MEDIA.QQ,SHARE_MEDIA.WEIXIN,SHARE_MEDIA.WEIXIN_CIRCLE)
-                .setCallback(new UMShareListener() {
-                    @Override
-                    public void onStart(SHARE_MEDIA share_media) {
 
-                    }
-
-                    @Override
-                    public void onResult(SHARE_MEDIA share_media) {
-                        showTip("分享成功");
-                    }
-
-                    @Override
-                    public void onError(SHARE_MEDIA share_media, Throwable throwable) {
-                        showTip("分享失败");
-                    }
-
-                    @Override
-                    public void onCancel(SHARE_MEDIA share_media) {
-                        showTip("取消分享");
-                    }
-                })
-                .open();
     }
     @OnClick(R.id.problemBtn)
     public void toProblem(View view){
@@ -282,6 +266,10 @@ public class UserFragment extends BaseFragment<UserPresent> {
     @OnClick(R.id.aboutBtn)
     public void toAbout(View view){
         AboutActivity.launch(getContext());
+    }
+    @OnClick(R.id.settingBtn)
+    public void toSetting(View view){
+        SettingActivity.launch(getContext());
     }
 
 }

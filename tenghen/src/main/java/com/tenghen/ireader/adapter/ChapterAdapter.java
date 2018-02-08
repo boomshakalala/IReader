@@ -7,6 +7,7 @@ import com.chengx.mvp.adapter.CommonRecyclerAdapter;
 import com.chengx.mvp.adapter.RecyclerViewHolder;
 import com.tenghen.ireader.R;
 import com.tenghen.ireader.module.Chapter;
+import com.tenghen.ireader.ui.activity.ReadActivity;
 
 import java.util.List;
 
@@ -20,12 +21,18 @@ public class ChapterAdapter extends CommonRecyclerAdapter<Chapter> {
     }
 
     @Override
-    public void convert(RecyclerViewHolder holder, Chapter chapter) {
+    public void convert(RecyclerViewHolder holder, final Chapter chapter) {
         holder.setText(R.id.chapterNameTv,chapter.getCname());
-        if (chapter.getIs_fee().equals("N")){
+        if (chapter.getIs_vip().equals("N")){
             holder.setVisibility(R.id.vipTagView, View.VISIBLE);
         }else {
             holder.setVisibility(R.id.vipTagView, View.GONE);
         }
+        holder.getConvertView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ReadActivity.launch(context,chapter.getBook_id(),chapter.getId());
+            }
+        });
     }
 }

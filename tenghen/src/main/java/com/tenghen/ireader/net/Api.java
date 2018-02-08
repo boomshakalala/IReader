@@ -69,6 +69,7 @@ public class Api {
     public static final String USER_GET_VERIFY_CODE = "/user/getVertifyCode";
     public static final String USER_CHENGE_PWD = "/user/changePwd";
     public static final String CHAPTER_CHAPTER_CONTENT = "/chapter/chapterContent";
+    public static final String USER_REWARD_BOOK = "/user/rewardBook";
 
 
     public static void chapterChapterContent(String bookId,String chapterId,ResponseCallback<ChapterContent> callback){
@@ -308,6 +309,16 @@ public class Api {
         param.put("password",newPwd);
         Type typeOfClass = new TypeToken<List<LatestBook>>(){}.getType();
         HttpEngine.getInstance().post(HOST + USER_CHENGE_PWD,param,typeOfClass,callback);
+    }
+
+    public static void userRewardBook(String bookId,String type,String giftNum,ResponseCallback<Void> callback){
+        RequestParam param = new RequestParam();
+        param.put("user_id",getUserId());
+        param.put("token",getToken());
+        param.put("book_id",bookId);
+        param.put("gift_type",type);
+        param.put("gift_num",giftNum);
+        HttpEngine.getInstance().post(HOST + USER_REWARD_BOOK,param,Void.class,callback);
     }
 
 

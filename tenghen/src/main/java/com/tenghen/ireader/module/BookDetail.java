@@ -32,7 +32,7 @@ public class BookDetail implements Serializable {
         return comments;
     }
 
-    public class Rewards{
+    public static class Rewards{
         int amount;
         List<GiftLog> list;
 

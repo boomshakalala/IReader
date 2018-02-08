@@ -5,7 +5,6 @@ import android.view.View;
 import com.chengx.mvp.adapter.ItemViewDelegate;
 import com.chengx.mvp.adapter.RecyclerViewHolder;
 import com.tenghen.ireader.R;
-import com.tenghen.ireader.module.MonthlyHead;
 import com.tenghen.ireader.module.UserInfo;
 import com.tenghen.ireader.net.Api;
 

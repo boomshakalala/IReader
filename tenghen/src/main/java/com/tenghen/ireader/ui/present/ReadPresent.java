@@ -25,14 +25,19 @@ public class ReadPresent extends BasePresent<ReadActivity> {
 
                 ChapterContent.Msg msg = data.getMsg();
                 if (msg != null) {
-                    if (msg.getCostCode() != 2){
-                        getV().showMsg(msg);
-                    }else {
-                        ChapterContent.Text text = data.getText();
-                        if (text != null) {
-                            getV().showTextData(text);
-                        }
-                    }
+                    getV().showMsg(msg);
+                }
+                ChapterContent.Text text = data.getText();
+                if (text != null) {
+                    getV().showTextData(text);
+                }
+                ChapterContent.BookInfo bookInfo = data.getBook_info();
+                if (bookInfo != null) {
+                    getV().showBookInfo(bookInfo);
+                }
+                ChapterContent.ChapterInfo chapterInfo = data.getChapter_info();
+                if (chapterInfo != null) {
+                    getV().showChapterInfo(chapterInfo);
                 }
             }
 

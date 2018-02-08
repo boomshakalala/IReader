@@ -92,11 +92,40 @@ public class ReadActivity extends BaseActivity<ReadPresent>{
     }
 
     public void showMsg(ChapterContent.Msg msg){
-
+        switch (msg.getCostCode()){
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            case 9:
+                break;
+        }
     }
 
     public void showTextData(ChapterContent.Text text){
         bookContentTv.setText(text.getContent());
+    }
+
+    public void showBookInfo(ChapterContent.BookInfo bookInfo){
+        bookNameTv.setText(bookInfo.getName());
+    }
+
+    public void showChapterInfo(ChapterContent.ChapterInfo chapterInfo){
+        chapterNameTv.setText(chapterInfo.getName());
     }
 
     @Override
@@ -182,11 +211,11 @@ public class ReadActivity extends BaseActivity<ReadPresent>{
         }
     };
 
-    @OnClick({R.id.giftBtn,R.id.commentBtn,R.id.settingBtn,R.id.lastChapterBtn,R.id.nextChapterBtn,R.id.btn_back,R.id.homeBtn,R.id.collectBtn})
+    @OnClick({R.id.giftBtn,R.id.commentBtn,R.id.settingBtn,R.id.lastChapterBtn,R.id.nextChapterBtn,R.id.btn_back,R.id.homeBtn,R.id.collectBtn,R.id.readRootView,R.id.readPopView})
     public void onClick(View v){
         switch (v.getId()){
             case R.id.giftBtn:
-                new GifDialog(this).show();
+                new GifDialog(this,bookId).show();
                 break;
             case R.id.commentBtn:
                 new CommentDialog(this,bookId,"").show();

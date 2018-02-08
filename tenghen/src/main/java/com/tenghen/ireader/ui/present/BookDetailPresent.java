@@ -1,5 +1,6 @@
 package com.tenghen.ireader.ui.present;
 
+import com.google.android.gms.common.AccountPicker;
 import com.tenghen.ireader.CommonUtils;
 import com.tenghen.ireader.net.ResponseCallback;
 import com.tenghen.ireader.R;
@@ -45,7 +46,7 @@ public class BookDetailPresent extends BaseListPresent<BookDetailActivity> {
                 giftLabel.setText("捧场总数:" + data.getRewards().getAmount());
                 dataList.add(giftLabel);
                 for (int i = 0; i < 6; i++) {
-                    dataList.add(new Gift(i+4+"",giftImages[i]));
+                    dataList.add(new Gift(i+3+"",giftImages[i]));
                 }
 
                 Label giftLogLabel = new Label();
@@ -95,5 +96,19 @@ public class BookDetailPresent extends BaseListPresent<BookDetailActivity> {
         });
 
 
+    }
+
+    public void sendGift(String giftType){
+        Api.userRewardBook(bookId, giftType, "1", new ResponseCallback<Void>() {
+            @Override
+            public void onSuccess(Void data) {
+                getV().showTip("感谢捧场");
+            }
+
+            @Override
+            public void onFailure(int errCode, String info) {
+                getV().showTip(info);
+            }
+        });
     }
 }

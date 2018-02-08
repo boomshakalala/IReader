@@ -11,7 +11,7 @@ import java.util.List;
  * 描述：
  */
 
-public class BookDetailHeader implements Serializable {
+public  class BookDetailHeader implements Serializable {
     private String id;
     private String name;
     @SerializedName("category_id")
@@ -48,7 +48,7 @@ public class BookDetailHeader implements Serializable {
     @SerializedName("last_update_chapter_date")
     private String lastUpdateChapterDate;
     @SerializedName("user_record")
-    private List<String> userRecord;
+    private UserRecord userRecord;
 
     public String getId() {
         return id;
@@ -130,7 +130,7 @@ public class BookDetailHeader implements Serializable {
         return lastUpdateChapterDate;
     }
 
-    public List<String> getUserRecord() {
+    public UserRecord getUserRecord() {
         return userRecord;
     }
 }

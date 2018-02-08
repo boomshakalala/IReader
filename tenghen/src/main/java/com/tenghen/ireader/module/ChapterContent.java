@@ -6,6 +6,8 @@ public class ChapterContent implements Serializable {
     private User_status user_status;
     private Msg msg;
     private Text text;
+    private BookInfo book_info;
+    private ChapterInfo chapter_info;
     public void setUser_status(User_status user_status) {
         this.user_status = user_status;
     }
@@ -25,6 +27,22 @@ public class ChapterContent implements Serializable {
     }
     public Text getText() {
         return text;
+    }
+
+    public BookInfo getBook_info() {
+        return book_info;
+    }
+
+    public void setBook_info(BookInfo book_info) {
+        this.book_info = book_info;
+    }
+
+    public ChapterInfo getChapter_info() {
+        return chapter_info;
+    }
+
+    public void setChapter_info(ChapterInfo chapter_info) {
+        this.chapter_info = chapter_info;
     }
 
     public static class  Text implements Serializable{
@@ -95,6 +113,30 @@ public class ChapterContent implements Serializable {
         }
         public int getIs_collect() {
             return is_collect;
+        }
+    }
+
+    public static class BookInfo{
+        String name;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+    }
+
+    public static class ChapterInfo{
+        String name;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
         }
     }
 }

@@ -4,7 +4,6 @@ import com.chengx.mvp.adapter.ItemViewDelegate;
 import com.chengx.mvp.adapter.RecyclerViewHolder;
 import com.tenghen.ireader.R;
 import com.tenghen.ireader.module.Book;
-import com.tenghen.ireader.module.MonthlyRankBook;
 
 /**
  * 作者：chengx

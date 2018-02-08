@@ -29,6 +29,6 @@ public class BookDetailGiftLogDelegate implements ItemViewDelegate<Object>{
         GiftLog giftLog = (GiftLog) o;
         holder.setText(R.id.nickNameTv,giftLog.getUserName());
         holder.setText(R.id.giftCountTv,giftLog.getNum()+"个");
-        holder.setImageResource(R.id.giftIv,giftImages[Integer.valueOf(giftLog.getMoneyType())-1]);
+        holder.setImageResource(R.id.giftIv,giftImages[Integer.valueOf(giftLog.getMoneyType())-3]);
     }
 }
