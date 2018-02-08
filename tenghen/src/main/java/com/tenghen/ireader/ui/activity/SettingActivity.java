@@ -81,6 +81,7 @@ public class SettingActivity extends BaseActivity {
                 new LogoutDialog(this).show();
                 break;
             case R.id.userBindBtn:
+                UserBindActivity.launch(this);
                 break;
             case R.id.clearCacheBtn:
                 break;

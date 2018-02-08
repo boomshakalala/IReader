@@ -4,6 +4,7 @@ import com.chengx.mvp.base.AppConfig;
 import com.chengx.mvp.utils.AppUtils;
 import com.chengx.mvp.utils.SPUtils;
 import com.google.gson.reflect.TypeToken;
+import com.tenghen.ireader.module.BindInfo;
 import com.tenghen.ireader.module.Book;
 import com.tenghen.ireader.module.BookDetail;
 import com.tenghen.ireader.module.CategoryBook;
@@ -70,7 +71,16 @@ public class Api {
     public static final String USER_CHENGE_PWD = "/user/changePwd";
     public static final String CHAPTER_CHAPTER_CONTENT = "/chapter/chapterContent";
     public static final String USER_REWARD_BOOK = "/user/rewardBook";
+    public static final String USER_ACCOUNT_BIND_STATUS = "/user/accountBindStatus";
 
+
+
+    public static void userAccountBIndStatus(ResponseCallback<BindInfo> callback){
+        RequestParam param = new RequestParam();
+        param.put("user_id",getUserId());
+        param.put("token",getToken());
+        HttpEngine.getInstance().post(HOST + USER_ACCOUNT_BIND_STATUS,param,BindInfo.class,callback);
+    }
 
     public static void chapterChapterContent(String bookId,String chapterId,ResponseCallback<ChapterContent> callback){
         RequestParam param = new RequestParam();
