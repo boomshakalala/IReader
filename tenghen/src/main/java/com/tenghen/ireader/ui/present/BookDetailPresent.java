@@ -1,5 +1,6 @@
 package com.tenghen.ireader.ui.present;
 
+import com.tenghen.ireader.CommonUtils;
 import com.tenghen.ireader.net.ResponseCallback;
 import com.tenghen.ireader.R;
 import com.tenghen.ireader.adapter.ViewSupportModel;
@@ -86,6 +87,7 @@ public class BookDetailPresent extends BaseListPresent<BookDetailActivity> {
 
             @Override
             public void onFailure(int errCode, String info) {
+                CommonUtils.error(errCode,getV());
                 getV().showTip(info);
                 getV().showError();
             }

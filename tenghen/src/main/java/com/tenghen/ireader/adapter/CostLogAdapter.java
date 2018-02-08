@@ -9,6 +9,7 @@ import com.tenghen.ireader.R;
 import com.tenghen.ireader.module.Book;
 import com.tenghen.ireader.module.Chapter;
 import com.tenghen.ireader.module.Cost;
+import com.tenghen.ireader.ui.activity.BookDetailActivity;
 import com.tenghen.ireader.ui.activity.ReadActivity;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public class CostLogAdapter extends CommonRecyclerAdapter<Cost> {
 
     @Override
     public void convert(RecyclerViewHolder holder, Cost cost) {
-        Book book = cost.getBook();
+        final Book book = cost.getBook();
         Chapter chapter = cost.getChapter();
         holder.setImageUrl(R.id.bookIv,book.getCover());
         holder.setText(R.id.bookNameTv,book.getName());
@@ -34,7 +35,7 @@ public class CostLogAdapter extends CommonRecyclerAdapter<Cost> {
         holder.getConvertView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ReadActivity.launch(context);
+                BookDetailActivity.launch(context,book.getId());
             }
         });
     }

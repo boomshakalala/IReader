@@ -1,5 +1,6 @@
 package com.tenghen.ireader.ui.present;
 
+import com.tenghen.ireader.CommonUtils;
 import com.tenghen.ireader.net.ResponseCallback;
 import com.tenghen.ireader.base.BaseListPresent;
 import com.tenghen.ireader.module.Cost;
@@ -39,6 +40,7 @@ public class CostLogPresent extends BaseListPresent<CostLogActivity> {
             public void onFailure(int errCode, String info) {
                 getV().showTip(info);
                 getV().showError();
+                CommonUtils.error(errCode,getV());
             }
         });
     }

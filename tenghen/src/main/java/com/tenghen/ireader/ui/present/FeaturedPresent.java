@@ -1,5 +1,6 @@
 package com.tenghen.ireader.ui.present;
 
+import com.tenghen.ireader.CommonUtils;
 import com.tenghen.ireader.net.ResponseCallback;
 import com.tenghen.ireader.adapter.ViewSupportModel;
 import com.tenghen.ireader.base.BaseListPresent;
@@ -69,13 +70,43 @@ public class FeaturedPresent extends BaseListPresent<FeaturedFragment> {
 
                     }
                 });
-
-
-
             }
 
             @Override
             public void onFailure(int errCode, String info) {
+                Api.chartIndexCharts(new ResponseCallback<List<Charts>>() {
+                    @Override
+                    public void onSuccess(List<Charts> chartses) {
+                        for (Charts chartse : chartses) {
+                            if(chartse.getName().equals("主编力荐")){
+                                List<Book> books = chartse.getBook();
+                                for (int i = 0; i < books.size(); i++) {
+                                    Book book = books.get(i);
+                                    book.isRec = true;
+                                    data.add(books.get(i));
+                                    if (i!=books.size()-1)
+                                        data.add(new ViewSupportModel(ViewSupportModel.VIEW_TYPE_SPLIT_LINE));
+                                }
+                                data.add(new ViewSupportModel(ViewSupportModel.VIEW_TYPE_SPLIT_SPACE));
+                                continue;
+                            }
+                            Label label = new Label();
+                            label.setText(chartse.getName());
+                            data.add(label);
+                            data.addAll(chartse.getBook());
+                            data.add(new ViewSupportModel(ViewSupportModel.VIEW_TYPE_SPLIT_SPACE));
+                        }
+
+                        getV().refresh(data);
+
+                    }
+
+                    @Override
+                    public void onFailure(int errCode, String info) {
+
+                    }
+                });
+                CommonUtils.error(errCode,getV().getActivity());
 
             }
         });
