@@ -87,4 +87,21 @@ public class Book implements Serializable{
     public void setCover(String cover) {
         this.cover = cover;
     }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", cover='" + cover + '\'' +
+                ", view_id='" + view_id + '\'' +
+                ", description='" + description + '\'' +
+                ", pen_name='" + pen_name + '\'' +
+                ", category_name='" + category_name + '\'' +
+                ", all_click='" + all_click + '\'' +
+                ", isRec=" + isRec +
+                ", isRank=" + isRank +
+                ", shouRank=" + shouRank +
+                '}';
+    }
 }

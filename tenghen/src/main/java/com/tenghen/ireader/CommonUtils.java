@@ -23,7 +23,7 @@ public class CommonUtils {
 
     public static void clearUserInfo(){
         SPUtils sp = new SPUtils(AppUtils.getAppContext(),AppConfig.SP_NAME);
-        sp.clear();
+        sp.putObject("user",null);
     }
 
     public static void loginAndToast(Activity context){

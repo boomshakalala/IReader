@@ -184,6 +184,8 @@ public class UserFragment extends BaseFragment<UserPresent> {
             phoneNumTv.setText(TextUtils.isEmpty(phoneNum)?"绑定手机":phoneNum);
             phoneNumTv.setClickable(TextUtils.isEmpty(phoneNum));
             nickNameTv.setText(baseInfo.getName());
+            phoneNumTv.setVisibility(View.VISIBLE);
+            userIdTv.setVisibility(View.VISIBLE);
         }
     }
 

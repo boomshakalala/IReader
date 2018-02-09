@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorGray"
-            android:textSize="36px"
+            android:textSize="12sp"
             android:layout_marginTop="23px"
             android:text="妖妃风华"/>
         <TextView
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30px"
             android:textColor="@color/colorLightGray"
-            android:textSize="32px"
+            android:textSize="11sp"
             android:text="残念"/>
         <TextView
             android:id="@+id/bookDescTv"
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/colorGray"
             android:layout_marginTop="30px"
-            android:textSize="36px"
+            android:textSize="12sp"
             android:maxLines="3"
             android:ellipsize="end"
             android:text="她，武青颜，军医界的天才，顶级医学硕士，一招穿越沦为天生媚骨的无用庶女。 庶女卑微，那又何妨？她一样活的风生水起。 嫡女使阴，放马过来，踹你上天，踢你遁地，赠你一辈子万劫不复"/>

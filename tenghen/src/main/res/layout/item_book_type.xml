@@ -21,7 +21,7 @@
             android:id="@+id/bookNameTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="36px"
+            android:textSize="12sp"
             android:textColor="@color/colorGray"
             android:text="老公亲亲就过敏"
             android:layout_marginTop="28px"/>
@@ -32,7 +32,7 @@
             android:layout_alignBaseline="@id/bookNameTv"
             android:layout_alignParentRight="true"
             android:textColor="#3fbecd"
-            android:textSize="24px"
+            android:textSize="8sp"
             android:text="5000字"/>
         <TextView
             android:id="@+id/authorNameTv"
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/bookNameTv"
             android:layout_marginTop="34px"
-            android:textSize="33px"
+            android:textSize="11sp"
             android:textColor="#808080"
             android:text="豆包姑"/>
 
@@ -51,7 +51,7 @@
             android:layout_alignBaseline="@id/authorNameTv"
             android:layout_alignParentRight="true"
             android:textColor="#f8748b"
-            android:textSize="24px"
+            android:textSize="8sp"
             android:text="9.7万人次"/>
         <TextView
             android:id="@+id/bookDescTv"
@@ -60,7 +60,7 @@
             android:layout_below="@id/authorNameTv"
             android:layout_marginTop="37px"
             android:maxLines="3"
-            android:textSize="33px"
+            android:textSize="11sp"
             android:textColor="#808080"
             android:text="她，武青颜，军医界的天才，顶级医学硕士，一招穿越沦为天生媚骨的无用庶女。 庶女卑微，那又何妨？她一样活的风生水起。 嫡女使阴，放马过来，踹你上天，踢你遁地，赠你一辈子万劫不复"
             />

@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
-        android:textSize="41px"
+        android:textSize="14sp"
         android:text="您的余额:0 腾币"/>
     <View
         android:layout_width="0dp"
@@ -23,7 +23,7 @@
         android:id="@+id/rechargeBtn"
         android:layout_width="207px"
         android:layout_height="48px"
-        android:textSize="30px"
+        android:textSize="10sp"
         android:textColor="@color/white"
         android:text="立即充值"
         android:gravity="center"

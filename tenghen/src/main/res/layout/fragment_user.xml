@@ -38,7 +38,7 @@
                         android:id="@+id/nickNameTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="36px"
+                        android:textSize="12sp"
                         android:textColor="@color/black"
                         android:text="注册/登录"/>
                     <TextView
@@ -47,7 +47,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
-                        android:textSize="25px"
+                        android:textSize="8sp"
                         android:text="ID:7771"
                         android:layout_marginTop="13px"
                         android:paddingBottom="7px"
@@ -63,7 +63,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
-                        android:textSize="25px"
+                        android:textSize="8sp"
                         android:text="绑定手机"
                         android:layout_marginTop="13px"
                         android:paddingBottom="7px"
@@ -87,7 +87,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="34px"
+                    android:textSize="11sp"
                     android:textColor="#bfbfbf"
                     android:text="本月累计签到"
                     android:gravity="center_vertical"
@@ -102,7 +102,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="34px"
+                    android:textSize="11sp"
                     android:textColor="#bfbfbf"
                     android:text="天，去看看"
                     />
@@ -136,7 +136,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="48px"
+                    android:textSize="16sp"
                     android:textColor="#f57486"
                     android:text="我的钱包"
                     android:gravity="center_vertical"
@@ -146,7 +146,7 @@
                     android:id="@+id/walletTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="36px"
+                    android:textSize="12sp"
                     android:textColor="@color/colorGrayText"
                     android:text="100藤币"
                     android:layout_marginLeft="55px"/>
@@ -155,7 +155,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
-                    android:textSize="24px"
+                    android:textSize="8sp"
                     android:paddingLeft="26px"
                     android:paddingRight="26px"
                     android:paddingTop="16px"
@@ -181,7 +181,7 @@
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="48px"
+                    android:textSize="16sp"
                     android:textColor="@color/colorGray"
                     android:text="我的书架"
                     android:gravity="center_vertical"
@@ -211,7 +211,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="48px"
+                    android:textSize="16sp"
                     android:textColor="@color/colorGray"
                     android:text="最近阅读"
                     android:gravity="center_vertical"
@@ -242,7 +242,7 @@
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="48px"
+                    android:textSize="16sp"
                     android:textColor="@color/colorGray"
                     android:text="充值记录"
                     android:gravity="center_vertical"
@@ -273,7 +273,7 @@
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="48px"
+                    android:textSize="16sp"
                     android:textColor="@color/colorGray"
                     android:text="消费记录"
                     android:gravity="center_vertical"
@@ -304,7 +304,7 @@
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="48px"
+                    android:textSize="16sp"
                     android:textColor="@color/colorGray"
                     android:text="我的评论"
                     android:gravity="center_vertical"
@@ -335,7 +335,7 @@
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="48px"
+                    android:textSize="16sp"
                     android:textColor="@color/colorGray"
                     android:text="我的消息"
                     android:gravity="center_vertical"
@@ -364,7 +364,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="48px"
+                    android:textSize="16sp"
                     android:textColor="@color/colorGray"
                     android:text="下载管理"
                     android:gravity="center_vertical"
@@ -392,7 +392,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="48px"
+                    android:textSize="16sp"
                     android:textColor="@color/colorGray"
                     android:text="修改密码"
                     android:gravity="center_vertical"
@@ -422,7 +422,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="48px"
+                    android:textSize="16sp"
                     android:textColor="@color/colorGray"
                     android:text="推荐APP给好友"
                     android:gravity="center_vertical"
@@ -452,7 +452,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="48px"
+                    android:textSize="16sp"
                     android:textColor="@color/colorGray"
                     android:text="常见问题"
                     android:gravity="center_vertical"
@@ -482,7 +482,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="48px"
+                    android:textSize="16sp"
                     android:textColor="@color/colorGray"
                     android:text="关于我们"
                     android:gravity="center_vertical"
@@ -512,7 +512,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="48px"
+                    android:textSize="16sp"
                     android:textColor="@color/colorGray"
                     android:text="设置"
                     android:gravity="center_vertical"

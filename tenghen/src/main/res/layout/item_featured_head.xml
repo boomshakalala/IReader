@@ -18,7 +18,7 @@
             android:paddingBottom="45px"
             android:layout_weight="1"
             android:textColor="#757575"
-            android:textSize="42px"
+            android:textSize="14sp"
             android:text="@string/text_modern"
             android:gravity="center"/>
         <TextView
@@ -29,7 +29,7 @@
             android:paddingTop="45px"
             android:paddingBottom="45px"
             android:textColor="#757575"
-            android:textSize="42px"
+            android:textSize="14sp"
             android:text="@string/text_ancient"
             android:gravity="center"/>
         <TextView
@@ -40,7 +40,7 @@
             android:paddingBottom="45px"
             android:layout_weight="1"
             android:textColor="#757575"
-            android:textSize="42px"
+            android:textSize="14sp"
             android:text="@string/text_supernatural"
             android:gravity="center"/>
         <TextView
@@ -51,7 +51,7 @@
             android:paddingBottom="45px"
             android:layout_weight="1"
             android:textColor="#757575"
-            android:textSize="42px"
+            android:textSize="14sp"
             android:text="@string/text_monthly"
             android:gravity="center"/>
         <TextView
@@ -62,7 +62,7 @@
             android:paddingBottom="45px"
             android:layout_weight="1"
             android:textColor="#757575"
-            android:textSize="42px"
+            android:textSize="14sp"
             android:text="@string/text_free"
             android:gravity="center"/>
     </LinearLayout>

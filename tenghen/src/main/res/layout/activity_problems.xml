@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:padding="30px"
                 android:textColor="#6a6a6a"
-                android:textSize="32px"
+                android:textSize="11sp"
                 android:background="#f3f4f6"
                 android:text="当您阅读过程中遇到作品有VIP标志，首先请您先登录。目前书院除了邮箱注册外，还有QQ、微信、微博登录，一键登录。登录后点击个人中心的“充值”按钮，充值后可育德VIP章节内容。"/>
         </LinearLayout>
@@ -102,7 +102,7 @@
                 android:layout_height="wrap_content"
                 android:padding="30px"
                 android:textColor="#6a6a6a"
-                android:textSize="32px"
+                android:textSize="11sp"
                 android:background="#f3f4f6"
                 android:text="不会再扣费，一次消费订购，终生免费重读"/>
         </LinearLayout>

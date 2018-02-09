@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="42px"
+        android:textSize="14sp"
         android:textColor="#575757"
         android:text="评论"/>
     <View
@@ -21,7 +21,7 @@
         android:id="@+id/commentBtn"
         android:layout_width="151px"
         android:layout_height="42px"
-        android:textSize="33px"
+        android:textSize="11sp"
         android:gravity="center"
         android:textColor="@color/white"
         android:background="#6dd9e5"

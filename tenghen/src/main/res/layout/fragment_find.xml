@@ -18,7 +18,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="40px"
+            android:textSize="13sp"
             android:textColor="@color/colorGray"
             android:text="排行榜"
             android:gravity="center_vertical"
@@ -46,7 +46,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="40px"
+            android:textSize="13sp"
             android:textColor="@color/colorGray"
             android:text="书友动态"
             android:gravity="center_vertical"
@@ -75,7 +75,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="40px"
+            android:textSize="13sp"
             android:textColor="@color/colorGray"
             android:text="大家都在看"
             android:gravity="center_vertical"
@@ -102,7 +102,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="40px"
+            android:textSize="13sp"
             android:textColor="@color/colorGray"
             android:text="促销免费"
             android:gravity="center_vertical"
@@ -131,7 +131,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="40px"
+            android:textSize="13sp"
             android:textColor="@color/colorGray"
             android:text="签到有奖"
             android:gravity="center_vertical"
@@ -161,7 +161,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="40px"
+            android:textSize="13sp"
             android:textColor="@color/colorGray"
             android:text="最新活动"
             android:gravity="center_vertical"

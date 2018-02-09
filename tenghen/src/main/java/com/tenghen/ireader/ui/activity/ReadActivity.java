@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.chengx.mvp.utils.AppUtils;
@@ -29,6 +30,7 @@ import com.tenghen.ireader.widget.SettingDialog;
 
 import java.util.TimerTask;
 
+import butterknife.BindInt;
 import butterknife.BindView;
 import butterknife.OnClick;
 import de.greenrobot.event.EventBus;
@@ -55,12 +57,12 @@ public class ReadActivity extends BaseActivity<ReadPresent>{
     public TextView chapterNameTv;
     @BindView(R.id.bookNameTv)
     public TextView bookNameTv;
-    @BindView(R.id.sv)
-    public AutoScrollView sv;
     @BindView(R.id.collectBtn)
     ImageView collectBtn;
     @BindView(R.id.zddyBtn)
     TextView zddyBtn;
+    @BindView(R.id.scrollView)
+    ScrollView scrollView;
 
     String bookId = "";
     String chapterId = "";
@@ -166,7 +168,8 @@ public class ReadActivity extends BaseActivity<ReadPresent>{
         chapterId = getIntent().getStringExtra("chapterId");
         mode = sp.getInt("mode",1);
         setMode(mode);
-        EventBus.getDefault().register(this);
+        if (!EventBus.getDefault().isRegistered(this))
+            EventBus.getDefault().register(this);
     }
 
     public void setMode(int mode){
@@ -239,12 +242,12 @@ public class ReadActivity extends BaseActivity<ReadPresent>{
             // TODO Auto-generated method stub
             if(msg.what==1){
                 //如果没有到底端，Y偏移量增加10
-                if(sv.getScrollY()<bookContentTv.getMeasuredHeight()-10){
-                    sv.scrollBy(0, 10);
+                if(scrollView.getScrollY()<bookContentTv.getMeasuredHeight()-10){
+                    scrollView.scrollBy(0, 10);
                 }
                 else {
                     //直接到底端
-                    sv.scrollTo(0, bookContentTv.getMeasuredHeight());
+                    scrollView.scrollTo(0, bookContentTv.getMeasuredHeight());
                 }
             }
             super.handleMessage(msg);
@@ -254,7 +257,7 @@ public class ReadActivity extends BaseActivity<ReadPresent>{
     @OnClick({R.id.giftBtn,
             R.id.commentBtn,R.id.settingBtn,R.id.lastChapterBtn,R.id.nextChapterBtn,R.id.btn_back,R.id.homeBtn,
             R.id.collectBtn,R.id.readRootView,R.id.readPopView,R.id.zddyBtn,
-            R.id.last,R.id.next,R.id.chapterList})
+            R.id.last,R.id.next,R.id.chapterList,R.id.scrollView,R.id.bookContentTv})
     public void onClick(View v){
         switch (v.getId()){
             case R.id.giftBtn:
@@ -328,11 +331,19 @@ public class ReadActivity extends BaseActivity<ReadPresent>{
             case R.id.readPopView:
                 readPopView.setVisibility(View.GONE);
                 break;
+            case R.id.bookContentTv:
+                readPopView.setVisibility(View.VISIBLE);
+                break;
         }
     }
 
     public void onEventMainThread(Integer mode){
         setMode(mode);
+    }
+
+
+    public void scrollToHead(){
+        scrollView.scrollTo(0,0);
     }
 
     @Override

@@ -17,6 +17,8 @@ import com.tenghen.ireader.ui.activity.BookDetailActivity;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.greenrobot.event.EventBus;
+
 /**
  * 作者：chengx
  * 日期：2017/3/7
@@ -103,6 +105,7 @@ public class BookDetailPresent extends BaseListPresent<BookDetailActivity> {
             @Override
             public void onSuccess(Void data) {
                 getV().showTip("感谢捧场");
+                EventBus.getDefault().post("refresh");
             }
 
             @Override

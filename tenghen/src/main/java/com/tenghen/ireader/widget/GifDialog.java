@@ -26,6 +26,8 @@ import com.tenghen.ireader.net.ResponseCallback;
 import com.tenghen.ireader.ui.activity.LoginActivity;
 import com.tenghen.ireader.ui.activity.RechargeActivity;
 
+import de.greenrobot.event.EventBus;
+
 /**
  * Created by Administrator on 2018/2/4/004.
  */
@@ -135,6 +137,7 @@ public class GifDialog extends Dialog implements View.OnClickListener {
                     @Override
                     public void onSuccess(Void data) {
                         ToastUtils.showToast(getContext(),"感谢捧场");
+                        EventBus.getDefault().post("refresh");
                         dismiss();
                     }
 

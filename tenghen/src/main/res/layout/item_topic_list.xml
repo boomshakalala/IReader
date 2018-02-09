@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:textColor="@color/black"
-                android:textSize="41px"
+                android:textSize="14sp"
                 android:text="福利计划，签约有礼"
                 android:layout_toRightOf="@id/pointIv"
                 android:layout_marginLeft="18px"
@@ -43,7 +43,7 @@
                 android:layout_below="@id/topicTitleTv"
                 android:layout_marginTop="20px"
                 android:textColor="#aaaaaa"
-                android:textSize="30px"
+                android:textSize="10sp"
                 android:text="立志于腾痕书院长期创作的网络名家和潜力作者"/>
         </RelativeLayout>
         <ImageView

@@ -28,7 +28,7 @@
                 android:paddingBottom="14px"
                 android:paddingRight="21px"
                 android:paddingLeft="21px"
-                android:textSize="39px"
+                android:textSize="13sp"
                 android:textColor="@drawable/selector_book_type_text_color"
                 android:background="@drawable/selector_btn_rank"
                 android:text="周  榜"/>
@@ -48,7 +48,7 @@
                 android:paddingLeft="21px"
                 android:gravity="center"
                 android:layout_height="wrap_content"
-                android:textSize="39px"
+                android:textSize="13sp"
                 android:textColor="@drawable/selector_book_type_text_color"
                 android:background="@drawable/selector_btn_rank"
                 android:text="月  榜"/>
@@ -67,7 +67,7 @@
                 android:paddingLeft="21px"
                 android:gravity="center"
                 android:layout_height="wrap_content"
-                android:textSize="39px"
+                android:textSize="13sp"
                 android:textColor="@drawable/selector_book_type_text_color"
                 android:background="@drawable/selector_btn_rank"
                 android:text="总  榜"/>

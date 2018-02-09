@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.chengx.mvp.utils.SizeUtils;
@@ -28,6 +29,7 @@ import com.tenghen.ireader.ui.present.SearchPresent;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindInt;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -47,6 +49,8 @@ public class SearchFragment extends BaseFragment<SearchPresent> implements View.
     public TextView searchBtn;
     @BindView(R.id.refreshKeywordsBtn)
     public TextView refreshKeywordsBtn;
+    @BindView(R.id.scrollView)
+    public ScrollView scrollView;
 
     private SearchTagAdapter tagAdapter;
     private HotBookAdapter bookAdapter;
@@ -141,5 +145,17 @@ public class SearchFragment extends BaseFragment<SearchPresent> implements View.
                 }
                 break;
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        scrollView.scrollTo(0,0);
+        getPresent().requestHotWords();
+        getPresent().requestData();
+    }
+
+    public void scrollToHead(){
+        scrollView.scrollTo(0,0);
     }
 }

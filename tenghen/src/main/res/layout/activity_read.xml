@@ -18,7 +18,7 @@
                 android:id="@+id/chapterNameTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="36px"
+                android:textSize="12sp"
                 android:textColor="#77d1da"
                 android:layout_alignParentLeft="true"
                 android:text="第一章 蒙面杀手"/>
@@ -26,7 +26,7 @@
                 android:id="@+id/bookNameTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="36px"
+                android:textSize="12sp"
                 android:textColor="#77d1da"
                 android:layout_alignParentRight="true"
                 android:text="《美丽心情》"/>
@@ -38,7 +38,7 @@
             android:orientation="vertical"
             android:layout_weight="1">
             <com.chengx.mvp.widget.auto.AutoScrollView
-                android:id="@+id/sv"
+                android:id="@+id/scrollView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scrollbars="none">
@@ -68,7 +68,7 @@
                             android:layout_marginLeft="84px"
                             android:gravity="center"
                             android:background="@drawable/shape_gray_round_rect"
-                            android:textSize="33px"
+                            android:textSize="11sp"
                             android:textColor="#242424"
                             android:text="上一章"/>
                         <View
@@ -81,7 +81,7 @@
                             android:layout_height="60px"
                             android:gravity="center"
                             android:background="@drawable/shape_gray_round_rect"
-                            android:textSize="33px"
+                            android:textSize="11sp"
                             android:textColor="#242424"
                             android:text="目录"/>
                         <View
@@ -94,7 +94,7 @@
                             android:layout_height="60px"
                             android:gravity="center"
                             android:background="@drawable/shape_blue_conner"
-                            android:textSize="33px"
+                            android:textSize="11sp"
                             android:textColor="@color/white"
                             android:layout_marginRight="84px"
                             android:text="下一章"/>
@@ -115,7 +115,7 @@
 
     <FrameLayout
         android:id="@+id/readPopView"
-        android:visibility="visible"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -138,7 +138,7 @@
                 android:gravity="center"
                 android:text="返回"
                 android:textColor="#fa9293"
-                android:textSize="39px" />
+                android:textSize="13sp" />
 
             <TextView
                 android:id="@+id/zddyBtn"
@@ -150,7 +150,7 @@
                 android:gravity="center"
                 android:text="自动订阅"
                 android:textColor="#3fbfcc"
-                android:textSize="48px" />
+                android:textSize="16sp" />
 
             <ImageView
                 android:id="@+id/homeBtn"
@@ -190,7 +190,7 @@
                 android:drawableTop="@drawable/btn_read_comment"
                 android:text="评论"
                 android:textColor="#808080"
-                android:textSize="30px" />
+                android:textSize="10sp" />
 
             <TextView
                 android:id="@+id/giftBtn"
@@ -201,7 +201,7 @@
                 android:drawableTop="@drawable/btn_read_reward"
                 android:text="打赏"
                 android:textColor="#808080"
-                android:textSize="30px" />
+                android:textSize="10sp" />
 
             <TextView
                 android:id="@+id/settingBtn"
@@ -212,7 +212,7 @@
                 android:drawableTop="@drawable/btn_read_setting"
                 android:text="设置"
                 android:textColor="#808080"
-                android:textSize="30px" />
+                android:textSize="10sp" />
 
         </RelativeLayout>
 
@@ -233,7 +233,7 @@
                 android:gravity="center"
                 android:text="上一章"
                 android:textColor="@color/white"
-                android:textSize="41px" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/nextChapterBtn"
@@ -244,7 +244,7 @@
                 android:gravity="center"
                 android:text="下一章"
                 android:textColor="#f89494"
-                android:textSize="41px" />
+                android:textSize="14sp" />
         </FrameLayout>
 
     </FrameLayout>

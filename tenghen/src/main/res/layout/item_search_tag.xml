@@ -12,7 +12,7 @@
         android:paddingLeft="60px"
         android:paddingTop="30px"
         android:paddingBottom="30px"
-        android:textSize="42px"
+        android:textSize="14sp"
         android:textColor="@color/colorGray"
         android:background="@drawable/tag_round_backgroud"/>
 

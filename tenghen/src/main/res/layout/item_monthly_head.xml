@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -12,12 +13,13 @@
         android:paddingBottom="41px"
         android:gravity="center_vertical"
         android:paddingTop="41px">
-        <ImageView
+        <com.chengx.mvp.widget.CircleImageView
             android:id="@+id/avatarIv"
             android:layout_width="177px"
             android:layout_height="177px"
+            app:layout_auto_baseheight="width"
             android:src="@drawable/ic_user_avatar"
-            android:scaleType="centerCrop"/>
+            />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,13 +30,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:textSize="33px"
+                android:textSize="11sp"
                 android:text="小雪"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="23px"
-                android:textSize="36px"
+                android:textSize="12sp"
                 android:text="开通包月尊享特权"/>
         </LinearLayout>
         <View
@@ -46,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:textSize="33px"
+            android:textSize="11sp"
             android:background="@drawable/recharge_round_backgroud"
             android:paddingLeft="22px"
             android:paddingRight="22px"

@@ -15,7 +15,7 @@
             android:id="@+id/logTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="40px"
+            android:textSize="13sp"
             android:text="充值20元[成功]"
             />
         <View
@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#fa6666"
-            android:textSize="40px"
+            android:textSize="13sp"
             android:layout_marginLeft="24px"
             android:text="手机充值"
             />
@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36px"
-        android:textSize="24px"
+        android:textSize="8sp"
         android:textColor="#808080"
         android:text="2017-02-02 11:11:00"/>
 

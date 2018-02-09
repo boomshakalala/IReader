@@ -22,6 +22,7 @@ public class SearchPresent extends BasePresent<SearchFragment> {
             public void onSuccess(List<Book> data) {
                 if (data != null && data.size()>0) {
                     getV().setBooks(data);
+                    getV().scrollToHead();
                 }
 
             }
@@ -39,6 +40,7 @@ public class SearchPresent extends BasePresent<SearchFragment> {
             public void onSuccess(List<String> data) {
                 if (data != null && data.size()>0) {
                     getV().setHotWords(data);
+                    getV().scrollToHead();
                 }
             }
 

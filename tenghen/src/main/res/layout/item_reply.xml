@@ -14,14 +14,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="大壮壮 : "
-            android:textSize="21px"
+            android:textSize="7sp"
             android:textColor="#6cd8e4"/>
         <TextView
             android:id="@+id/replyContentTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="感谢支持！"
-            android:textSize="21px"
+            android:textSize="7sp"
             android:textColor="#959595"/>
     </LinearLayout>
     <TextView
@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#959595"
-        android:textSize="21px"
+        android:textSize="7sp"
         android:drawablePadding="6dp"
         android:layout_gravity="right"
         android:drawableLeft="@drawable/ic_comment_date"

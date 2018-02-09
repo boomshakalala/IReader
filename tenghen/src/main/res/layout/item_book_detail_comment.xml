@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#959595"
-        android:textSize="33px"
+        android:textSize="11sp"
         android:layout_marginTop="30px"
         android:text="哗啦啦金币风尚，默默支持大大"/>
 
@@ -31,7 +31,7 @@
             android:gravity="center"
             android:text="喵喵"
             android:textColor="#6dd9e5"
-            android:textSize="33px" />
+            android:textSize="11sp" />
 
         <View
             android:layout_width="0dp"
@@ -47,7 +47,7 @@
             android:gravity="center"
             android:text="05-09 16:00"
             android:textColor="#959595"
-            android:textSize="18px" />
+            android:textSize="6sp" />
 
         <TextView
             android:id="@+id/replyBtn"
@@ -59,7 +59,7 @@
             android:gravity="center"
             android:text="回复("
             android:textColor="#959595"
-            android:textSize="18px" />
+            android:textSize="6sp" />
 
         <TextView
             android:id="@+id/replyCountTv"
@@ -67,14 +67,14 @@
             android:layout_height="wrap_content"
             android:text="01"
             android:textColor="#6ad9e2"
-            android:textSize="18px" />
+            android:textSize="6sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="条)"
             android:textColor="#959595"
-            android:textSize="18px" />
+            android:textSize="6sp" />
     </LinearLayout>
 
     <com.tenghen.ireader.widget.BubbleLinearLayout

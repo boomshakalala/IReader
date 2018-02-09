@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#565656"
-                android:textSize="40px"
+                android:textSize="13sp"
                 android:text="老公亲亲就过敏"/>
             <TextView
                 android:id="@+id/authorNameTv"
@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="29px"
                 android:textColor="#3dbfcc"
-                android:textSize="36px"
+                android:textSize="12sp"
                 android:text="豆包姑"/>
             <TextView
                 android:id="@+id/wordCountTv"
@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="#818181"
                 android:layout_marginTop="29px"
-                android:textSize="33px"
+                android:textSize="11sp"
                 android:text="21.8万字"/>
             <TextView
                 android:id="@+id/priceTv"
@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="#818181"
                 android:layout_marginTop="29px"
-                android:textSize="33px"
+                android:textSize="11sp"
                 android:text="500藤币/千字"
                 />
             <TextView
@@ -60,7 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
-                android:textSize="36px"
+                android:textSize="12sp"
                 android:paddingLeft="17px"
                 android:paddingRight="17px"
                 android:paddingTop="5px"
@@ -83,14 +83,14 @@
             android:text="读"
             android:gravity="center"
             android:textColor="@color/white"
-            android:textSize="33px"
+            android:textSize="11sp"
             android:background="#ec6b8a"/>
         <TextView
             android:id="@+id/lastReadChapterTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#818181"
-            android:textSize="30px"
+            android:textSize="10sp"
             android:layout_marginLeft="50px"
             android:text="已读   第一章   飞扬时光飞扬时光"/>
         <View
@@ -101,7 +101,7 @@
             android:id="@+id/readBookBtn"
             android:layout_width="150px"
             android:layout_height="42px"
-            android:textSize="33px"
+            android:textSize="11sp"
             android:gravity="center"
             android:textColor="@color/white"
             android:background="#6dd9e5"
@@ -116,7 +116,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#595959"
-            android:textSize="32px"
+            android:textSize="11sp"
             android:layout_marginTop="30px"
             android:text="作品简介："/>
         <TextView
@@ -124,7 +124,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#818181"
-            android:textSize="32px"
+            android:textSize="11sp"
             android:layout_marginTop="18px"
             android:text="她，武青颜，军医界的天才，顶级医学硕士，一招穿越沦为天生媚骨的无用庶女。 庶女卑微，那又何妨？她一样活的风生水起。 嫡女使阴，放马过来，踹你上天，踢你遁地，赠你一辈子万劫不复。"
             android:lineSpacingExtra="6dp"/>
@@ -144,14 +144,14 @@
             android:id="@+id/chapterListBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="42px"
+            android:textSize="14sp"
             android:textColor="#575757"
             android:text="查看目录"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#ea6b89"
-            android:textSize="33px"
+            android:textSize="11sp"
             android:text="最新更新"
             android:layout_marginLeft="39px"/>
         <ImageView
@@ -166,7 +166,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8px"
             android:textColor="#969696"
-            android:textSize="33px"
+            android:textSize="11sp"
             android:text="第232章  飞扬时刻"/>
         <View
             android:layout_width="0dp"

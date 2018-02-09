@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:drawableTop="@drawable/selector_btn_main_featured"
         android:drawablePadding="5dp"
-        android:textSize="27px"
+        android:textSize="9sp"
         android:textColor="@drawable/selector_main_tab_text_color"
         android:text="@string/text_featured"/>
     <TextView
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:drawableTop="@drawable/selector_btn_main_stacks"
         android:drawablePadding="5dp"
-        android:textSize="27px"
+        android:textSize="9sp"
         android:textColor="@drawable/selector_main_tab_text_color"
         android:text="@string/text_stacks"/>
     <TextView
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:drawableTop="@drawable/selector_btn_main_search"
         android:drawablePadding="5dp"
-        android:textSize="27px"
+        android:textSize="9sp"
         android:textColor="@drawable/selector_main_tab_text_color"
         android:text="@string/text_search"/>
     <TextView
@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:drawableTop="@drawable/selector_btn_main_find"
         android:drawablePadding="5dp"
-        android:textSize="27px"
+        android:textSize="9sp"
         android:textColor="@drawable/selector_main_tab_text_color"
         android:text="@string/text_find"/>
     <TextView
@@ -57,7 +57,7 @@
         android:layout_height="wrap_content"
         android:drawableTop="@drawable/selector_btn_main_user"
         android:drawablePadding="5dp"
-        android:textSize="27px"
+        android:textSize="9sp"
         android:textColor="@drawable/selector_main_tab_text_color"
         android:text="@string/text_mine"/>
 </LinearLayout>

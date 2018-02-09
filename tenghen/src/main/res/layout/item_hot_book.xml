@@ -20,7 +20,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="24px"
         android:maxLines="1"
-        android:textSize="33px"
+        android:textSize="11sp"
         android:textColor="@color/colorLightGray"
         android:text="妖妃风华"/>
 

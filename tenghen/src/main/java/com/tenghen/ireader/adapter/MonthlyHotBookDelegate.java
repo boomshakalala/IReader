@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.chengx.mvp.adapter.ItemViewDelegate;
 import com.chengx.mvp.adapter.RecyclerViewHolder;
+import com.chengx.mvp.utils.KLog;
 import com.tenghen.ireader.R;
 import com.tenghen.ireader.module.Book;
 import com.tenghen.ireader.ui.activity.BookDetailActivity;
@@ -41,6 +42,7 @@ public class MonthlyHotBookDelegate implements ItemViewDelegate<Object> {
     @Override
     public void convert(RecyclerViewHolder holder, Object o, int position) {
         final Book book = (Book) o;
+        KLog.d("RANK",book);
         holder.setText(R.id.rankTv,book.getView_id());
         holder.setText(R.id.bookNameTv,book.getName());
         long clickSum = Long.valueOf(book.getAll_click());

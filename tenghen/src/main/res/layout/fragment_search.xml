@@ -7,6 +7,7 @@
     <include
         layout="@layout/layout_common_search"/>
     <com.chengx.mvp.widget.auto.AutoScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="none">
@@ -29,7 +30,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="26px"
+                    android:textSize="9sp"
                     android:gravity="center"
                     android:textColor="@color/colorGray"
                     android:drawableTop="@drawable/btn_search_free"
@@ -41,7 +42,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="26px"
+                    android:textSize="9sp"
                     android:gravity="center"
                     android:textColor="@color/colorGray"
                     android:drawableTop="@drawable/btn_search_month"
@@ -53,7 +54,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="26px"
+                    android:textSize="9sp"
                     android:gravity="center"
                     android:textColor="@color/colorGray"
                     android:drawableTop="@drawable/btn_search_complete"
@@ -65,7 +66,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="26px"
+                    android:textSize="9sp"
                     android:gravity="center"
                     android:textColor="@color/colorGray"
                     android:drawableTop="@drawable/btn_search_stacks"
@@ -92,7 +93,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16px"
-                    android:textSize="40px"
+                    android:textSize="13sp"
                     android:textColor="@color/colorGray"
                     android:text="大家都在搜"/>
                 <View
@@ -104,7 +105,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16px"
-                    android:textSize="40px"
+                    android:textSize="13sp"
                     android:textColor="@color/colorGrayText"
                     android:text="换一批"/>
 
@@ -141,7 +142,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16px"
-                    android:textSize="40px"
+                    android:textSize="13sp"
                     android:textColor="@color/colorGray"
                     android:text="大家都在看"/>
 

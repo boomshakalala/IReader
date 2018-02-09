@@ -18,14 +18,14 @@
             android:layout_height="wrap_content"
             android:text="ICY 评论"
             android:textColor="#373737"
-            android:textSize="30px" />
+            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/bookNameTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#f86666"
-            android:textSize="30px"
+            android:textSize="10sp"
             android:text="《青春飞扬小时光》"/>
     </LinearLayout>
 
@@ -34,14 +34,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#838383"
-        android:textSize="23px"
+        android:textSize="8sp"
         android:layout_marginTop="40px"
         android:text="啥时候更呢？求作者大大更新！好想看后续章节啊！等的着急！"/>
     <TextView
         android:id="@+id/dateTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="21px"
+        android:textSize="7sp"
         android:textColor="#adadad"
         android:layout_gravity="right"
         android:layout_marginTop="45px"

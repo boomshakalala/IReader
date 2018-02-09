@@ -40,6 +40,7 @@ public class MonthlyActivity extends BaseListActivity<MonthlyPresent,Object> {
                 return ((MonthlyAdapter)adapter).getItemViewDelegate(viewType) instanceof FeaturedBookDelegate ? 1 : 3;
             }
         });
+        recyclerView.setCanloadMore(false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
         getPresent().refresh();

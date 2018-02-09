@@ -42,10 +42,14 @@ public class ReadPresent extends BasePresent<ReadActivity> {
 
                 ChapterContent.LastAndNext context = data.getContext();
                 getV().setContextInfo(context);
+                getV().scrollToHead();
             }
 
             @Override
             public void onFailure(int errCode, String info) {
+                getV().dismissDialog();
+                getV().showTip(info);
+
                 if (errCode == 9){
                     final AlertDialog dialog = new AlertDialog.Builder(getV()).create();
                     dialog.setTitle("提示");
@@ -60,9 +64,10 @@ public class ReadPresent extends BasePresent<ReadActivity> {
                     });
                     dialog.setCancelable(false);
                     dialog.show();
+                }else {
+                    getV().finish();
                 }
-                getV().dismissDialog();
-                getV().showTip(info);
+
             }
         });
     }

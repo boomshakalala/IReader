@@ -13,6 +13,8 @@ import com.tenghen.ireader.ui.present.BookDetailPresent;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.greenrobot.event.EventBus;
+
 /**
  * 作者：chengx
  * 日期：2017/3/7
@@ -45,6 +47,7 @@ public class BookDetailActivity extends BaseListActivity<BookDetailPresent,Objec
             ((BookDetailPresent)getPresent()).setBookId(bookId);
         data = new ArrayList<>();
         adapter = new BookDetailAdapter(this,data,bookId);
+        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -72,5 +75,17 @@ public class BookDetailActivity extends BaseListActivity<BookDetailPresent,Objec
     @Override
     public BookDetailPresent newPresent() {
         return new BookDetailPresent();
+    }
+
+    public void onEventMainThread(String str){
+        if (str.equals("refresh")){
+            getPresent().refresh();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }

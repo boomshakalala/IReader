@@ -32,7 +32,7 @@ public class FeaturedBookDelegate implements ItemViewDelegate<Object> {
     public boolean isForViewType(Object o, int position) {
         if (o instanceof  Book){
             Book book = (Book) o;
-            return !book.isRec;
+            return !book.isRec&&!book.isRank;
         }
         return false;
     }

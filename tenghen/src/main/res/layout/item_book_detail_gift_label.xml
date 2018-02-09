@@ -10,7 +10,7 @@
         android:id="@+id/giftCountTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="42px"
+        android:textSize="14sp"
         android:textColor="#575757"
         android:text="捧场总数:100"/>
     <View
@@ -21,7 +21,7 @@
         android:id="@+id/giftBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="42px"
+        android:textSize="14sp"
         android:textColor="#ec6b8a"
         android:text="我要捧场"/>
 

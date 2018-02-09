@@ -1,5 +1,6 @@
 package com.tenghen.ireader.widget;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -22,8 +23,12 @@ import com.tenghen.ireader.ui.activity.SettingActivity;
  */
 
 public class LogoutDialog extends Dialog implements View.OnClickListener {
+
+    Context context;
+
     public LogoutDialog(@NonNull Context context) {
         super(context, R.style.ActionSheetDialogStyle);
+        this.context = context;
     }
 
     public LogoutDialog(@NonNull Context context, @StyleRes int themeResId) {
@@ -57,8 +62,8 @@ public class LogoutDialog extends Dialog implements View.OnClickListener {
         switch (v.getId()){
             case R.id.logoutBtn:
                 CommonUtils.clearUserInfo();
-                if (getContext() instanceof SettingActivity){
-                    ((SettingActivity) getContext()).initViews();
+                if (context instanceof Activity){
+                    ((Activity) context).finish();
                 }
                 break;
         }

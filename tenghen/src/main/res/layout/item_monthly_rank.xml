@@ -18,16 +18,16 @@
         android:paddingBottom="6px"
         android:textColor="@color/white"
         android:background="@drawable/book_type_round_backgroud"
-        android:textSize="30px"
-        android:text="02"/>
+        android:textSize="10sp"
+        android:text=""/>
     <TextView
         android:id="@+id/bookNameTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="36px"
+        android:textSize="12sp"
         android:textColor="#818181"
         android:layout_marginLeft="36px"
-        android:text="高冷大叔床上们"/>
+        android:text=""/>
     <View
         android:layout_width="0dp"
         android:layout_height="1px"
@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#818181"
-        android:textSize="36px"
-        android:text="6.1万人气"/>
+        android:textSize="12sp"
+        android:text=""/>
 
 </LinearLayout>

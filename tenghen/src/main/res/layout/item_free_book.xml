@@ -20,7 +20,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="24px"
         android:maxLines="1"
-        android:textSize="36px"
+        android:textSize="12sp"
         android:textColor="@color/colorLightGray"
         android:text="妖妃风华"/>
     <TextView
@@ -30,7 +30,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20px"
         android:maxLines="1"
-        android:textSize="28px"
+        android:textSize="9sp"
         android:textColor="@color/colorLightGray"
         android:text="5藤币/千字"/>
     <TextView
@@ -39,7 +39,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20px"
         android:maxLines="1"
-        android:textSize="36px"
+        android:textSize="12sp"
         android:textColor="#f77486"
         android:text="免费"/>
 

@@ -21,6 +21,8 @@ import com.chengx.mvp.utils.ToastUtils;
 import com.tenghen.ireader.R;
 import com.tenghen.ireader.net.Api;
 
+import de.greenrobot.event.EventBus;
+
 /**
  * Created by Administrator on 2018/2/4/004.
  */
@@ -70,6 +72,7 @@ public class CommentDialog extends Dialog implements View.OnClickListener {
             public void onSuccess(Void data) {
                 ToastUtils.showToast(getContext(),"评论成功");
                 dismiss();
+                EventBus.getDefault().post("refresh");
             }
 
             @Override
