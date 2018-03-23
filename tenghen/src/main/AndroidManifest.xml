@@ -24,7 +24,7 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
-        android:name=".base.BaseApplication"
+        android:name="com.tenghen.ireader.base.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -45,7 +45,7 @@
             android:value="5a75df0bf29d987e7800043c" >
         </meta-data>
         <activity
-            android:name=".wxapi.WXEntryActivity"
+            android:name="com.tenghen.ireader.wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
@@ -69,7 +69,7 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:configChanges="orientation|keyboardHidden|screenSize"/>
         <activity
-            android:name=".WBShareActivity"
+            android:name="com.tenghen.ireader.WBShareActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -89,7 +89,7 @@
         <!-- 友盟配置结束 -->
 
         <activity
-            android:name=".ui.activity.MainActivity"
+            android:name="com.tenghen.ireader.ui.activity.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -99,94 +99,94 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activity.BookTypeActivity"
+            android:name="com.tenghen.ireader.ui.activity.BookTypeActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.activity.RechargeActivity"
+            android:name="com.tenghen.ireader.ui.activity.RechargeActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.activity.RankActivity"
+            android:name="com.tenghen.ireader.ui.activity.RankActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.activity.MonthlyActivity"
+            android:name="com.tenghen.ireader.ui.activity.MonthlyActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.activity.FreeBookActivity"
+            android:name="com.tenghen.ireader.ui.activity.FreeBookActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.activity.SearchActivity"
+            android:name="com.tenghen.ireader.ui.activity.SearchActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.activity.BookDetailActivity"
+            android:name="com.tenghen.ireader.ui.activity.BookDetailActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.activity.ReadActivity"
+            android:name="com.tenghen.ireader.ui.activity.ReadActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.activity.LoginActivity"
+            android:name="com.tenghen.ireader.ui.activity.LoginActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="tenghen.intent.login"/>
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activity.RegisterActivity"
+            android:name="com.tenghen.ireader.ui.activity.RegisterActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.activity.LatestReadActivity"
+            android:name="com.tenghen.ireader.ui.activity.LatestReadActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.activity.MyShelfActivity"
+            android:name="com.tenghen.ireader.ui.activity.MyShelfActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.activity.RechargeLogActivity"
+            android:name="com.tenghen.ireader.ui.activity.RechargeLogActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.activity.CostLogActivity"
+            android:name="com.tenghen.ireader.ui.activity.CostLogActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.activity.MyCommentActivity"
+            android:name="com.tenghen.ireader.ui.activity.MyCommentActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.activity.MyMsgActivity"
+            android:name="com.tenghen.ireader.ui.activity.MyMsgActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.activity.TopicActivity"
+            android:name="com.tenghen.ireader.ui.activity.TopicActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.activity.DynamicActivity"
+            android:name="com.tenghen.ireader.ui.activity.DynamicActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.activity.MoreCommentActivity"
+            android:name="com.tenghen.ireader.ui.activity.MoreCommentActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.activity.MoreGiftActivity"
+            android:name="com.tenghen.ireader.ui.activity.MoreGiftActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.activity.BindPhoneActivity"
+            android:name="com.tenghen.ireader.ui.activity.BindPhoneActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.activity.RechargeMoneyActivity"
+            android:name="com.tenghen.ireader.ui.activity.RechargeMoneyActivity"
             android:screenOrientation="portrait"/>
         <activity
-        android:name=".ui.activity.ModifyPwdActivity"
+        android:name="com.tenghen.ireader.ui.activity.ModifyPwdActivity"
         android:screenOrientation="portrait"/>
         <activity
-        android:name=".ui.activity.ProblemsActivity"
+        android:name="com.tenghen.ireader.ui.activity.ProblemsActivity"
         android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.activity.AboutActivity"
+            android:name="com.tenghen.ireader.ui.activity.AboutActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.activity.ChapterListActivity"
+            android:name="com.tenghen.ireader.ui.activity.ChapterListActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.activity.SettingActivity"
+            android:name="com.tenghen.ireader.ui.activity.SettingActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.activity.UserBindActivity"
+            android:name="com.tenghen.ireader.ui.activity.UserBindActivity"
             android:screenOrientation="portrait"/>
     </application>
 
