@@ -76,6 +76,7 @@ public class RechargeActivity extends BaseActivity {
                 RechargeMoneyActivity.launch(this,"1");
                 break;
             case R.id.btn_recharge_wechat:
+                RechargeMoneyActivity.launch(this,"2");
                 break;
         }
     }

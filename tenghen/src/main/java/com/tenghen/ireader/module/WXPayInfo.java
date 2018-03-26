@@ -1,10 +1,12 @@
 package com.tenghen.ireader.module;
 
-import java.io.Serializable;
+/**
+ * 作者: 陈冠希
+ * 日期: 2018/3/26
+ * 描述:
+ */
 
-public class OrderInfo  implements Serializable {
-
-    String response = "";
+public class WXPayInfo {
     private String appId;
     private String partnerId;
     private String prepayId;
@@ -67,13 +69,5 @@ public class OrderInfo  implements Serializable {
 
     public void setSign(String sign) {
         this.sign = sign;
-    }
-
-    public String getResponse() {
-        return response;
-    }
-
-    public void setResponse(String response) {
-        this.response = response;
     }
 }

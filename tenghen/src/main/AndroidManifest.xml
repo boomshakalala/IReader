@@ -44,6 +44,12 @@
             android:name="UMENG_APPKEY"
             android:value="5a75df0bf29d987e7800043c" >
         </meta-data>
+
+        <activity
+            android:name="com.tenghen.ireader.wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop"/>
+
         <activity
             android:name="com.tenghen.ireader.wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"

@@ -57,5 +57,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile project(':mvp')
     compile 'com.google.android.gms:play-services-appindexing:8.1.0'
+    'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
     compile files('libs/alipaySdk-20170922.jar')
 }
